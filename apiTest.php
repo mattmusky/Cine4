@@ -1,7 +1,7 @@
 <?php
 //step1
 
-function getMovieData (movieName) {
+function getMovieData ($movieName) {
 $cSession = curl_init(); 
 //step2
 
@@ -26,7 +26,7 @@ echo $result;
 
 $input = $argv[1];
 echo $input;
-getMovieData(input);
+getMovieData($input);
 
 	
 
