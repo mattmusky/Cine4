@@ -1,10 +1,10 @@
 <?php
 //step1
 
-
+function getMovieData (movieName) {
 $cSession = curl_init(); 
 //step2
-$name = $argv[1];
+
 
 $url = "https://api.themoviedb.org/3/search/movie?api_key=63c5f394ee102de7ba90c4a6159080c2&query='".$name."'";
 $url = str_replace(" ", '%20', $url);
@@ -22,6 +22,11 @@ echo $result;
 
 //print_r($data)
 
+}
+
+$input = $argv[1];
+echo $input;
+getMovieData(input);
 
 	
 
