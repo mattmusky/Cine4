@@ -1,20 +1,3 @@
-<!DOCTYPE html>
-<html>
-<form action="movie.php" method="POST">
- <br>
- <label>Limit</label>
-  <input type="text" name="name" value="">
-  <br>
- 
-  
-  
-  <br>
-  
-  <input type="submit" value="Submit">
-</form>
-
-</html>
-
 <?php
 //step1
 
@@ -38,9 +21,6 @@ echo $result;
 //$data =  json_decode($result,true);
 
 //print_r($data)
-
-
-	
 
 
 ?>
