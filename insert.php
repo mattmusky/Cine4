@@ -40,7 +40,7 @@ function adduser($Fname, $Lname, $Email, $Username, $Password) {
 
 $host = 'localhost';
 	$user = 'root';
-	$pass = '';
+	$pass = 'infinity';
 	$db = 'cine4';
 
 	//create connection
