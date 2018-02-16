@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arvo|EB+Garamond|Lora" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+
+
+    <!-- My CSS -->
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+	<!-- CINE 4 -->
+    <div class="site-container">
+        <div class="title">
+            <h1 class="main-title">cine4</h1>
+        </div>
+
+        <!-- Login container -->
+        <div id="login-container">
+            <form action="process.php" method="post">  <!-- EDIT: id action method--> 
+                <div class="input-group">
+                    <label for="username">username</label>
+                    <input type="text" name="username" id="username">
+                </div>
+
+                <div class="input-group">
+                    <label for="password">password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+
+                <!-- Button -->
+                <button type="submit" id="login-button" name="loginButton">login</button>
+
+                <!-- Don't have an account? Sign Up -->
+
+                <div class="registration-link">
+                   <a href="registration.html">Don't have an account? Sign Up.</a>
+                </div>
+            </form>
+        </div>
+        <!-- end login container -->
+    </div>
+    <!-- end site container -->
+
+   
+</body>
+
+</html>

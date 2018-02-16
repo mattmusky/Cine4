@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- FONTS-->
+<!--     <link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arvo|EB+Garamond|Lora" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet"> -->
+
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+
+    	<!-- CINE4 -->
+    <div class="site-container">
+        <div class="title">
+            <h1 class="main-title">cine4</h1>
+        </div>
+
+        <!-- Login container -->
+        <div id="login-container">
+            <form id="myform"  onsubmit="return passwordCheck();" method="POST">  <!-- EDIT: id action method--> 
+
+<!--                 <div class="input-group">
+                    <label for="fName">first name</label>
+                    <input type="text" name="fName" id="fName" required >
+                </div> -->
+
+
+                <div class="input-group">
+                    <label for="username">username</label>
+                    <input type="text" name="username" id="username" required onkeyup="userLength()">
+                </div>
+
+                <div id="usernameError" class="errorMessages" ></div>
+
+                <div class="input-group">
+                    <label for="password">password</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+
+                 <div class="input-group">
+                    <label for="password">confirm password</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" onblur="passwordCheck()" required>
+                </div>
+
+                <div id="passwordError" class="errorMessages"></div>
+
+                <div class="input-group">
+                    <label for="email">email</label>
+                    <input type="text" name="email" id="email" required>
+                </div>
+
+
+                <!-- Button -->
+                <button type="submit" id="register-button" name="registerButton">sign up</button>
+
+                <!-- Already have an account? -->
+
+                <div class="login-link">
+                   <a href="login.html">Already have an account? Log in.</a>
+                </div>
+            </form>
+        </div>
+        <!-- end login container -->
+    </div>
+    <!-- end site container -->
+
+<script>
+function passwordCheck() {
+        console.log("called passwordcheck");
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+        var passwordError = document.getElementById('passwordError');
+
+        if (password != confirmPassword){
+            
+
+            passwordError.innerHTML = "Passwords Do Not Match!";
+            return false; // return false to prevent form from submitting
+        }
+        else{
+            passwordError.innerHTML = ""; // Gets Rid of "Password Do No Match!"
+            return true;
+        }
+    }
+
+function userLength(){
+    var username = document.getElementById("username").value;
+    var minlength = 5;
+    var maxlength = 12;
+
+    if(username.length < minlength || username.length > maxlength){
+        document.getElementById("usernameError").innerHTML ="5 to 12 characters only";
+        return false; // return false to prevent form from submitting
+    }
+    else{
+        // no errors
+        document.getElementById("usernameError").innerHTML ="";
+        return true;
+    }
+}
+
+function validateForm() {
+    if(userLength() && passwordCheck()) {
+        alert("yay");
+        return true;
+    }else {
+        return false;
+    }
+}
+
+
+</script>    
+</body>
+
+</html>
