@@ -60,7 +60,8 @@ $fusername = str_replace(' ', '', $eusername);
 echo "test";
 echo "SELECT * FROM users WHERE Username =", $fusername;
 
-	$sql=mysqli_query($con,"SELECT * FROM users WHERE Username = '$fusername'");
+//	$sql=mysqli_query($con,"SELECT * FROM users WHERE Username = '$fusername'");
+	$sql=mysqli_query($con,"SELECT * FROM users");
 	if(mysqli_num_rows($sql)>=1) {
     	echo "name already exists";
 	}
