@@ -21,7 +21,7 @@
 
         <!-- Login container -->
         <div id="login-container">
-            <form id="myform"  onsubmit="return passwordCheck();" method="POST">  <!-- EDIT: id action method--> 
+            <form id="myform"  onsubmit="return passwordCheck();" method="POST">  <!--onsubmit SHOULD NOT return the passwordCheck function. rather it should return a function called submit which calls the validate form function--> 
 
 <!--                 <div class="input-group">
                     <label for="fName">first name</label>

@@ -1,0 +1,16 @@
+	
+
+
+
+function submit(){
+	var isValid = valdiateForm()
+
+	if(isvalid){
+	  do ajax to login php
+	}
+	else{
+		dont do ajax
+		display error mesage
+	}
+
+}
