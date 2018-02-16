@@ -25,7 +25,7 @@ echo $result;
 }
 
 $input = $argv[1];
-echo $input;
+echo $input . PHP_EOL;
 getMovieData($input);
 
 	
