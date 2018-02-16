@@ -36,7 +36,25 @@ createconnection();
 	//header("refresh:2; url=index.html"}
 
 function adduser($Fname, $Lname, $Email, $Username, $Password) {
-$con = createconnection();
+//$con = createconnection();
+
+$host = 'localhost';
+	$user = 'root';
+	$pass = '';
+	$db = 'cine4';
+
+	//create connection
+	$con = mysqli_connect($host,$user,$pass,$db);
+
+	if(!$con){
+		echo 'Not connected to server';
+	}
+else {
+	echo 'connected to server';
+}
+
+
+
 $eusername = mysqli_real_escape_string( $con, $Username);
 $fusername = str_replace(' ', '', $eusername);
 
