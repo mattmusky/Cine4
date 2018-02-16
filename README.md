@@ -2,5 +2,3 @@
 
 This is our readme.
 
-
-newark is safe.
