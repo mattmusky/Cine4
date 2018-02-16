@@ -35,13 +35,13 @@ createconnection();
 } */
 	//header("refresh:2; url=index.html"}
 
-function adduser($ID, $Fname, $Lname, $Email, $Username, $Password) {
+function adduser($Fname, $Lname, $Email, $Username, $Password) {
 $con = createconnection();
 $eusername = mysqli_real_escape_string( $con, $Username);
 $fusername = str_replace(' ', '', $eusername);
 
 
-	$sql=mysql_query("SELECT FROM users (Fname, Lname, Email, Username, Password) WHERE Username = $fusername");
+	$sql=mysql_query("SELECT FROM users (Fname, Lname, Email, Username, Password) WHERE Username = '$fusername'");
 	if(mysql_num_rows($sql)>=1) {
     	echo "name already exists";
 	}
