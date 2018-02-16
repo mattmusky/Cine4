@@ -60,7 +60,7 @@ $fusername = str_replace(' ', '', $eusername);
 
 
 	$sql=mysqli_query($con,"SELECT * FROM users (Fname, Lname, Email, Username, Password) WHERE Username = '$fusername'");
-	if(mysql_num_rows($sql)>=1) {
+	if(mysqli_num_rows($sql)>=1) {
     	echo "name already exists";
 	}
 	else {
