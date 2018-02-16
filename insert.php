@@ -59,12 +59,12 @@ $eusername = mysqli_real_escape_string( $con, $Username);
 $fusername = str_replace(' ', '', $eusername);
 
 
-	$sql=mysqli_query($con,"SELECT * FROM users (Fname, Lname, Email, Username, Password) WHERE Username = '$fusername'");
+	$sql=mysqli_query($con,"SELECT * FROM users WHERE Username = '$fusername'");
 	if(mysqli_num_rows($sql)>=1) {
     	echo "name already exists";
 	}
 	else {
-   		$sql = "INSERT INTO user (Fname, Lname, Email, Username, Password) VALUES ('$Fname' '$Lname', '$Email', '$fusername', '$Password')";
+   		$sql = "INSERT INTO user (ID, Fname, Lname, Email, Username, Password) VALUES ('2', '$Fname' '$Lname', '$Email', '$fusername', '$Password')";
     }
 }
 
