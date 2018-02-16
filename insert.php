@@ -59,7 +59,7 @@ $eusername = mysqli_real_escape_string( $con, $Username);
 $fusername = str_replace(' ', '', $eusername);
 
 
-	$sql=mysql_query("SELECT FROM users (Fname, Lname, Email, Username, Password) WHERE Username = '$fusername'");
+	$sql=mysqli_query($con,"SELECT * FROM users (Fname, Lname, Email, Username, Password) WHERE Username = '$fusername'");
 	if(mysql_num_rows($sql)>=1) {
     	echo "name already exists";
 	}
