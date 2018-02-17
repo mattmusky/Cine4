@@ -13,7 +13,7 @@
 
 <body>
 
-    	<!-- CINE4 -->
+        <!-- CINE4 -->
     <div class="site-container">
         <div class="title">
             <h1 class="main-title">cine4</h1>
@@ -21,7 +21,7 @@
 
         <!-- Login container -->
         <div id="login-container">
-            <form id="myform"  onsubmit="return passwordCheck();" method="POST">  <!--onsubmit SHOULD NOT return the passwordCheck function. rather it should return a function called submit which calls the validate form function--> 
+            <form id="myform"  onsubmit="return submit();" method="POST">  <!--onsubmit SHOULD NOT return the passwordCheck function. rather it should return a function called submit which calls the validate form function--> 
 
 <!--                 <div class="input-group">
                     <label for="fName">first name</label>
@@ -101,6 +101,18 @@ function userLength(){
         document.getElementById("usernameError").innerHTML ="";
         return true;
     }
+}
+
+function submit(){
+    var isValid = validateForm();
+    if (isValid) {
+        //do AJAX to login
+        return true;
+    }else{
+        //dont do AJAX
+        return false;
+    }
+
 }
 
 function validateForm() {
