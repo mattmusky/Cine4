@@ -23,6 +23,7 @@
         <div id="login-container">
             <form>  <!-- EDIT: id action method-->
               <div id="loginFormError" class="errorMessagesTop"></div>
+							<div id="loginFormSucess" class="successMessagesTop"></div>
                 <div class="input-group">
                     <label for="username">username</label>
                     <input type="text" name="username" id="user1">
@@ -54,7 +55,7 @@
               <!--onsubmit SHOULD NOT return the passwordCheck function. rather it should return a function called submit which calls the validate form function-->
 
                 <div id="regFormError" class="errorMessagesTop"></div>
-
+						
                 <div class="input-group">
                     <label for="first">first</label>
                     <input type="text" name="first" id="first1" required>
@@ -93,7 +94,7 @@
 
 
                 <!-- Button -->
-                <button type="button" id="register-button" name="registerButton" onclick="submitReg()">sign up</button>
+                <button type="button" id="register-button" name="registerButton" onclick="submitRegCheck()">sign up</button>
 
                 <!-- Already have an account? -->
 
@@ -169,14 +170,14 @@ function validateForm() {
 
 
 
-function submit(){
+function submitRegCheck(){
     var isValid = validateForm();
     if (isValid) {
-        //do AJAX to login
-        return true;
+        submitReg();
+        //return true;
     }else{
         //dont do AJAX
-        return false;
+        //return false;
     }
 
 }
@@ -185,7 +186,7 @@ function submitLogin() {
 
         var user = document.getElementById("user1").value;
         var pass = document.getElementById("pass1").value;
-        var message = "type=auth&user=" + user + "&pass=" + pass;
+        var message = "type=login&user=" + user + "&pass=" + pass;
         sendRequest(message);
 
 }
@@ -215,27 +216,43 @@ function submitLogin() {
     }
 
     function HandleResponse(response) {
-        var text = JSON.parse(response);
-        switch(text) {
-            case 1:
-                window.location.replace("first.php");
-                break;
-           case 2:
-                    text = "Incorrect credentials";
-                    break;
-            case 3:
-                text = "Account created, please sign in:";
-                $('.register_form').hide();
+        //var text = JSON.parse(response);
+				var text;
+				response = response.replace(/\s/g, "");
+        switch(response) {
+          case "pass_corr":
+          window.location.replace("first.php");
+					
+          break;
+					
+					case "pass_incorr":
+          text = "Incorrect credentials";
+					document.getElementById("loginFormError").innerHTML = text;
+          break;
+					case "name_exists":
+          text = "Username already used";
+					document.getElementById("regFormError").innerHTML = text;
+					
+          break;
+					case "user_added":
+          $('.register_form').hide();
             $('.login_form').show();
-                break;
-            case 0:
-                text = "Form Error";
-                break;
+						text = "Account created, please login:"
+					document.getElementById("loginFormSuccess").innerHTML = text;
+          break;
+					default:
+					alert (response);
+					text = "Form Error" + response;
+					document.getElementById("loginFormError").innerHTML = text;
+          document.getElementById("regFormError").innerHTML = text;
+					
+					
+            
         }
 
 
-          document.getElementById("loginFormError").innerHTML = text;
-          document.getElementById("regFormError").innerHTML = text;
+          
+				
 
 
     }
@@ -243,7 +260,7 @@ function submitLogin() {
     function sendRequest(message) {
 
         var request = new XMLHttpRequest();
-        request.open("POST", "php/matt_login.php", true);
+        request.open("POST", "php/auth.php", true);
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         request.onreadystatechange = function() {
             if ((this.readyState == 4) && (this.status == 200)) {

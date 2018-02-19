@@ -34,16 +34,18 @@ function adduser($Fname, $Lname, $Email, $Username, $Password)
 
     if (mysqli_num_rows($sql) >= 1) {
         echo "name already exists";
+        return "name_exists";
     } else {
 
         $insertsql = "INSERT INTO user (Fname, Lname, Email, Username, Password) VALUES ( '" . $Fname . "','" . $Lname . "','" . $Email . "','" . $fusername . "','" . $Password . "')";
-        
+
         if ($con->query($insertsql) === TRUE) {
             echo "New record inserted \n";
         } else {
             echo "Error: " . $insertsql . "\n" . $con->error;
         }
         echo "useradded";
+        return "user_added";
     }
 }
 
@@ -51,7 +53,9 @@ function checkPassword($username, $Password)
 {
     $con = createconnection();
 
-
+$returnarr = array();
+				
+				
 
 
 
@@ -61,27 +65,31 @@ function checkPassword($username, $Password)
 
     $sql = mysqli_query($con, "SELECT Password FROM user WHERE Username ='" . $fusername . "'");
 
-    while ($row = $sql->fetch_assoc()) {
+    if ($row = $sql->fetch_assoc()) {
 
         $dbpass = $row['Password'];
 
         if ($dbpass === $Password) {
             echo "matches \n";
+            $returnarr['message']= "pass_corr";
+						$returnarr['first']=$row['Password'];
 
         } else {
-            echo "failed \n";
-        }
+		
+			$returnarr['message']= "pass_incorr";
+		}
+				
     }
+		else {
+		
+			$returnarr['message']= "pass_incorr";
+		}
+		
 
-
+return json_encode($returnarr);
 }
 
-$Fname = "jim";
-$Lname = "she";
-$Email = "js456@gmail.com";
-$User  = "jimuser";
-$Pass  = "12345";
-adduser($Fname, $Lname, $Email, $User, $Pass);
 
+//adduser($Fname, $Lname, $Email, $User, $Pass);
 //checkPassword('user', 'pass');
 ?>

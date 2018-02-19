@@ -137,6 +137,12 @@ button#register-button {
     font-weight: 900;
     text-align: center;
 }
+.successMessagesTop{
+    color: white;
+    font-size: 16px;
+    font-weight: 900;
+    text-align: center;
+}
 
 /*register page*/
 .login-link a:link, .login-link {

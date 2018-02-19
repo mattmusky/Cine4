@@ -10,23 +10,37 @@ $client = new rabbitMQClient("rmq/rabbitMQ.ini","testServer");
 
 if (!isset($_POST))
 {
-	$msg = "NO POST MESSAGE SET, POLITELY FUCK OFF";
+	$msg = "NO POST MESSAGE SET";
 	echo json_encode($msg);
 	exit(0);
 }
 $postrequest = $_POST;
-$response = "unsupported request type, politely FUCK OFF";
+$response = "unsupported request type";
+
+
 switch ($postrequest["type"])
 {
-	case "auth":
-		$response = "login, yeah we can do that";
-
+	case "login":
     $request = array();
-    $request['type']="auth";
-    $request['username']=$postrequest["username"];
-    $request['password']=$postrequest["password"];
-
+    $request['type']=$postrequest["type"];
+    $request['user']=$postrequest["user"];
+    $request['pass']=$postrequest["pass"];
     $response = $client->send_request($request);
+		
+	$returnarr = json_decode($response, true);
+	$response = $returnarr['message'];
+		
+	break;
+	case "reg":
+	$request = array();
+	$request['type']=$postrequest["type"];
+	$request['first']=$postrequest["first"];
+	$request['last']=$postrequest["last"];
+	$request['email']=$postrequest["email"];
+	$request['user']=$postrequest["user"];
+	$request['pass']=$postrequest["pass"];
+	$response = $client->send_request($request);
+	
 
 	break;
 }
