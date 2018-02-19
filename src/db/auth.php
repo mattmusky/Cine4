@@ -9,9 +9,10 @@ function createconnection()
 
     //create connection
     $con = mysqli_connect($host, $user, $pass, $db);
-
+    
     if (!$con) {
         echo 'Not connected to server';
+        //errorSend("DB Connect",3,"Cannot connect to server");
     }
     return $con;
 }
@@ -40,12 +41,14 @@ function adduser($Fname, $Lname, $Email, $Username, $Password)
         $insertsql = "INSERT INTO user (Fname, Lname, Email, Username, Password) VALUES ( '" . $Fname . "','" . $Lname . "','" . $Email . "','" . $fusername . "','" . $Password . "')";
 
         if ($con->query($insertsql) === TRUE) {
-            echo "New record inserted \n";
+            //errorSend("User Insert",1,"User added: " . $fusername);
+            echo "useradded";
+            return "user_added";
         } else {
-            echo "Error: " . $insertsql . "\n" . $con->error;
+
+            //errorSend("User Insert",3,"Error: " . $insertsql . "\n" . $con->error);
         }
-        echo "useradded";
-        return "user_added";
+
     }
 }
 
@@ -54,8 +57,8 @@ function checkPassword($username, $Password)
     $con = createconnection();
 
 $returnarr = array();
-				
-				
+
+
 
 
 
@@ -63,7 +66,7 @@ $returnarr = array();
     $fusername = str_replace(' ', '', $eusername);
 
 
-    $sql = mysqli_query($con, "SELECT Password FROM user WHERE Username ='" . $fusername . "'");
+    $sql = mysqli_query($con, "SELECT * FROM user WHERE Username ='" . $fusername . "'");
 
     if ($row = $sql->fetch_assoc()) {
 
@@ -72,19 +75,22 @@ $returnarr = array();
         if ($dbpass === $Password) {
             echo "matches \n";
             $returnarr['message']= "pass_corr";
-						$returnarr['first']=$row['Password'];
+						$returnarr['first']=$row['Fname'];
+            $returnarr['last']=$row['Lname'];
+            $returnarr['email']=$row['Email'];
+            $returnarr['user']=$row['Username'];
 
         } else {
-		
+
 			$returnarr['message']= "pass_incorr";
 		}
-				
+
     }
 		else {
-		
+
 			$returnarr['message']= "pass_incorr";
 		}
-		
+
 
 return json_encode($returnarr);
 }

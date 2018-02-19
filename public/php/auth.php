@@ -2,7 +2,7 @@
 require_once('rmq/path.inc');
 require_once('rmq/get_host_info.inc');
 require_once('rmq/rabbitMQLib.inc');
-
+session_start();
 
 $client = new rabbitMQClient("rmq/rabbitMQ.ini","testServer");
 
@@ -24,12 +24,19 @@ switch ($postrequest["type"])
     $request = array();
     $request['type']=$postrequest["type"];
     $request['user']=$postrequest["user"];
-    $request['pass']=$postrequest["pass"];
+    $request['pass']=crypt($postrequest["pass"],'dogtown'); //hash and salt
     $response = $client->send_request($request);
-		
+
 	$returnarr = json_decode($response, true);
+
+	$_SESSION["first"] = $returnarr['first'];
+	$_SESSION["last"] = $returnarr['last'];
+	$_SESSION["email"] = $returnarr['email'];
+	$_SESSION["user"] = $returnarr['user'];
+	$_SESSION["cred"] = "user";
+
 	$response = $returnarr['message'];
-		
+
 	break;
 	case "reg":
 	$request = array();
@@ -38,9 +45,9 @@ switch ($postrequest["type"])
 	$request['last']=$postrequest["last"];
 	$request['email']=$postrequest["email"];
 	$request['user']=$postrequest["user"];
-	$request['pass']=$postrequest["pass"];
+	$request['pass']=crypt($postrequest["pass"],'dogtown'); //hash and salt
 	$response = $client->send_request($request);
-	
+
 
 	break;
 }

@@ -1,0 +1,16 @@
+02/19/2018 04:21:10 PM - Source A - Error thrown here test!
+02/19/2018 04:30:15 PM - Source A - Error thrown here test!
+02/19/2018 04:33:12 PM - Source A - Error thrown here test!
+02/19/2018 04:34:48 PM - Source A - Error thrown here test!
+02/19/2018 04:35:16 PM - Source A - Error thrown here test!
+02/19/2018 04:40:54 PM - Source A - Error thrown here test!
+02/19/2018 04:41:13 PM - Source A - Error thrown here test!
+02/19/2018 04:44:54 PM - Source A - Error thrown here test!
+02/19/2018 04:48:33 PM - Source A - Error thrown here test!
+02/19/2018 04:48:59 PM - Source A - Error thrown here test!
+02/19/2018 04:58:29 PM -  - 
+02/19/2018 04:58:56 PM -  - 
+02/19/2018 04:59:43 PM -  - 
+02/19/2018 04:59:50 PM -  - 
+02/19/2018 05:00:41 PM - ubuntu - task - /home/one/Cine4/src/logTest.php - 4 - level - message
+02/19/2018 05:10:06 PM - ubuntu - task - /home/one/Cine4/src/logTest.php - 4 - 1 - message

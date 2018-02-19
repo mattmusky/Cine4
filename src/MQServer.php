@@ -6,16 +6,9 @@ require_once('rmq/rabbitMQLib.inc');
 
 //db functions
 require_once('db/auth.php');
+require_once('inc/logRec.inc');
 
-function logIt($src,$msg) {
 
-
-  $log_file = '../resources/logs/log.txt';
-  $handle = fopen($log_file, 'a') or die('Cannot open file:  '.$log_file);
-  $msgout = date("m/d/Y h:i:s A") . " - " . $src . " - " . $msg . PHP_EOL;
-  fwrite($handle, $msgout);
-
-}
 
 
 function requestProcessor($request)
@@ -24,23 +17,26 @@ function requestProcessor($request)
     {
       case "error":
         echo "-Error Recieved-".PHP_EOL;
-        echo $request['source'].PHP_EOL;
-        logIt($request['source'],$request['error']);
+        echo $request['task'].PHP_EOL;
+        echo "here";
+        //should include: server, task, file, line, warn level, message!
+        logIt($request);
         break;
+
       case "login":
         echo "-Login Request-".PHP_EOL;
         echo $request['user'].PHP_EOL;
         return checkPassword($request['user'], $request['pass']);
-				
-				
+
+
 
         break;
         case "reg":
           echo "-Register Request-".PHP_EOL;
           echo $request['user'].PHP_EOL;
           return adduser($request['first'], $request['last'], $request['email'], $request['user'], $request['pass']);
-					
-					
+
+
           break;
       }
 

@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if ($_SESSION["user"] != "one") {
-	header("Location: demo.html");
+if ($_SESSION["cred"] != "user") {
+	header("Location: ../login.html");
 	exit();
 	}
 ?>
@@ -63,16 +63,19 @@ if ($_SESSION["user"] != "one") {
   <button class="btn btn-secondary dropdown-toggle"
           type="button" id="dropdownMenu1" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-    <?php print $_SESSION["first"];?>&nbsp;<?php print $_SESSION["last"];?>
+    <?php print $_SESSION["first"];?>&nbsp;<?php print $_SESSION["last"];?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   </button>
-  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+  <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
     <a class="dropdown-item" href="#!"><?php print $_SESSION["user"];?></a>
     <a class="dropdown-item" href="#!"><?php print $_SESSION["first"];?></a>
     <a class="dropdown-item" href="#!"><?php print $_SESSION["last"];?></a>
+		<a class="dropdown-item" href="#!"><?php print $_SESSION["email"];?></a>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#!">Sign out</a>
+    <a class="dropdown-item" href="../login.html">Sign out</a>
   </div>
 </div>
+
+
       </div>
 
 

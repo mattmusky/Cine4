@@ -23,7 +23,7 @@
         <div id="login-container">
             <form>  <!-- EDIT: id action method-->
               <div id="loginFormError" class="errorMessagesTop"></div>
-							<div id="loginFormSucess" class="successMessagesTop"></div>
+							<div id="loginFormSuccess" class="successMessagesTop"></div>
                 <div class="input-group">
                     <label for="username">username</label>
                     <input type="text" name="username" id="user1">
@@ -55,7 +55,7 @@
               <!--onsubmit SHOULD NOT return the passwordCheck function. rather it should return a function called submit which calls the validate form function-->
 
                 <div id="regFormError" class="errorMessagesTop"></div>
-						
+
                 <div class="input-group">
                     <label for="first">first</label>
                     <input type="text" name="first" id="first1" required>
@@ -221,10 +221,10 @@ function submitLogin() {
 				response = response.replace(/\s/g, "");
         switch(response) {
           case "pass_corr":
-          window.location.replace("first.php");
-					
+          window.location.replace("matt_boot/home.php");
+
           break;
-					
+
 					case "pass_incorr":
           text = "Incorrect credentials";
 					document.getElementById("loginFormError").innerHTML = text;
@@ -232,7 +232,7 @@ function submitLogin() {
 					case "name_exists":
           text = "Username already used";
 					document.getElementById("regFormError").innerHTML = text;
-					
+
           break;
 					case "user_added":
           $('.register_form').hide();
@@ -245,14 +245,14 @@ function submitLogin() {
 					text = "Form Error" + response;
 					document.getElementById("loginFormError").innerHTML = text;
           document.getElementById("regFormError").innerHTML = text;
-					
-					
-            
+
+
+
         }
 
 
-          
-				
+
+
 
 
     }

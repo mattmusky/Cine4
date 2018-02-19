@@ -1,5 +1,6 @@
 #!/usr/bin/php
 <?php
 include ("inc/logSend.inc");
-errorSend("Source A","Error thrown here test!");
+errorSend("task name",1,"test error message");
+exit();
 ?>
