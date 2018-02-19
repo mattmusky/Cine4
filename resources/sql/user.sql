@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 18, 2018 at 09:27 PM
+-- Generation Time: Feb 16, 2018 at 04:03 PM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -30,20 +30,25 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `Fname` varchar(100) NOT NULL,
-  `Lname` varchar(100) NOT NULL,
+  `ID` int(10) NOT NULL,
+  `Fname` varchar(10) NOT NULL,
+  `Lname` varchar(10) NOT NULL,
   `Email` varchar(100) NOT NULL,
   `Username` varchar(100) NOT NULL,
-  `Password` varchar(500) NOT NULL,
-  PRIMARY KEY (`Username`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `Password` varchar(100) NOT NULL,
+  PRIMARY KEY (`Username`),
+  KEY `Password` (`Password`) USING HASH
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`Fname`, `Lname`, `Email`, `Username`, `Password`) VALUES
-('Jim', 'She', 'js456@gmail.com', 'jackkdd', '12345');
+INSERT INTO `user` (`ID`, `Fname`, `Lname`, `Email`, `Username`, `Password`) VALUES
+(0, 'Bruce', 'Lee', 'brucelee@gmail.com', 'BruceLee', 'hitmonlee'),
+(0, 'Jackie', 'Chan', 'jackiechan@gmail.com', 'JackieChan', 'hitmonchan'),
+(5, 'John', 'Edward', 'johne@gmail.com', 'Johnson', '12345'),
+(10, 'Jaune', 'Ross', 'soma@gmail.com', 'Jross456', 'carthage');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
