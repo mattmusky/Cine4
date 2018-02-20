@@ -12,7 +12,7 @@ function createconnection()
     
     if (!$con) {
         echo 'Not connected to server';
-        //errorSend("DB Connect",3,"Cannot connect to server");
+        errorSend("DB Connect",3,"Cannot connect to server");
     }
     return $con;
 }
@@ -41,12 +41,12 @@ function adduser($Fname, $Lname, $Email, $Username, $Password)
         $insertsql = "INSERT INTO user (Fname, Lname, Email, Username, Password) VALUES ( '" . $Fname . "','" . $Lname . "','" . $Email . "','" . $fusername . "','" . $Password . "')";
 
         if ($con->query($insertsql) === TRUE) {
-            //errorSend("User Insert",1,"User added: " . $fusername);
+            errorSend("User Insert",1,"User added: " . $fusername);
             echo "useradded";
             return "user_added";
         } else {
 
-            //errorSend("User Insert",3,"Error: " . $insertsql . "\n" . $con->error);
+            errorSend("User Insert",3,"Error: " . $insertsql . "\n" . $con->error);
         }
 
     }
@@ -83,6 +83,7 @@ $returnarr = array();
         } else {
 
 			$returnarr['message']= "pass_incorr";
+			errorSend("Password Incorrect",1,"User: " . $fusername);
 		}
 
     }
