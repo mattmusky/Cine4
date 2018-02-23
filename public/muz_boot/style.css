@@ -1,0 +1,107 @@
+
+html {
+	height: 100%;
+}
+
+body {
+	font-size: 14px;
+	height: 100%;
+	font-family: 'Montserrat', sans-serif;
+background: radial-gradient(ellipse at center, #473300 0%,#7a7a7a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.fullHeight {
+	height: 100%;
+}
+
+#mainSiteContainer {
+	/*height: 100%;*/
+	/*background: white;*/
+	/*margin-top: 50px;*/
+	min-height: 500px;
+	height: 100%;
+	padding-bottom: 100px;
+}
+
+
+
+#leftNav {
+	background: #ffd53a;
+	height: 100%;
+	padding: 0;
+}
+
+#leftNavHeader {
+	height: 60px;
+	background: #2f2f2f;
+
+}
+
+#mainContent{
+	padding: 0;
+	background: white;
+	height: 100%;
+}
+
+#searchForm {
+	max-width: 200px;
+	float: left;
+}
+
+#mainContentHeader {
+	background: #403f3f;
+    padding: 10px;
+    color: white;
+    min-height: 60px;
+}
+
+#mainNav {
+	float:left;
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	margin-top: 3px;
+
+}
+
+#mainNav li{
+	float:left;
+	display: inline-block;
+	margin: 5px;
+}
+
+
+#mainNav li a { 
+	color: #ffde61;
+}
+
+#userSettings {
+	float: right;
+	display: inline-block;
+	margin: 5px;
+	margin-top: 8px;
+}
+
+#moviesContainer {
+
+}
+
+#movieList {
+	display: inline-block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+#movieList li {
+	display: inline-block;
+	padding: 10px;
+}
+
+
+
+.movieImage	{
+	width: 145px;
+}
+
