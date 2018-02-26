@@ -1,19 +1,3 @@
-<!DOCTYPE html>
-<html>
-<form action="movie.php" method="POST">
- <br>
- <label>Movie Name</label>
-  <input type="text" name="name" value="">
-  <br>
- 
-  
-  
-  <br>
-  
-  <input type="submit" value="Submit">
-</form>
-
-</html>
 
 <?php
 //step1
@@ -21,7 +5,7 @@
 
 $cSession = curl_init(); 
 //step2
-$name = $_POST['name'];
+$name = "cars";
 
 $url = "https://api.themoviedb.org/3/search/movie?api_key=63c5f394ee102de7ba90c4a6159080c2&query='".$name."'";
 $url = str_replace(" ", '%20', $url);
@@ -67,8 +51,7 @@ foreach ($data['results'][0] as $key =>$value) {
 	
 	echo $moviedata['release_date'];
 	echo $moviedata['poster_path'];
-	echo $moviedata['backdrop_path'];
-	 
+	echo $moviedata['backdrop_path'];	 
 }
 
 ?>
