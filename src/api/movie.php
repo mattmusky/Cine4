@@ -19,13 +19,13 @@ curl_close($cSession);
 //step5
 //echo $result;
 
-$data =  json_decode($result,true);
+//$data =  json_decode($result,true);
 
 //print_r($data);
 
 echo "here";
-echo $data['results'][0];
-echo $data['results'][0]['title'];
+echo $result['results'][0];
+echo $result['results'][0]['title'];
 
 /*
 foreach ($data['results'][0] as $key =>$value) {
