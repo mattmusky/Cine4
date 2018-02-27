@@ -23,7 +23,8 @@ $data =  json_decode($result,true);
 
 //print_r($data);
 
-
+echo "here";
+echo $data['results'][0];
 echo $data['results'][0]['title'];
 
 /*
