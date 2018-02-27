@@ -53,7 +53,7 @@ foreach ($data['results'][0] as $key =>$value) {
 	echo $moviedata['release_date'];
 	echo $moviedata['poster_path'];
 	echo $moviedata['backdrop_path'];
-*/
-}
 
+}
+*/
 ?>
