@@ -22,6 +22,11 @@ $data =  json_decode($result,true);
 
 print $data['results'][0]['title'];
 
+foreach ($data['results'] as $value) {
+print $value[0]['title'];
+print $value['title'];
+}
+/*
 foreach ($data['results'][0] as $key =>$value) {
 
 
@@ -29,7 +34,7 @@ foreach ($data['results'][0] as $key =>$value) {
 	$moviedata = array();
 	$moviedata = array("$key"=>"$value");
 
-/*
+
 	echo $moviedata['id'];
 	echo $moviedata['title'];
 	echo $moviedata['overview'];
