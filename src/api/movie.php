@@ -22,16 +22,16 @@ $data =  json_decode($result,true);
 
 print $data['results'][0]['title'];
 
-foreach ($data['results'][0] as $value) {
-
-print $value['title'].PHP_EOL;
-print $moviedata['id'].PHP_EOL;
+foreach ($data['results'] as $value) {
+print_r($value);
+//print $value['title'].PHP_EOL;
+/*print $moviedata['id'].PHP_EOL;
 print $moviedata['title'].PHP_EOL;
 print $moviedata['overview'].PHP_EOL;
 print $moviedata['release_date'].PHP_EOL;
 print $moviedata['poster_path'].PHP_EOL;
 print $moviedata['backdrop_path'].PHP_EOL;
-
+*/
 }
 /*
 foreach ($data['results'][0] as $key =>$value) {
