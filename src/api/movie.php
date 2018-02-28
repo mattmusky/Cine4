@@ -20,19 +20,19 @@ curl_close($cSession);
 
 $data =  json_decode($result,true);
 
-print $data['results'][0]['title'];
+print $data['results'][0]['id'].PHP_EOL;
+print $data['results'][0]['title'].PHP_EOL;
+print $data['results'][0]['overview'].PHP_EOL;
+print $data['results'][0]['release_date'].PHP_EOL;
+print $data['results'][0]['poster_path'].PHP_EOL;
+print $data['results'][0]['backdrop_path'].PHP_EOL;
 
-foreach ($data['results'] as $value) {
-print_r($value);
-//print $value['title'].PHP_EOL;
-/*print $moviedata['id'].PHP_EOL;
-print $moviedata['title'].PHP_EOL;
-print $moviedata['overview'].PHP_EOL;
-print $moviedata['release_date'].PHP_EOL;
-print $moviedata['poster_path'].PHP_EOL;
-print $moviedata['backdrop_path'].PHP_EOL;
-*/
+foreach ($data['results'][0]['genre_ids'] as $value) {
+print $value;
 }
+
+//INSERT INTO `Movies` (`MID`, `Title`, `Overview`, `Date`, `Poster`, `Backdrop`, `DVDLink`, `TicketLink`) VALUES ('424689', 'Cars 3', 'A car salesman', '2009-01-26', '/4hw5PghU2nOWNAr4CskRVM9ehrA.jpg', '/4hw5PghU2nOWNAr4CskRVM9ehrA.jpg', 'blank', 'blank');
+
 /*
 foreach ($data['results'][0] as $key =>$value) {
 
