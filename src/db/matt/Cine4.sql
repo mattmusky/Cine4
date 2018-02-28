@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 28, 2018 at 12:36 PM
--- Server version: 5.7.21-0ubuntu0.16.04.1
--- PHP Version: 7.0.25-0ubuntu0.16.04.1
+-- Host: 127.0.0.1:3306
+-- Generation Time: Feb 28, 2018 at 11:33 PM
+-- Server version: 5.7.21-log
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,54 +19,65 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `Cine4`
+-- Database: `cine4`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Comments`
+-- Table structure for table `comments`
 --
 
-CREATE TABLE `Comments` (
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE IF NOT EXISTS `comments` (
   `ComID` int(255) NOT NULL,
-  `MID` int(10) DEFAULT NULL,
+  `MID` int(10) NOT NULL,
   `Content` varchar(500) DEFAULT NULL,
-  `UID` int(10) DEFAULT NULL
+  `UID` int(10) DEFAULT NULL,
+  `Createtime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ComID`,`MID`),
+  KEY `Movies_MID_idx` (`MID`),
+  KEY `Users_UID_idx` (`UID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Comments`
+-- Dumping data for table `comments`
 --
 
-INSERT INTO `Comments` (`ComID`, `MID`, `Content`, `UID`) VALUES
-(1, 424688, 'Test Comment', 101);
+INSERT INTO `comments` (`ComID`, `MID`, `Content`, `UID`, `Createtime`) VALUES
+(1, 424688, 'MX comment1', 101, '2018-02-28 23:29:51'),
+(2, 424689, 'GF comment2', 102, '2018-02-28 23:30:02'),
+(6, 424688, 'MX Comment2', 102, '2018-02-28 23:30:22');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Genre`
+-- Table structure for table `genre`
 --
 
-CREATE TABLE `Genre` (
+DROP TABLE IF EXISTS `genre`;
+CREATE TABLE IF NOT EXISTS `genre` (
   `GID` int(10) NOT NULL,
-  `GName` varchar(45) DEFAULT NULL
+  `GName` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`GID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Genre`
+-- Dumping data for table `genre`
 --
 
-INSERT INTO `Genre` (`GID`, `GName`) VALUES
-(50, 'Action');
+INSERT INTO `genre` (`GID`, `GName`) VALUES
+(1, 'Comedy'),
+(2, 'Mystery');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Movies`
+-- Table structure for table `movies`
 --
 
-CREATE TABLE `Movies` (
+DROP TABLE IF EXISTS `movies`;
+CREATE TABLE IF NOT EXISTS `movies` (
   `MID` int(10) NOT NULL,
   `Title` varchar(100) DEFAULT NULL,
   `Overview` varchar(500) DEFAULT NULL,
@@ -72,199 +85,117 @@ CREATE TABLE `Movies` (
   `Poster` varchar(100) DEFAULT NULL,
   `Backdrop` varchar(100) DEFAULT NULL,
   `DVDLink` varchar(100) DEFAULT NULL,
-  `TicketLink` varchar(100) DEFAULT NULL
+  `TicketLink` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`MID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Movies`
+-- Dumping data for table `movies`
 --
 
-INSERT INTO `Movies` (`MID`, `Title`, `Overview`, `Date`, `Poster`, `Backdrop`, `DVDLink`, `TicketLink`) VALUES
-(424688, 'Cars 2', 'A car salesman', '2009-01-26 00:00:00', '/4hw5PghU2nOWNAr4CskRVM9ehrA.jpg', '/4hw5PghU2nOWNAr4CskRVM9ehrA.jpg', NULL, NULL);
+INSERT INTO `movies` (`MID`, `Title`, `Overview`, `Date`, `Poster`, `Backdrop`, `DVDLink`, `TicketLink`) VALUES
+(424688, 'The Matrix', 'MX overview', '2018-02-09 00:00:00', 'poster1', 'backdrop1', 'dvdlink1', 'ticketlink1'),
+(424689, 'The Godfather', 'gf overview', '2018-02-14 00:00:00', 'poster2', 'backdrop2', 'dvd2', 'ticket2');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `MoviesHasGenre`
+-- Table structure for table `movieshasgenre`
 --
 
-CREATE TABLE `MoviesHasGenre` (
+DROP TABLE IF EXISTS `movieshasgenre`;
+CREATE TABLE IF NOT EXISTS `movieshasgenre` (
   `MID` int(10) NOT NULL,
-  `GID` int(10) NOT NULL
+  `GID` int(10) NOT NULL,
+  PRIMARY KEY (`MID`,`GID`),
+  KEY `Genre_GID` (`GID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `MoviesHasGenre`
---
-
-INSERT INTO `MoviesHasGenre` (`MID`, `GID`) VALUES
-(424688, 50);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Users`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `Users` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
   `UID` int(10) NOT NULL,
   `First` varchar(100) DEFAULT NULL,
   `Last` varchar(100) DEFAULT NULL,
   `Email` varchar(100) DEFAULT NULL,
-  `Pass` varchar(100) DEFAULT NULL
+  `Pass` varchar(100) DEFAULT NULL,
+  `FriendID` int(10) NOT NULL,
+  PRIMARY KEY (`UID`,`FriendID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `Users` (`UID`, `First`, `Last`, `Email`, `Pass`) VALUES
-(101, 'Matt', 'Musky', 'mcm42@njit.edu', 'testpass'),
-(102, 'Jimmy', 'test', 'test@yahoo', 'hello');
+INSERT INTO `users` (`UID`, `First`, `Last`, `Email`, `Pass`, `FriendID`) VALUES
+(101, 'Jimmy', 'She', 'test@yahoo.com', 'smasher', 9),
+(102, 'Matt', 'Musky', 'test@gmail.com', 'dasher', 45);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `UsersFavorMovies`
+-- Table structure for table `usersfavormovies`
 --
 
-CREATE TABLE `UsersFavorMovies` (
+DROP TABLE IF EXISTS `usersfavormovies`;
+CREATE TABLE IF NOT EXISTS `usersfavormovies` (
   `UID` int(10) NOT NULL,
-  `MID` int(10) NOT NULL
+  `MID` int(10) NOT NULL,
+  PRIMARY KEY (`UID`,`MID`),
+  KEY `Movies_MID_idx` (`MID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `UsersFavorMovies`
---
-
-INSERT INTO `UsersFavorMovies` (`UID`, `MID`) VALUES
-(101, 424688);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `UsersFriendUsers`
+-- Table structure for table `usersviewmovies`
 --
 
-CREATE TABLE `UsersFriendUsers` (
-  `AddingUID` int(10) NOT NULL,
-  `AddedUID` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `UsersFriendUsers`
---
-
-INSERT INTO `UsersFriendUsers` (`AddingUID`, `AddedUID`) VALUES
-(101, 101),
-(101, 102);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `UsersViewMovies`
---
-
-CREATE TABLE `UsersViewMovies` (
+DROP TABLE IF EXISTS `usersviewmovies`;
+CREATE TABLE IF NOT EXISTS `usersviewmovies` (
   `UID` int(10) NOT NULL,
-  `MID` int(10) NOT NULL
+  `MID` int(10) NOT NULL,
+  PRIMARY KEY (`UID`,`MID`),
+  KEY `Movies_MID_idx` (`MID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `UsersViewMovies`
---
-
-INSERT INTO `UsersViewMovies` (`UID`, `MID`) VALUES
-(101, 424688);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `Comments`
---
-ALTER TABLE `Comments`
-  ADD PRIMARY KEY (`ComID`),
-  ADD KEY `Movies_MID_idx` (`MID`),
-  ADD KEY `Users_UID_idx` (`UID`);
-
---
--- Indexes for table `Genre`
---
-ALTER TABLE `Genre`
-  ADD PRIMARY KEY (`GID`);
-
---
--- Indexes for table `Movies`
---
-ALTER TABLE `Movies`
-  ADD PRIMARY KEY (`MID`);
-
---
--- Indexes for table `MoviesHasGenre`
---
-ALTER TABLE `MoviesHasGenre`
-  ADD PRIMARY KEY (`MID`,`GID`),
-  ADD KEY `Genre_GID_idx` (`GID`);
-
---
--- Indexes for table `Users`
---
-ALTER TABLE `Users`
-  ADD PRIMARY KEY (`UID`);
-
---
--- Indexes for table `UsersFavorMovies`
---
-ALTER TABLE `UsersFavorMovies`
-  ADD PRIMARY KEY (`UID`,`MID`),
-  ADD KEY `Movies_MID_idx` (`MID`);
-
---
--- Indexes for table `UsersFriendUsers`
---
-ALTER TABLE `UsersFriendUsers`
-  ADD PRIMARY KEY (`AddingUID`,`AddedUID`);
-
---
--- Indexes for table `UsersViewMovies`
---
-ALTER TABLE `UsersViewMovies`
-  ADD PRIMARY KEY (`UID`,`MID`),
-  ADD KEY `Movies_MID_idx` (`MID`);
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `Comments`
+-- Constraints for table `comments`
 --
-ALTER TABLE `Comments`
-  ADD CONSTRAINT `Comments_Movies_MID` FOREIGN KEY (`MID`) REFERENCES `Movies` (`MID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Comments_Users_UID` FOREIGN KEY (`UID`) REFERENCES `Users` (`UID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `comments`
+  ADD CONSTRAINT `Comments_Movies_MID` FOREIGN KEY (`MID`) REFERENCES `movies` (`MID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `Comments_Users_UID` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `MoviesHasGenre`
+-- Constraints for table `movieshasgenre`
 --
-ALTER TABLE `MoviesHasGenre`
-  ADD CONSTRAINT `Genre_GID` FOREIGN KEY (`GID`) REFERENCES `Genre` (`GID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Movies_MID` FOREIGN KEY (`MID`) REFERENCES `Movies` (`MID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `movieshasgenre`
+  ADD CONSTRAINT `Genre_GID` FOREIGN KEY (`GID`) REFERENCES `genre` (`GID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `Movies_MID` FOREIGN KEY (`MID`) REFERENCES `movies` (`MID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `UsersFavorMovies`
+-- Constraints for table `usersfavormovies`
 --
-ALTER TABLE `UsersFavorMovies`
-  ADD CONSTRAINT `Favor_Movies_MID` FOREIGN KEY (`MID`) REFERENCES `Movies` (`MID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `Favor_Users_UID` FOREIGN KEY (`UID`) REFERENCES `Users` (`UID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `usersfavormovies`
+  ADD CONSTRAINT `Favor_Movies_MID` FOREIGN KEY (`MID`) REFERENCES `movies` (`MID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `Favor_Users_UID` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Constraints for table `UsersViewMovies`
+-- Constraints for table `usersviewmovies`
 --
-ALTER TABLE `UsersViewMovies`
-  ADD CONSTRAINT `View_Movies_MID` FOREIGN KEY (`MID`) REFERENCES `Movies` (`MID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `View_Users_UID` FOREIGN KEY (`UID`) REFERENCES `Users` (`UID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `usersviewmovies`
+  ADD CONSTRAINT `View_Movies_MID` FOREIGN KEY (`MID`) REFERENCES `movies` (`MID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `View_Users_UID` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
