@@ -23,7 +23,7 @@ $data =  json_decode($result,true);
 print $data['results'][0]['title'];
 
 foreach ($data['results'] as $value) {
-print $value[0]['title'];
+//print $value[0]['title'];
 print $value['title'];
 }
 /*
