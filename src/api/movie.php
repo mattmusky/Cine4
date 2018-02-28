@@ -20,7 +20,7 @@ curl_close($cSession);
 
 $data =  json_decode($result,true);
 
-print $data['results'];
+print $data['results'][0]['title'];
 
 foreach ($data['results'][0] as $key =>$value) {
 
