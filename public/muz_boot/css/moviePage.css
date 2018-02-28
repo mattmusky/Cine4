@@ -64,4 +64,10 @@
 .panel-body .radio, .checkbox { display:inline-block;margin:0px; }
 .panel-body input[type=checkbox]:checked + label { text-decoration: line-through;color: rgb(128, 144, 160); }
 .list-group-item:hover, a.list-group-item:focus {text-decoration: none;background-color: rgb(245, 245, 245);}
-.list-group { margin-bottom:0px; }
+.list-group { margin-bottom:0px; 
+}
+
+.cA{
+    border-radius: 3px;
+    border:1px solid #d2d4d6;
+}
