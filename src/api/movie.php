@@ -20,7 +20,7 @@ curl_close($cSession);
 
 $data =  json_decode($result,true);
 
-
+print $data['results'];
 
 foreach ($data['results'][0] as $key =>$value) {
 
@@ -29,6 +29,7 @@ foreach ($data['results'][0] as $key =>$value) {
 	$moviedata = array();
 	$moviedata = array("$key"=>"$value");
 
+/*
 	echo $moviedata['id'];
 	echo $moviedata['title'];
 	echo $moviedata['overview'];
@@ -48,7 +49,7 @@ foreach ($data['results'][0] as $key =>$value) {
 	echo $moviedata['release_date'];
 	echo $moviedata['poster_path'];
 	echo $moviedata['backdrop_path'];
-
+*/
 }
 
 ?>
