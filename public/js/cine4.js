@@ -61,3 +61,32 @@ divhere.innerHTML += newhtml;
     }
 
 }
+
+function submitFriendList() {
+
+
+var message = "type=friendList";
+
+
+
+sendData(message,friendBuilder);
+return 0;
+}
+
+function sendData(message,retmethod) {
+
+var request = new XMLHttpRequest();
+request.open("POST", "php/data.php", true);
+request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+request.onreadystatechange = function() {
+    if ((this.readyState == 4) && (this.status == 200)) {
+      switch (retmethod){
+        case friendBuilder:
+        friendBuilder(this.responseText);
+      }
+
+    }
+}
+request.send(message);
+
+}

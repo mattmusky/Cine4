@@ -1,7 +1,7 @@
 function gridBuilder(json) {
     var tmdb = JSON.parse(json);
 
-    
+
     for (i = 0; i < tmdb.results.length; i++) {
 
 var newhtml = `
@@ -76,4 +76,4 @@ request.send(message);
 
 
 
-window.onload = submitDiscover;
+window.onload = submitFriendList;
