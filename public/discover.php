@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if ($_SESSION["cred"] != "user") {
+	header("Location: ../login.html");
+	exit();
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -109,34 +118,34 @@
                             <option value="3">Kid</option>
                         </select>
                     </div>
-                   
-                    <div id="gridhere" class="p-2 row text-center text-lg-left">
-                        
 
-                        
+                    <div id="gridhere" class="p-2 row text-center text-lg-left">
+
+
+
                         <!-- Movie Poster Container -->
                         <div class="p-2 col-xl-2 col-lg-3 col-md-4 col-6">
                             <a href="moviePage.html" onclick="">
                                 <img class="img-fluid rounded box-shadow" src="https://image.tmdb.org/t/p/w1280/q0R4crx2SehcEEQEkYObktdeFy.jpg" alt="">
                             </a>
                             <!-- Seen/Fav Buttons -->
-                            
+
 
                                 <div class="pt-1 d-flex justify-content-around">
-                                
+
                                     <button class="btn btn-outline-warning btn-sm">
                                         <span class="fas fa-eye"></span>
                                     </button>
-                              
+
                                     <button class="btn btn-outline-warning btn-sm">
                                         <span class="far fa-eye-slash"></span>
                                     </button>
-                                
-                                    
+
+
                             </div> <!-- End seen/fav row-->
                         </div> <!-- End Movie Poster container -->
-                        
-                        
+
+
 
                     </div>
                     <!--End row 1 -->
@@ -157,31 +166,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle-in").click(function(e) {
-        e.preventDefault();
-        var left = $('#LeftColumn');
-        var right = $('#RightColumn');
-
-        right.removeClass("col-12");
-        right.addClass("col-xl-10 col-sm-9");
-        left.removeClass("hideLeft");
-        left.addClass("col-xl-2 col-sm-3 ");
-        $(".sideToggle").hide();
-    });
-
-    $("#menu-toggle-out").click(function(e) {
-        e.preventDefault();
-        var left = $('#LeftColumn');
-        var right = $('#RightColumn');
-
-        left.removeClass("col-xl-2 col-sm-3");
-        left.addClass("hideLeft");
-        right.removeClass("col-xl-10 col-sm-9");
-        right.addClass("col-12");
-        $(".sideToggle").show();
-    });
-    </script>
+    <script src="js/cine4.js"></script>
 </body>
 
 </html>
