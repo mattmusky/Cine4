@@ -107,7 +107,7 @@ if ($_SESSION["cred"] != "user") {
                     <h2>Discover Movies</h2>
                     <div class="form-inline m-3">
                         <select id="sortSelect" class="custom-select mr-4 ml-1" style="max-width: 150px">
-                            <option selected="">Sort By</option>
+                            <option value="popularity.desc" selected="">Sort By</option>
                             <option value="popularity.desc">Popularity</option>
                             <option value="vote_average.desc">Rating</option>
                             <option value="release_date.desc">Release Date</option>
@@ -115,7 +115,7 @@ if ($_SESSION["cred"] != "user") {
 
                         </select>
                         <select id="genreSelect" class="custom-select mr-4 ml-1" style="max-width: 150px">
-                            <option selected="">Filter Genre</option>
+                            <option value="" selected="">Filter Genre</option>
 														<option value="28">Action</option>
 														<option value="12">Adventure</option>
 														<option value="16">Animation</option>
@@ -143,26 +143,7 @@ if ($_SESSION["cred"] != "user") {
 
 
                         <!-- Movie Poster Container -->
-                        <div class="p-2 col-xl-2 col-lg-3 col-md-4 col-6">
-                            <a href="moviePage.html" onclick="">
-                                <img class="img-fluid rounded box-shadow" src="https://image.tmdb.org/t/p/w1280/q0R4crx2SehcEEQEkYObktdeFy.jpg" alt="">
-                            </a>
-                            <!-- Seen/Fav Buttons -->
-
-
-                                <div class="pt-1 d-flex justify-content-around">
-
-                                    <button class="btn btn-outline-warning btn-sm">
-                                        <span class="fas fa-eye"></span>
-                                    </button>
-
-                                    <button class="btn btn-outline-warning btn-sm">
-                                        <span class="far fa-eye-slash"></span>
-                                    </button>
-
-
-                            </div> <!-- End seen/fav row-->
-                        </div> <!-- End Movie Poster container -->
+                        
 
 
 

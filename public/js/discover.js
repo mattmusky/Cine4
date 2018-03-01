@@ -1,15 +1,31 @@
-function builder() {
-    //var tmdb = JSON.parse(myJson);
+function gridBuilder(json) {
+    var tmdb = JSON.parse(json);
 
-
-    for (i = 0; i < 20; i++) {
+    
+    for (i = 0; i < tmdb.results.length; i++) {
 
 var newhtml = `
-<div class="col-lg-3 col-md-4 col-6">
-  <a href="#" onclick="alert('${myJson.results[i].id}')" class="d-block mb-4 h-100">
-    <img class="img-fluid img-thumbnail" src="https://image.tmdb.org/t/p/w342/${myJson.results[i].poster_path}" alt="">
-  </a>
-</div>
+
+<div class="p-2 col-xl-2 col-lg-3 col-md-4 col-6">
+    <a href="moviePage.html" title="${tmdb.results[i].original_title}" onclick="alert('${tmdb.results[i].id}')">
+        <img class="img-fluid rounded box-shadow" src="https://image.tmdb.org/t/p/w342/${tmdb.results[i].poster_path}" alt="">
+    </a>
+    <!-- Seen/Fav Buttons -->
+
+
+        <div class="pt-1 d-flex justify-content-around">
+
+            <button class="btn btn-outline-warning btn-sm">
+                <span class="fas fa-eye"></span>
+            </button>
+
+            <button class="btn btn-outline-warning btn-sm">
+                <span class="far fa-eye-slash"></span>
+            </button>
+
+
+    </div> <!-- End seen/fav row-->
+</div> <!-- End Movie Poster container -->
 
 `;
 
@@ -24,7 +40,7 @@ divhere.innerHTML += newhtml;
 
 
 function submitDiscover() {
-alert('here1');
+
   var e = document.getElementById("sortSelect");
   var sort = e.options[e.selectedIndex].value;
   var e = document.getElementById("genreSelect");
@@ -39,17 +55,15 @@ return 0;
 }
 
 function HandleResponse(response) {
-//var text = JSON.parse(response);
-var text;
-alert('DONE');
-response = response.replace(/\s/g, "");
+
+gridBuilder(response);
 
 }
 
 function sendRequest(message) {
 
 var request = new XMLHttpRequest();
-request.open("POST", "php/auth.php", true);
+request.open("POST", "php/api.php", true);
 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 request.onreadystatechange = function() {
     if ((this.readyState == 4) && (this.status == 200)) {

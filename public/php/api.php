@@ -21,10 +21,11 @@ $response = "unsupported request type";
 switch ($postrequest["type"])
 {
 	case "discover":
-    
-    $response = $client->send_request($postrequest);
-
-
+	$request = array();
+	$request['type']=$postrequest["type"];
+	$request['sort']=$postrequest["sort"];
+	$request['genre']=$postrequest["genre"];
+  $response = $client->send_request($request);
 
 	break;
 

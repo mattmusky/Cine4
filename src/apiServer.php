@@ -13,14 +13,12 @@ require_once('api/discover.inc');
 
 function requestProcessor($request)
 {
+  
   switch ($request['type'])
     {
       case "discover":
-        echo "-Error Recieved-".PHP_EOL;
-        echo $request['task'].PHP_EOL;
-
-
-        return discoverCall($request['user'], $request['pass']);
+        echo "-Discover-".PHP_EOL;
+        return discoverCall($request['sort'], $request['genre']);
         break;
 
 
