@@ -30,7 +30,7 @@ function adduser($Fname, $Lname, $Email, $Username, $Password)
     $eusername = mysqli_real_escape_string($con, $Username);
     $fusername = str_replace(' ', '', $eusername);
 
-    $id = rand(10000,99999)
+    $id = rand(10000,99999);
     $sql = mysqli_query($con, "SELECT * FROM users WHERE User = '$fusername'");
 
     if (mysqli_num_rows($sql) >= 1) {
