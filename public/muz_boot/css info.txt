@@ -1,0 +1,32 @@
+﻿//starter/discover page
+- buttons
+
+
+
+
+//manage friends
+- just a list of your friends with option to delete 
+
+
+
+
+//friends page 
+=my lists page without the delete 
+-myList.css
+
+
+
+
+//movie page
+- fix comment box
+
+
+//recommended page
+- pill under movie   
+-shares same css file as starter
+
+
+
+
+myList just a delete button
+Run a disable function on the delete button, jquery

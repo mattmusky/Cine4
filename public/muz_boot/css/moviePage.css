@@ -67,7 +67,11 @@
 .list-group { margin-bottom:0px; 
 }
 
-.cA{
-    border-radius: 3px;
-    border:1px solid #d2d4d6;
+textarea::placeholder{
+    font-style: italic;
+}
+
+.form-control, .form-control:focus{
+    color:black;
+    resize: none;
 }
