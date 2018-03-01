@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SESSION["cred"] != "user") {
-	header("Location: ../login.html");
+	header("Location: login.html");
 	exit();
 	}
 ?>
@@ -105,17 +105,35 @@ if ($_SESSION["cred"] != "user") {
                 <div class="p-3">
                     <h2>Discover Movies</h2>
                     <div class="form-inline m-3">
-                        <select class="custom-select mr-4 ml-1" style="max-width: 150px">
+                        <select id="sortSelect" class="custom-select mr-4 ml-1" style="max-width: 150px">
                             <option selected="">Sort By</option>
-                            <option value="1">Popularity</option>
-                            <option value="2">Rating</option>
-                            <option value="3">Release Date</option>
+                            <option value="popularity.desc">Popularity</option>
+                            <option value="vote_average.desc">Rating</option>
+                            <option value="release_date.desc">Release Date</option>
+														<option value="revenue.desc">Revenue</option>
+
                         </select>
-                        <select class="custom-select mr-4 ml-1" style="max-width: 150px">
+                        <select id="genreSelect" class="custom-select mr-4 ml-1" style="max-width: 150px">
                             <option selected="">Filter Genre</option>
-                            <option value="1">Horror</option>
-                            <option value="2">Comedy</option>
-                            <option value="3">Kid</option>
+														<option value="28">Action</option>
+														<option value="12">Adventure</option>
+														<option value="16">Animation</option>
+														<option value="35">Comedy</option>
+														<option value="80">Crime</option>
+														<option value="99">Documentary</option>
+														<option value="18">Drama</option>
+														<option value="10751">Family</option>
+														<option value="14">Fantasy</option>
+														<option value="36">History</option>
+														<option value="27">Horror</option>
+														<option value="10402">Music</option>
+														<option value="9648">Mystery</option>
+														<option value="10749">Romance</option>
+														<option value="878">ScienceFiction</option>
+														<option value="10770">TVMovie</option>
+														<option value="53">Thriller</option>
+														<option value="10752">War</option>
+														<option value="37">Western</option>
                         </select>
                     </div>
 
@@ -167,6 +185,7 @@ if ($_SESSION["cred"] != "user") {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Menu Toggle Script -->
     <script src="js/cine4.js"></script>
+		<script src="js/discover.js"></script>
 </body>
 
 </html>
