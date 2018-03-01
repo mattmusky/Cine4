@@ -15,6 +15,7 @@ if ($_SESSION["cred"] != "user") {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+		<link rel="icon" href="img/favicon.png">
     <title>Cine4</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -129,8 +130,8 @@ if ($_SESSION["cred"] != "user") {
 														<option value="10402">Music</option>
 														<option value="9648">Mystery</option>
 														<option value="10749">Romance</option>
-														<option value="878">ScienceFiction</option>
-														<option value="10770">TVMovie</option>
+														<option value="878">Science Fiction</option>
+														<option value="10770">TV Movie</option>
 														<option value="53">Thriller</option>
 														<option value="10752">War</option>
 														<option value="37">Western</option>

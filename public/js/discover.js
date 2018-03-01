@@ -24,7 +24,7 @@ divhere.innerHTML += newhtml;
 
 
 function submitDiscover() {
-
+alert('here1');
   var e = document.getElementById("sortSelect");
   var sort = e.options[e.selectedIndex].value;
   var e = document.getElementById("genreSelect");
