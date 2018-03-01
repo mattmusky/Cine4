@@ -6,7 +6,7 @@ require_once('rmq/rabbitMQLib.inc');
 
 //db functions
 
-require_once('inc/discover.inc');
+require_once('api/discover.inc');
 
 
 
