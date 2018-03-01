@@ -1,4 +1,28 @@
 
+.main-title {
+    font-family: 'Courgette', cursive;
+    font-size: 50px;
+    font-weight: 900;
+    color: #FFD131;
+    text-shadow: 1px 1px #343A40, 
+                2px 2px #343A40, 
+                3px 3px #343A40;
+}
+
+.main-title:hover {
+    position: relative; 
+    text-decoration:none;
+    color: #FFD131;
+   top: -3px; 
+   left: -3px; 
+   text-shadow: 1px 1px #343A40, 
+                2px 2px #343A40, 
+                3px 3px #343A40, 
+                4px 4px #343A40, 
+                5px 5px #343A40, 
+                6px 6px #343A40;
+}
+
 /* Sidebar Styles */
  .sidebar-nav {
      list-style: none;
@@ -50,4 +74,10 @@
     color: #000;
     background-color: #FFD131;
     border-color: #005cbf;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #0062cc;
 }

@@ -10,14 +10,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="css/cine4.css" rel="stylesheet">
+    <link href="css/list.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 
 <body>
     <div class="container-fluid">
-        
         <h1 class="text-center p-2"><a class="main-title" href="discover.html">cine4</a></h1>
         <div class="row">
             <!-- Sidebar -->
@@ -62,19 +63,19 @@
                                 <div class="sideToggle"><a href="#" class="navbar-brand" id="menu-toggle-in"><i class="fas fa-bars"></i>&nbsp;&nbsp;Friends</a></div>
                             </li>
                             <li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="starter.html">Discover</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="myList.html">My Lists</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="recommender.html">Recommender</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="friendsList.html">Manage Friends</a>
-                                </li>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="starter.html">Discover</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="myList.html">My Lists</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="recommender.html">Recommender</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="friendsList.html">Manage Friends</a>
+                            </li>
                         </ul>
                         <div class="my-2 my-lg-0">
                             <ul class="navbar-nav mr-auto">
@@ -90,36 +91,18 @@
                 </nav>
                 <!-- Page Content -->
                 <div class="p-3">
-                    <h2>Recommender</h2>
-                    <div class="form-inline m-3">
-                        <select class="custom-select mr-4 ml-1" style="max-width: 150px">
-                            <option selected="">Sort By</option>
-                            <option value="1">Popularity</option>
-                            <option value="2">Rating</option>
-                            <option value="3">Release Date</option>
-                        </select>
-                        <select class="custom-select mr-4 ml-1" style="max-width: 150px">
-                            <option selected="">Filter Genre</option>
-                            <option value="1">Horror</option>
-                            <option value="2">Comedy</option>
-                            <option value="3">Kid</option>
-                        </select>
-                    </div>
-                    <div id="gridhere" class="p-2 row text-center text-lg-left">
-                        <!-- Movie Poster Container -->
-                        <div class="p-2 col-xl-2 col-lg-3 col-md-4 col-6">
-                            <a href="moviePage.html" onclick="">
-                                <img class="img-fluid rounded box-shadow" src="https://image.tmdb.org/t/p/w342//coss7RgL0NH6g4fC2s5atvf3dFO.jpg" alt="">
-                            </a>
-                            <!-- Seen/Fav Buttons -->
-                            <div class="pt-1 d-flex justify-content-center">
-                                <span class="badge badge-pill badge-warning">3</span>
-                            </div>
-                            <!-- End seen/fav row-->
-                        </div>
-                        <!-- End Movie Poster container -->
-                    </div>
-                    <!--End row 1 -->
+                    <h2>Manage Friends</h2>
+                    
+                        <ul class="list-group" style="max-width: 300px;">
+                            <li class="list-group-item" >
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span><a href="jimmy.html">Jimmy She</a></span>
+                                    <span class="fas fa-minus-circle text-danger ml-2" onclick=""></span>
+                                </div>
+                            </li>
+                           
+                        </ul>
+                    
                 </div>
                 <!-- /page content -->
             </div>
@@ -161,6 +144,36 @@
         right.addClass("col-12");
         $(".sideToggle").show();
     });
+
+    aGrid();
+
+    function aList() {
+        var movieList = document.getElementById("movieList");
+        var movieGrid = document.getElementById("gridhere");
+
+        movieGrid.style.display = "none";
+        movieList.style.display = "block";
+    }
+
+    function aGrid() {
+        var movieList = document.getElementById("movieList");
+        var movieGrid = document.getElementById("gridhere");
+        movieGrid.style.display = "flex";
+        movieList.style.display = "none";
+
+    }
+
+    /*   // JQuery Version of aList and aGrid function
+    function aList() {
+        $('#movieList').show();
+        $('#gridhere').hide();
+    }
+
+    function aGrid() {
+        $('#movieList').hide();
+        $('#gridhere').show();
+    }
+*/
     </script>
 </body>
 
