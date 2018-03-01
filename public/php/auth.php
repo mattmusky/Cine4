@@ -17,7 +17,6 @@ if (!isset($_POST))
 $postrequest = $_POST;
 $response = "unsupported request type";
 
-
 switch ($postrequest["type"])
 {
 	case "login":
