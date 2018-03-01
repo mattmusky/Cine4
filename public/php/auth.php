@@ -33,6 +33,7 @@ switch ($postrequest["type"])
 	$_SESSION["last"] = $returnarr['last'];
 	$_SESSION["email"] = $returnarr['email'];
 	$_SESSION["user"] = $returnarr['user'];
+	$_SESSION["id"] = $returnarr['id'];
 	$_SESSION["cred"] = "user";
 
 	$response = $returnarr['message'];

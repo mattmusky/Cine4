@@ -9,7 +9,7 @@ function createconnection()
 
     //create connection
     $con = mysqli_connect($host, $user, $pass, $db);
-    
+
     if (!$con) {
         echo 'Not connected to server';
         errorSend("DB Connect",3,"Cannot connect to server");
@@ -30,15 +30,15 @@ function adduser($Fname, $Lname, $Email, $Username, $Password)
     $eusername = mysqli_real_escape_string($con, $Username);
     $fusername = str_replace(' ', '', $eusername);
 
-
-    $sql = mysqli_query($con, "SELECT * FROM user WHERE Username = '$fusername'");
+    $id = rand(10000,99999)
+    $sql = mysqli_query($con, "SELECT * FROM users WHERE User = '$fusername'");
 
     if (mysqli_num_rows($sql) >= 1) {
         echo "name already exists";
         return "name_exists";
     } else {
 
-        $insertsql = "INSERT INTO user (Fname, Lname, Email, Username, Password) VALUES ( '" . $Fname . "','" . $Lname . "','" . $Email . "','" . $fusername . "','" . $Password . "')";
+        $insertsql = "INSERT INTO users (UID, First, Last, Email, User, Pass, FriendID) VALUES ( '" . $id . "','" . $Fname . "','" . $Lname . "','" . $Email . "','" . $fusername . "','" . $Password . "','" . $id . "')";
 
         if ($con->query($insertsql) === TRUE) {
             errorSend("User Insert",1,"User added: " . $fusername);
@@ -66,19 +66,20 @@ $returnarr = array();
     $fusername = str_replace(' ', '', $eusername);
 
 
-    $sql = mysqli_query($con, "SELECT * FROM user WHERE Username ='" . $fusername . "'");
+    $sql = mysqli_query($con, "SELECT * FROM users WHERE User ='" . $fusername . "'");
 
     if ($row = $sql->fetch_assoc()) {
 
-        $dbpass = $row['Password'];
+        $dbpass = $row['Pass'];
 
         if ($dbpass === $Password) {
             echo "matches \n";
             $returnarr['message']= "pass_corr";
-						$returnarr['first']=$row['Fname'];
-            $returnarr['last']=$row['Lname'];
+						$returnarr['first']=$row['First'];
+            $returnarr['last']=$row['Last'];
             $returnarr['email']=$row['Email'];
-            $returnarr['user']=$row['Username'];
+            $returnarr['user']=$row['User'];
+            $returnarr['id']=$row['UID'];
 
         } else {
 
