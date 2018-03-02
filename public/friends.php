@@ -21,78 +21,66 @@
     <div class="container-fluid">
         <h1 class="text-center p-2"><a class="main-title" href="discover.html">cine4</a></h1>
         <div class="row">
-            <!-- Sidebar -->
-            <div id="LeftColumn" class="col-xl-2 col-sm-3 p-0">
-                <ul class="sidebar-nav p-0">
-                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                        <a class="navbar-brand" href="#" id="menu-toggle-out"><i class="fas fa-bars"></i>&nbsp;&nbsp;Friends</a>
-                    </nav>
-                    <li>
-                        <a href="jimmy.html">Jimmy She</a>
-                    </li>
-                    <li>
-                        <a href="#">Matt Muscarella</a>
-                    </li>
-                    <li>
-                        <a href="#">Muz Khan</a>
-                    </li>
-                    <li>
-                        <a href="#">Vishal Panchal</a>
-                    </li>
-                    <li>
-                        <a href="#">Prof Kehoe</a>
-                    </li>
-                    <li>
-                        <a href="#">Spider Man</a>
-                    </li>
-                    <li>
-                        <a href="#">The Hulk</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /#sidebar-wrapper -->
-            <!-- Main Wrap -->
-            <div id="RightColumn" class="col-xl-10 col-sm-9 p-0">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <div class="sideToggle"><a href="#" class="navbar-brand" id="menu-toggle-in"><i class="fas fa-bars"></i>&nbsp;&nbsp;Friends</a></div>
-                            </li>
-                            <li>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="starter.html">Discover</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="myList.html">My Lists</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="recommender.html">Recommender</a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="friendsList.html">Manage Friends</a>
-                            </li>
-                        </ul>
-                        <div class="my-2 my-lg-0">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="#">Hi Jimmy!</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="navbar-brand nav-link" href="#"><i class="fas fa-sign-out-alt"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <!-- Page Content -->
+          <!-- Sidebar -->
+          <div id="LeftColumn" class="col-xl-2 col-sm-3 p-0">
+              <ul class="sidebar-nav p-0">
+                  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                      <a class="navbar-brand" href="#" id="menu-toggle-out"><i class="fas fa-bars"></i>&nbsp;&nbsp;Friends</a>
+                  </nav>
+                  <div id="friendhere"></div>
+
+
+              </ul>
+          </div>
+          <!-- /#sidebar-wrapper -->
+          <!-- Main Wrap -->
+          <div id="RightColumn" class="col-xl-10 col-sm-9 p-0">
+              <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                          <li class="nav-item active">
+                              <div class="sideToggle"><a href="#" class="navbar-brand" id="menu-toggle-in"><i class="fas fa-bars"></i>&nbsp;&nbsp;Friends</a></div>
+                          </li>
+                          <li>
+                              <div class="input-group pr-2 pl-1">
+                                  <div class="input-group-prepend">
+                                      <button class="btn btn-dark" onclick="search()" type="button"><i class="fas fa-search"></i></button>
+                                  </div>
+                                  <input type="text" id="searchbox" class="form-control" onkeyup="search()" placeholder="Search" aria-label="" aria-describedby="basic-addon1">
+                              </div>
+                          </li>
+                          <li class="nav-item active">
+                              <a class="nav-link" href="discover.php">Discover</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="lists.php">My Lists</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="recommender.php">Recommender</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="friends.php">Manage Friends</a>
+                          </li>
+                      </ul>
+                      <div class="my-2 my-lg-0">
+                          <ul class="navbar-nav mr-auto">
+                              <li class="nav-item active">
+                                  <a class="nav-link" href="#">Hi <?php print $_SESSION["first"];?>!</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="navbar-brand nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i></a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </nav>
+              <!-- Page Content -->
                 <div class="p-3">
                     <h2>Manage Friends</h2>
-                    
+
                         <ul class="list-group" style="max-width: 300px;">
                             <li class="list-group-item" >
                                 <div class="d-flex justify-content-between align-items-center">
@@ -100,9 +88,9 @@
                                     <span class="fas fa-minus-circle text-danger ml-2" onclick=""></span>
                                 </div>
                             </li>
-                           
+
                         </ul>
-                    
+
                 </div>
                 <!-- /page content -->
             </div>
@@ -120,61 +108,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle-in").click(function(e) {
-        e.preventDefault();
-        var left = $('#LeftColumn');
-        var right = $('#RightColumn');
-
-        right.removeClass("col-12");
-        right.addClass("col-xl-10 col-sm-9");
-        left.removeClass("hideLeft");
-        left.addClass("col-xl-2 col-sm-3 ");
-        $(".sideToggle").hide();
-    });
-
-    $("#menu-toggle-out").click(function(e) {
-        e.preventDefault();
-        var left = $('#LeftColumn');
-        var right = $('#RightColumn');
-
-        left.removeClass("col-xl-2 col-sm-3");
-        left.addClass("hideLeft");
-        right.removeClass("col-xl-10 col-sm-9");
-        right.addClass("col-12");
-        $(".sideToggle").show();
-    });
-
-    aGrid();
-
-    function aList() {
-        var movieList = document.getElementById("movieList");
-        var movieGrid = document.getElementById("gridhere");
-
-        movieGrid.style.display = "none";
-        movieList.style.display = "block";
-    }
-
-    function aGrid() {
-        var movieList = document.getElementById("movieList");
-        var movieGrid = document.getElementById("gridhere");
-        movieGrid.style.display = "flex";
-        movieList.style.display = "none";
-
-    }
-
-    /*   // JQuery Version of aList and aGrid function
-    function aList() {
-        $('#movieList').show();
-        $('#gridhere').hide();
-    }
-
-    function aGrid() {
-        $('#movieList').hide();
-        $('#gridhere').show();
-    }
-*/
-    </script>
+    <script src="js/cine4.js"></script>
+		<script src="js/friends.js"></script>
 </body>
 
 </html>

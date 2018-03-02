@@ -20,7 +20,18 @@ function requestProcessor($request)
         echo "-Friend List-".PHP_EOL;
         return friendList($request['id']);
         break;
-
+        case "movieFind":
+          echo "-Movie-".PHP_EOL;
+          return movieFind($request['id']);
+          break;
+          case "commentFind":
+            echo "-commmentfind-".PHP_EOL;
+            return commentFind($request['id']);
+            break;
+            case "commentSub":
+              echo "-commentsub-".PHP_EOL;
+              return commentSub($request['id'],$request['user'],$request['comment']);
+              break;
 
       }
 

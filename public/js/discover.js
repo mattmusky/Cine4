@@ -1,6 +1,9 @@
 function gridBuilder(json) {
+
     var tmdb = JSON.parse(json);
 
+    var divhere = document.getElementById('gridhere');
+    divhere.innerHTML = '';
 
     for (i = 0; i < tmdb.results.length; i++) {
 
@@ -30,7 +33,7 @@ var newhtml = `
 `;
 
 
-var divhere = document.getElementById('gridhere');
+
 
 divhere.innerHTML += newhtml;
     }
@@ -74,6 +77,8 @@ request.send(message);
 
 }
 
-
-
-window.onload = submitFriendList;
+function start() {
+  submitFriendList();
+  submitDiscover();
+}
+window.onload = start;

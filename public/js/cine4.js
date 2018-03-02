@@ -22,43 +22,37 @@ $("#menu-toggle-out").click(function(e) {
     $(".sideToggle").show();
 });
 
+function search() {
+var search = document.getElementById('searchbox').value;
+alert(search);
+
+}
 
 function friendBuilder(json) {
-    var tmdb = JSON.parse(json);
 
+    var json = JSON.parse(json);
 
-    for (i = 0; i < tmdb.results.length; i++) {
+var divhere = document.getElementById('friendhere');
+divhere.innerHTML = '';
+    for (i = 0; i < json.length; i++) {
 
 var newhtml = `
 
-<div class="p-2 col-xl-2 col-lg-3 col-md-4 col-6">
-    <a href="moviePage.html" title="${tmdb.results[i].original_title}" onclick="alert('${tmdb.results[i].id}')">
-        <img class="img-fluid rounded box-shadow" src="https://image.tmdb.org/t/p/w342/${tmdb.results[i].poster_path}" alt="">
-    </a>
-    <!-- Seen/Fav Buttons -->
+<li>
+    <a href="profile.php?id=${json[i].uid}">${json[i].FIRST} ${json[i].LAST}</a>
+</li>
 
 
-        <div class="pt-1 d-flex justify-content-around">
 
-            <button class="btn btn-outline-warning btn-sm">
-                <span class="fas fa-eye"></span>
-            </button>
-
-            <button class="btn btn-outline-warning btn-sm">
-                <span class="far fa-eye-slash"></span>
-            </button>
-
-
-    </div> <!-- End seen/fav row-->
-</div> <!-- End Movie Poster container -->
 
 `;
 
 
-var divhere = document.getElementById('gridhere');
+
 
 divhere.innerHTML += newhtml;
     }
+
 
 }
 
@@ -80,9 +74,22 @@ request.open("POST", "php/data.php", true);
 request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 request.onreadystatechange = function() {
     if ((this.readyState == 4) && (this.status == 200)) {
-      switch (retmethod){
+
+      switch (retmethod) {
+
         case friendBuilder:
+
         friendBuilder(this.responseText);
+        break;
+        case movieBuilder:
+          movieBuilder(this.responseText);
+          break;
+          case commentFind:
+            commentFind();
+            break;
+            case commentDisplay:
+              commentDisplay(this.responseText);
+              break;
       }
 
     }

@@ -5,3 +5,5 @@ Time - Server - Task - File - Line - Message
 02/19/2018 08:37:37 PM - ubuntu - Password Incorrect - /home/one/Cine4/src/db/auth.php - 86 - User: user2
 03/01/2018 03:59:34 PM - ubuntu - User Insert - /home/one/Cine4/src/db/auth.php - 44 - User added: oneee
 03/01/2018 04:18:16 PM - ubuntu - Password Incorrect - /home/one/Cine4/src/db/auth.php - 87 - User: oneee
+03/01/2018 05:36:58 PM - ubuntu - User Insert - /home/one/Cine4/src/db/auth.php - 44 - User added: twooo
+03/01/2018 06:24:56 PM - ubuntu - User Insert - /home/one/Cine4/src/db/auth.php - 29 - User added: three

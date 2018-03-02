@@ -34,27 +34,9 @@ if ($_SESSION["cred"] != "user") {
                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                         <a class="navbar-brand" href="#" id="menu-toggle-out"><i class="fas fa-bars"></i>&nbsp;&nbsp;Friends</a>
                     </nav>
-                    <li>
-                        <a href="jimmy.html">Jimmy She</a>
-                    </li>
-                    <li>
-                        <a href="#">Matt Muscarella</a>
-                    </li>
-                    <li>
-                        <a href="#">Muz Khan</a>
-                    </li>
-                    <li>
-                        <a href="#">Vishal Panchal</a>
-                    </li>
-                    <li>
-                        <a href="#">Prof Kehoe</a>
-                    </li>
-                    <li>
-                        <a href="#">Spider Man</a>
-                    </li>
-                    <li>
-                        <a href="#">The Hulk</a>
-                    </li>
+										<div id="friendhere"></div>
+
+
                 </ul>
             </div>
             <!-- /#sidebar-wrapper -->
@@ -72,31 +54,31 @@ if ($_SESSION["cred"] != "user") {
                             <li>
                                 <div class="input-group pr-2 pl-1">
                                     <div class="input-group-prepend">
-                                        <button class="btn btn-dark" type="button"><i class="fas fa-search"></i></button>
+                                        <button class="btn btn-dark" onclick="search()" type="button"><i class="fas fa-search"></i></button>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Search" aria-label="" aria-describedby="basic-addon1">
+                                    <input type="text" id="searchbox" class="form-control" onkeyup="search()" placeholder="Search" aria-label="" aria-describedby="basic-addon1">
                                 </div>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="starter.html">Discover</a>
+                                <a class="nav-link" href="discover.php">Discover</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="myList.html">My Lists</a>
+                                <a class="nav-link" href="lists.php">My Lists</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="recommender.html">Recommender</a>
+                                <a class="nav-link" href="recommender.php">Recommender</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="friendsList.html">Manage Friends</a>
+                                <a class="nav-link" href="friends.php">Manage Friends</a>
                             </li>
                         </ul>
                         <div class="my-2 my-lg-0">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#">Hi Jimmy!</a>
+                                    <a class="nav-link" href="#">Hi <?php print $_SESSION["first"];?>!</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="navbar-brand nav-link" href="#"><i class="fas fa-sign-out-alt"></i></a>
+                                    <a class="navbar-brand nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -106,15 +88,14 @@ if ($_SESSION["cred"] != "user") {
                 <div class="p-3">
                     <h2>Discover Movies</h2>
                     <div class="form-inline m-3">
-                        <select id="sortSelect" class="custom-select mr-4 ml-1" style="max-width: 150px">
+                        <select id="sortSelect" onchange="submitDiscover()" class="custom-select mr-4 ml-1" style="max-width: 150px">
                             <option value="popularity.desc" selected="">Sort By</option>
                             <option value="popularity.desc">Popularity</option>
-                            <option value="vote_average.desc">Rating</option>
-                            <option value="release_date.desc">Release Date</option>
+                            <option value="vote_count.desc">Votes</option>
 														<option value="revenue.desc">Revenue</option>
 
                         </select>
-                        <select id="genreSelect" class="custom-select mr-4 ml-1" style="max-width: 150px">
+                        <select id="genreSelect" onchange="submitDiscover()" class="custom-select mr-4 ml-1" style="max-width: 150px">
                             <option value="" selected="">Filter Genre</option>
 														<option value="28">Action</option>
 														<option value="12">Adventure</option>
@@ -143,7 +124,7 @@ if ($_SESSION["cred"] != "user") {
 
 
                         <!-- Movie Poster Container -->
-                        
+
 
 
 
