@@ -33,6 +33,23 @@ function requestProcessor($request)
               return commentSub($request['id'],$request['user'],$request['comment']);
               break;
 
+              case "addSeen":
+                echo "-addSeen-".PHP_EOL;
+                return addSeen($request['uid'],$request['mid']);
+                break;
+                case "addFav":
+                  echo "-addFav-".PHP_EOL;
+                  return addFav($request['uid'],$request['mid']);
+                  break;
+                  case "getList":
+                    echo "-getList-".PHP_EOL;
+                    return getList($request['id'],$request['list']);
+                    break;
+                      case "removeList":
+                        echo "-removeList-".PHP_EOL;
+                        return removeList($request['uid'],$request['mid'],$request['list']);
+                        break;
+
       }
 
 

@@ -68,6 +68,7 @@ function commentSub($id, $user, $comment)
     } else {
     }
 }
+
 function commentFind($id)
 {
     $con   = createconnection();
@@ -77,9 +78,62 @@ function commentFind($id)
     while ($row = mysqli_fetch_assoc($sql)) {
         // row will be an array with Number and checked as items
         $data[] = $row;
-    } 
+    }
     echo $query;
     print_r($data);
     return json_encode($data);
 }
+
+function addSeen($uid, $mid)
+{
+    $con       = createconnection();
+    $insertsql = "INSERT INTO usersviewmovies (`UID`, `MID`) VALUES ( '" . $uid . "','" . $mid . "')";
+    if ($con->query($insertsql) === TRUE) {
+        echo "addseen";
+    } else {
+      movieCall($mid);
+      $con->query($insertsql);
+      echo "addseenNEWNEW";
+    }
+}
+function addFav($uid, $mid)
+{
+    $con       = createconnection();
+    $insertsql = "INSERT INTO usersfavormovies (`UID`, `MID`) VALUES ( '" . $uid . "','" . $mid . "')";
+    if ($con->query($insertsql) === TRUE) {
+        echo "addfav";
+    } else {
+      movieCall($mid);
+      $con->query($insertsql);
+      echo "addfavNEWNEW";
+    }
+}
+
+function getList($id,$list)
+{
+    $con   = createconnection();
+    $query = "SELECT M.MID, M.Poster FROM ".$list." as F INNER JOIN users as U on U.UID = F.UID INNER JOIN movies as M ON M.MID = F.MID WHERE U.UID = " . $id;
+    $sql   = mysqli_query($con, $query);
+    $data  = array();
+    while ($row = mysqli_fetch_assoc($sql)) {
+        // row will be an array with Number and checked as items
+        $data[] = $row;
+    }
+    echo $query;
+    print_r($data);
+    return json_encode($data);
+}
+
+
+function removeList($uid, $mid, $list)
+{
+    $con       = createconnection();
+    $sql = "DELETE FROM `".$list."` WHERE `".$list."`.`UID` = ".$uid." AND `".$list."`.`MID` = ".$mid;
+    if ($con->query($sql) === TRUE) {
+        echo "removemov";
+    } else {
+      echo "FAILLLLL";
+    }
+}
+
 ?>

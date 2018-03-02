@@ -81,15 +81,6 @@ request.onreadystatechange = function() {
 
         friendBuilder(this.responseText);
         break;
-        case movieBuilder:
-          movieBuilder(this.responseText);
-          break;
-          case commentFind:
-            commentFind();
-            break;
-            case commentDisplay:
-              commentDisplay(this.responseText);
-              break;
       }
 
     }

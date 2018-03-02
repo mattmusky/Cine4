@@ -27,6 +27,13 @@ switch ($postrequest["type"])
   $response = $client->send_request($request);
 
 	break;
+	case "friendList":
+	$request = array();
+	$request['type']=$postrequest["type"];
+	$request['id']=$_SESSION["id"];
+  $response = $client->send_request($request);
+
+	break;
 
 	case "movieFind":
 	$request = array();
@@ -50,6 +57,43 @@ switch ($postrequest["type"])
 	$request = array();
 	$request['type']=$postrequest["type"];
 	$request['id']=$postrequest["id"];
+  $response = $client->send_request($request);
+
+	break;
+
+	case "addSeen":
+	$request = array();
+	$request['type']=$postrequest["type"];
+	$request['uid']=$postrequest["uid"];
+	$request['mid']=$postrequest["mid"];
+  $response = $client->send_request($request);
+
+	break;
+
+	case "addFav":
+	$request = array();
+	$request['type']=$postrequest["type"];
+	$request['uid']=$postrequest["uid"];
+	$request['mid']=$postrequest["mid"];
+  $response = $client->send_request($request);
+
+	break;
+
+	case "getList":
+	$request = array();
+	$request['type']=$postrequest["type"];
+	$request['id']=$postrequest["id"];
+	$request['list']=$postrequest["list"];
+  $response = $client->send_request($request);
+
+	break;
+
+	case "removeList":
+	$request = array();
+	$request['type']=$postrequest["type"];
+	$request['uid']=$postrequest["uid"];
+	$request['mid']=$postrequest["mid"];
+	$request['list']=$postrequest["list"];
   $response = $client->send_request($request);
 
 	break;

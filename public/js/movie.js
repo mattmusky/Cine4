@@ -49,7 +49,7 @@ function submitMovie(id) {
 
 var message = "type=movieFind&id=" + id;
 
-sendData(message,movieBuilder);
+sendMovData(message,movieBuilder);
 return 0;
 }
 
@@ -58,7 +58,7 @@ function submitComment() {
 var comment = document.getElementById('commentbox').value;
 var message = "type=commentSub&id=" + movieid+ "&comment=" + comment+ "&user=" + userid;
 
-sendData(message,commentFind);
+sendMovData(message,commentFind);
 return 0;
 }
 
@@ -66,7 +66,7 @@ function commentFind() {
 
 var message = "type=commentFind&id=" + movieid;
 
-sendData(message,commentDisplay);
+sendMovData(message,commentDisplay);
 return 0;
 }
 
@@ -101,3 +101,32 @@ return 0;
 }
 
 submitFriendList();
+
+
+function sendMovData(message,retmethod) {
+
+var request = new XMLHttpRequest();
+request.open("POST", "php/data.php", true);
+request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+request.onreadystatechange = function() {
+    if ((this.readyState == 4) && (this.status == 200)) {
+
+      switch (retmethod) {
+
+
+        case movieBuilder:
+          movieBuilder(this.responseText);
+          break;
+          case commentFind:
+            commentFind();
+            break;
+            case commentDisplay:
+              commentDisplay(this.responseText);
+              break;
+      }
+
+    }
+}
+request.send(message);
+
+}

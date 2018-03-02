@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if ($_SESSION["cred"] != "user") {
+	header("Location: login.html");
+	exit();
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,57 +89,17 @@
                 <div class="p-3">
                     <h2>My Lists</h2>
                     <!-- Movies I've seen /Favorite Buttons -->
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-primary active">
-                            <input type="radio" name="options" id="option1" autocomplete="off" checked=""> Movies I've Seen
-                        </label>
-                        <label class="btn btn-primary">
-                            <input type="radio" name="options" id="option2" autocomplete="off"> Favorited
-                        </label>
+                    <div id="buttonshere" class="btn-group btn-group-toggle" data-toggle="buttons">
+
                     </div>
-                    <div class="ml-3 mt-3">
-                        <!-- View By Icons -->
-                        <span>
-                            <h6>View</h6>
-                        </span>
-                        <i class="fas fa-bars viewIcon" onclick="aList()"></i>
-                        <i class="fas fa-th viewIcon" onclick="aGrid()"></i>
-                    </div>
-                    <div class="form-inline m-3">
-                        <select class="custom-select mr-4 ml-1" style="max-width: 150px">
-                            <option selected="">Sort By</option>
-                            <option value="1">Popularity</option>
-                            <option value="2">Rating</option>
-                            <option value="3">Release Date</option>
-                        </select>
-                        <select class="custom-select mr-4 ml-1" style="max-width: 150px">
-                            <option selected="">Filter Genre</option>
-                            <option value="1">Horror</option>
-                            <option value="2">Comedy</option>
-                            <option value="3">Kid</option>
-                        </select>
-                    </div>
-                    <!-- Movie List -->
-                    <div class="list-group" id="movieList">
-                        <a href="#!" class="list-group-item list-group-item-action">The Incredibles</a>
-                        <a href="#!" class="list-group-item list-group-item-action">The Maze Runner</a>
-                        <a href="#!" class="list-group-item list-group-item-action">Black Panther</a>
-                    </div>
-                    <!-- End Movie List -->
+
                     <!-- Movies On Grid -->
                     <div id="gridhere" class="p-2 row text-center text-lg-left">
                         <!-- Movie Poster Container -->
-                        <div class="p-2 col-xl-2 col-lg-3 col-md-4 col-6">
-                            <a href="moviePage.html" onclick="">
-                                <img class="img-fluid rounded box-shadow" src="https://image.tmdb.org/t/p/w342//coss7RgL0NH6g4fC2s5atvf3dFO.jpg" alt="">
-                            </a>
-                            <!-- Delete Button -->
-                            <div class="pt-1 d-flex justify-content-center">
-                                <span class="fas fa-minus-circle text-danger" onclick=""></span>
-                            </div>
-                            <!-- End Delete Button -->
-                        </div>
+
                         <!-- End Movie Poster container -->
+
+
 
                     </div>
                     <!--End row 1 -->
@@ -152,8 +120,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Menu Toggle Script -->
+    <script>
+		var userid = <?php echo $_SESSION["id"];?>;
+		</script>
     <script src="js/cine4.js"></script>
 		<script src="js/lists.js"></script>
+		<script src="js/myLists.js"></script>
 </body>
 
 </html>

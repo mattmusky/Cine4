@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if ($_SESSION["cred"] != "user") {
+	header("Location: login.html");
+	exit();
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
