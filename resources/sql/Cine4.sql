@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 04, 2018 at 08:53 PM
+-- Generation Time: Mar 05, 2018 at 04:41 PM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -212,6 +212,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`UID`, `First`, `Last`, `Email`, `User`, `Pass`) VALUES
+(55555, 'George', 'Hodges', 'candy@yahoo.com', 'test', '12345'),
+(66666, 'Kelvin', 'Smith', 'mailer@gmail.com', 'catcher', '9876'),
 (82682, 'two', 'two', 'two', 'two', 'do3U3rqZ8L1rM'),
 (84915, 'three', 'three', 'three', 'three', 'dotH8X0W9SC6U'),
 (92533, 'one', 'one', 'one', 'one', 'doex5EjTfzeQY');
@@ -268,6 +270,7 @@ CREATE TABLE IF NOT EXISTS `usersfriendusers` (
 INSERT INTO `usersfriendusers` (`UserUID`, `FriendUID`) VALUES
 (82682, 84915),
 (82682, 92533),
+(92533, 55555),
 (92533, 82682),
 (92533, 84915);
 
