@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SESSION["cred"] != "user") {
-	header("Location: ../login.html");
+	header("Location: ../index.html");
 	exit();
 	}
 ?>
@@ -71,7 +71,7 @@ if ($_SESSION["cred"] != "user") {
     <a class="dropdown-item" href="#!"><?php print $_SESSION["last"];?></a>
 		<a class="dropdown-item" href="#!"><?php print $_SESSION["email"];?></a>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="../login.html">Sign out</a>
+    <a class="dropdown-item" href="../index.html">Sign out</a>
   </div>
 </div>
 

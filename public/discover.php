@@ -2,7 +2,7 @@
   session_start();
 
   if ($_SESSION["cred"] != "user") {
-  	header("Location: login.html");
+  	header("Location: index.html");
   	exit();
   	}
   ?>
