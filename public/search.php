@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="img/favicon.png">
     <title>Cine4</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -21,6 +22,7 @@
     <link href="css/cine4.css" rel="stylesheet">
   </head>
   <body>
+    <div id="ohsnap"></div>
     <div class="container-fluid h-100">
       <h1 class="text-center p-2"><a class="main-title" href="discover.html">cine4</a></h1>
       <div class="row sideheight">
@@ -80,10 +82,9 @@
           </nav>
           <!-- Page Content -->
           <div class="p-3">
-            <h2>Recommender</h2>
+            <h2>Discover Movies</h2>
             <div id="gridhere" class="p-2 row text-center text-lg-left">
               <!-- Movie Poster Container -->
-              <!-- End Movie Poster container -->
             </div>
             <!--End row 1 -->
           </div>
@@ -103,11 +104,23 @@
       </div>
     </div>
     <!-- Bootstrap core JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Menu Toggle Script -->
+    <script>
+      var userid = <?php echo $_SESSION["id"]; ?>;
+    </script>
     <script src="js/cine4.js"></script>
-    <script src="js/recommender.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/add.js"></script>
+    <script src="js/ohsnap.min.js"></script>
+    <script>
+      var movieN = '<?php echo $_GET["movie"]; ?>';
+
+
+        searchAPI(movieN);
+
+    </script>
   </body>
 </html>

@@ -1,8 +1,6 @@
-
 textarea::placeholder{
     font-style: italic;
 }
-
 .form-control, .form-control:focus{
     color:black;
     resize: none;

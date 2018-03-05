@@ -1,9 +1,9 @@
 
 <?php
-function discoverCall($sort, $genre)
+function searchAPI($movie)
 {
   $cSession = curl_init();
-  $url      = "https://api.themoviedb.org/3/discover/movie?api_key=63c5f394ee102de7ba90c4a6159080c2&language=en-US&sort_by=" . $sort . "&include_adult=false&include_video=false&page=1&with_genres=" . $genre;
+  $url      = "https://api.themoviedb.org/3/search/movie?api_key=63c5f394ee102de7ba90c4a6159080c2&language=en-US&query=" . $movie . "&page=1&include_adult=false";
   echo $url;
   $url = str_replace(" ", '%20', $url);
   curl_setopt($cSession, CURLOPT_URL, $url);
