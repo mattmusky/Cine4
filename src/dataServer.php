@@ -4,6 +4,7 @@ require_once('rmq/path.inc');
 require_once('rmq/get_host_info.inc');
 require_once('rmq/rabbitMQLib.inc');
 //db functions
+include ("inc/logSend.inc");
 require_once('db/query.php');
 function requestProcessor($request)
 {

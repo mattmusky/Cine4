@@ -1,6 +1,7 @@
 <?php
 require_once('conn.inc');
 require_once('apiCall.php');
+//retieve friends list given user
 function friendList($id)
 {
   $con   = createconnection();
@@ -10,8 +11,6 @@ function friendList($id)
   while ($row = mysqli_fetch_assoc($sql)) { // row will be an array with Number and checked as items
     $data[] = $row;
   }
-  echo $query;
-  print_r($data);
   return json_encode($data);
 }
 function movieFind($id)
@@ -24,6 +23,7 @@ function movieFind($id)
     // row will be an array with Number and checked as items
     $data[] = $row;
   } else {
+    errorSend("Add movie",1,"adding movie".$id);
     movieCall($id);
     $sql  = mysqli_query($con, $query);
     $data = array();
