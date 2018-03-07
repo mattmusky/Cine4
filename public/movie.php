@@ -26,7 +26,7 @@
   </head>
   <body>
     <div class="container-fluid h-100">
-      <h1 class="text-center p-2"><a class="main-title" href="discover.html">cine4</a></h1>
+      <h1 class="text-center p-2"><a class="main-title" href="discover.php">cine4</a></h1>
       <div class="row sideheight">
         <!-- Sidebar -->
         <div id="LeftColumn" class="col-xl-2 col-sm-3 p-0">
@@ -57,7 +57,7 @@
                     <input type="search" id="searchbox" onsearch="search()" class="form-control" placeholder="Search" aria-label="" aria-describedby="basic-addon1">
                   </div>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                   <a class="nav-link" href="discover.php">Discover</a>
                 </li>
                 <li class="nav-item">
