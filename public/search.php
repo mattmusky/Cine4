@@ -55,7 +55,7 @@
                     <input type="search" id="searchbox" onsearch="search()" class="form-control" placeholder="Search" aria-label="" aria-describedby="basic-addon1">
                   </div>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                   <a class="nav-link" href="discover.php">Discover</a>
                 </li>
                 <li class="nav-item">
@@ -82,7 +82,7 @@
           </nav>
           <!-- Page Content -->
           <div class="p-3">
-            <h2>Discover Movies</h2>
+            <h2>Search Movies</h2>
             <div id="gridhere" class="p-2 row text-center text-lg-left">
               <!-- Movie Poster Container -->
             </div>

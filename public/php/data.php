@@ -76,7 +76,7 @@ switch ($postrequest["type"]) {
     $request['uid']  = $_SESSION["id"];
     $response        = $client->send_request($request);
     break;
-  case "removeFriend": #remove a fiend
+  case "removeFriend": #remove a friend
     $request         = array();
     $request['type'] = $postrequest["type"];
     $request['fid']  = $postrequest["fid"];

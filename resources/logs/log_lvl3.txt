@@ -1,4 +1,6 @@
 Time - Server - Task - File - Line - Message
 02/19/2018 08:01:09 PM - ubuntu - task name - /home/one/Cine4/src/logTest.php - 4 - test error message
-03/01/2018 03:59:34 PM - ubuntu - User Insert - /home/one/Cine4/src/db/auth.php - 49 - Error: INSERT INTO user (Fname, Lname, Email, Username, Password) VALUES ( 'one','one','one','onetwo','doBrz02bWUygY')
-Table 'cine4.user' doesn't exist
+03/01/2018 03:59:34 PM - ubuntu - User Insert - /home/one/Cine4/src/db/auth.php - 49 - Error: INSERT INTO user (Fname, Lname, Email, Username, Password) VALUES ( 'one','one','one','onetwo','doBrz02bWUygY') Table 'cine4.user' doesn't exist
+03/09/2018 02:41:25 AM - ubuntu - Curl Error - /home/one/cine4/src/api/discover.inc - 16 - Failed to connect to sapi.themoviedb.org port 443: Connection timed out
+03/09/2018 01:22:45 PM - ubuntu - Movie Find - /home/one/cine4/src/db/query.inc - 65 - SQL Error: Table 'cine4.usersviewsmovies' doesn't exist | SELECT U.First, U.Last, U.UID FROM usersviewsmovies as V INNER JOIN users as U on U.UID = V.UID INNER JOIN movies as M ON M.MID = V.MID WHERE M.MID =399055
+03/09/2018 01:23:04 PM - ubuntu - Movie Find - /home/one/cine4/src/db/query.inc - 65 - SQL Error: Table 'cine4.usersviewsmovies' doesn't exist | SELECT U.First, U.Last, U.UID FROM usersviewsmovies as V INNER JOIN users as U on U.UID = V.UID INNER JOIN movies as M ON M.MID = V.MID WHERE M.MID =399055

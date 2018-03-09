@@ -1,16 +1,17 @@
 #!/usr/bin/php
 <?php
+//rmq inlude
 require_once('rmq/path.inc');
 require_once('rmq/get_host_info.inc');
 require_once('rmq/rabbitMQLib.inc');
-//db functions
+//inlude
 require_once('inc/logRec.inc');
+
 function requestProcessor($request)
 {
   switch ($request['type']) {
     case "error":
-      echo "-Error Recieved-" . PHP_EOL;
-      echo $request['task'] . PHP_EOL;
+      //echo "-Error Recieved-" . PHP_EOL;
       logIt($request);
       break;
   }
