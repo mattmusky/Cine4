@@ -3,32 +3,32 @@ Web app enabling users to discover, save and share movie lists with friends.
 
 ## Installation Steps
 
-20 simple steps for installing on a four server architecture:
+25 simple steps for installing on a four server architecture:
 
 ### Web Server (10.0.0.10)
 1. Install dependencies
 ```
-apt-get install apache2 php7.0 php-amqp php7.0-mysql git
+apt-get install apache2 php7.0 git
 ```
-1. Clone project repository to home folder
+2. Clone project repository to home folder
 ```
 git clone https://github.com/mattmusky/cine4 ~/
 ```
 
 ##### Configure Apache
-1. Create symlink from project to apache www directory
+3. Create symlink from project to apache www directory
 ```
 sudo ln -s ~/cine4/public /var/www
 ```
-1. Change apache "DocumentRoot" to /var/www/public
+4. Change apache "DocumentRoot" to /var/www/public
 ```
 sudo vi /etc/apache2/sites-available/000-default.conf
 ```
-1. Create symlink to php amqp.ini for Apache
+5. Create symlink to php amqp.ini for Apache
 ```
 sudo ln -s /etc/php/mods-available/amqp.ini /etc/php/7.0/apache2/conf.d/
 ```
-1. Restart apache
+6. Restart apache
 ```
 sudo service apache2 restart
 ```
@@ -39,18 +39,18 @@ sudo service apache2 restart
 ```
 sudo apt-get install php7.0 php-amqp rabbitmq-server git
 ```
-1. Clone project repository to home folder
+2. Clone project repository to home folder
 ```
 git clone https://github.com/mattmusky/cine4 ~/
 ```
-##### Configure RMQ
-1. Import config
-```
-rabbitmqadmin -q import ~/cine4/config/rabbitMQ_config.json
-```
-1. Create symlink to php amqp.ini for CLI
+3. Create symlink to PHP amqp.ini for CLI
 ```
 sudo ln -s /etc/php/mods-available/amqp.ini /etc/php/7.0/cli/conf.d
+```
+##### Configure RMQ
+4. Import config
+```
+rabbitmqadmin -q import ~/cine4/config/rabbitMQ_config.json
 ```
 ##### Run Server PHP
 ```
@@ -62,11 +62,11 @@ php ~/cine4/src/logServer.php &
 ```
 apt-get install php7.0 php-amqp php7.0-mysql mysql-server git
 ```
-1. Clone project repository to home folder
+2. Clone project repository to home folder
 ```
 git clone https://github.com/mattmusky/cine4 ~/
 ```
-1. Create symlink to php amqp.ini for CLI
+3. Create symlink to PHP amqp.ini for CLI
 ```
 sudo ln -s /etc/php/mods-available/amqp.ini /etc/php/7.0/cli/conf.d
 ```
@@ -88,11 +88,11 @@ php ~/cine4/src/authServer.php &
 ```
 apt-get install php7.0 php-amqp curl php-curl git
 ```
-1. Clone project repository to home folder
+2. Clone project repository to home folder
 ```
 git clone https://github.com/mattmusky/cine4 ~/
 ```
-1. Create symlink to php amqp.ini for CLI
+3. Create symlink to PHP amqp.ini for CLI
 ```
 sudo ln -s /etc/php/mods-available/amqp.ini /etc/php/7.0/cli/conf.d
 ```
@@ -102,7 +102,7 @@ php ~/cine4/src/apiServer.php &
 ```
 
 ### Final Step!
-Once all four php server files are running, navigate to http://10.0.0.10 and login!
+Once all four PHP server files are running, navigate to http://10.0.0.10 and login!
 
 
 ## Built With
