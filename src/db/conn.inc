@@ -2,7 +2,7 @@
 function createconnection()
 {
   $host = 'localhost';
-  $user = 'root';
+  $user = 'cine4';
   $pass = 'infinity';
   $db   = 'cine4';
   //create connection

@@ -1,4 +1,4 @@
-# 🎥 Cine4
+# 🎥 Cine4 - Midterm Branch
 Web app enabling users to discover, save and share movie lists with friends.
 
 ## Installation Steps
@@ -72,7 +72,7 @@ sudo ln -s /etc/php/mods-available/amqp.ini /etc/php/7.0/cli/conf.d
 ```
 ##### Configure MySQL
   + Create User: cine4, Password: infinity
-  + Create Database: Cine4
+  + Create Database: cine4
   + Run ~/cine4/config/cine4.sql
 
   ##### Run Server PHP
