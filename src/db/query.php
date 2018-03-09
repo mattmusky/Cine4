@@ -109,30 +109,47 @@ function commentFind($id)
   print_r($data);
   return json_encode($data);
 }
-function addSeen($uid, $mid)
+
+function addList($list, $uid, $mid, $movie)
 {
-  $con       = createconnection();
-  $insertsql = "INSERT INTO usersviewmovies (`UID`, `MID`) VALUES ( '" . $uid . "','" . $mid . "')";
-  if ($con->query($insertsql) === TRUE) {
-    echo "addseen";
-  } else {
-    movieCall($mid);
-    $con->query($insertsql);
-    echo "addseenNEWNEW";
+  $con = createconnection();
+  $return  = array();
+  $sql = "SELECT * FROM usersfavormovies WHERE uid = " . $uid . " AND mid = " . $mid;
+  $result = mysqli_query($con, $sql);
+  if (mysqli_num_rows($result) > 0) {
+    echo "ALREADY IN FAVOR";
+    $return['snap'] = 2;
+    $return['msg'] = $movie . ' already in favorites';
+    return json_encode($return);
   }
-}
-function addFav($uid, $mid)
-{
-  $con       = createconnection();
-  $insertsql = "INSERT INTO usersfavormovies (`UID`, `MID`) VALUES ( '" . $uid . "','" . $mid . "')";
-  if ($con->query($insertsql) === TRUE) {
-    echo "addfav";
+  $sql = "SELECT * FROM usersviewmovies WHERE uid = " . $uid . " AND mid = " . $mid;
+  $result = mysqli_query($con, $sql);
+  if (mysqli_num_rows($result) > 0) {
+    $return['snap'] = 1;
+    $return['msg'] = $movie . ' already in seen';
+    return json_encode($return);
+  }
+  $insertsql = "INSERT INTO ".$list." (`UID`, `MID`) VALUES ( '" . $uid . "','" . $mid . "')";
+  $result   = mysqli_query($con, $insertsql);
+  echo 'num'.mysqli_affected_rows($con).'num';
+  if (mysqli_affected_rows($con) > 0) {
+    echo "11111111111";
   } else {
     movieCall($mid);
     $con->query($insertsql);
     echo "addfavNEWNEW";
   }
+  $return['snap'] = 3;
+  if ($list == 'usersviewmovies') {
+      $return['msg'] = $movie . ' to seen';
+  } else {
+    $return['msg'] = $movie . ' to favorites';
+  }
+  return json_encode($return);
 }
+
+
+
 function getList($id, $list)
 {
   $con   = createconnection();

@@ -25,13 +25,9 @@ function requestProcessor($request)
       echo "-commentsub-" . PHP_EOL;
       return commentSub($request['id'], $request['user'], $request['comment']);
       break;
-    case "addSeen":
-      echo "-addSeen-" . PHP_EOL;
-      return addSeen($request['uid'], $request['mid']);
-      break;
-    case "addFav":
-      echo "-addFav-" . PHP_EOL;
-      return addFav($request['uid'], $request['mid']);
+    case "addList":
+      echo "-addList-" . PHP_EOL;
+      return addList($request['list'],$request['uid'],$request['mid'],$request['movie']);
       break;
     case "getList":
       echo "-getList-" . PHP_EOL;

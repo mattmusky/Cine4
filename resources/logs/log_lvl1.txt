@@ -12,3 +12,4 @@ Time - Server - Task - File - Line - Message
 03/05/2018 02:41:31 PM - ubuntu - User Insert - /home/one/Cine4/src/db/auth.php - 29 - User added: mattm
 03/05/2018 02:41:52 PM - ubuntu - User Insert - /home/one/Cine4/src/db/auth.php - 29 - User added: mkhan
 03/05/2018 02:42:24 PM - ubuntu - User Insert - /home/one/Cine4/src/db/auth.php - 29 - User added: vishal
+03/09/2018 01:47:47 AM - ubuntu - Add movie - /home/one/cine4/src/db/query.php - 26 - adding movie401981

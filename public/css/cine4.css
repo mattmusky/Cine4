@@ -83,4 +83,7 @@ html, body {
      color: #212529;
      background-color: #FFD131;
 }
- 
+.alertsnap-blue {
+  background-color: #373C42;
+  color: #FFFFFF;
+}

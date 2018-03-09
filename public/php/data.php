@@ -39,18 +39,13 @@ switch ($postrequest["type"]) {
     $request['id']   = $postrequest["id"];
     $response        = $client->send_request($request);
     break;
-  case "addSeen": #Add movie to user seen list
+  case "addList": #Add movie to user list
     $request         = array();
     $request['type'] = $postrequest["type"];
+    $request['list']  = $postrequest["list"];
     $request['uid']  = $postrequest["uid"];
     $request['mid']  = $postrequest["mid"];
-    $response        = $client->send_request($request);
-    break;
-  case "addFav": #Add movie to user favorite list
-    $request         = array();
-    $request['type'] = $postrequest["type"];
-    $request['uid']  = $postrequest["uid"];
-    $request['mid']  = $postrequest["mid"];
+    $request['movie']  = $postrequest["movie"];
     $response        = $client->send_request($request);
     break;
   case "getList": #Get a users list

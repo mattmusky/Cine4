@@ -5,7 +5,6 @@ require_once('rmq/get_host_info.inc');
 require_once('rmq/rabbitMQLib.inc');
 //db functions
 require_once('db/auth.php');
-//require_once('inc/logRec.inc');
 require_once('inc/logSend.inc');
 function requestProcessor($request)
 {
@@ -23,7 +22,7 @@ function requestProcessor($request)
   }
 }
 //function end
-$server = new rabbitMQServer("rmq/rabbitMQ.ini", "testServer");
+$server = new rabbitMQServer("rmq/authMQ.ini", "testServer");
 $server->process_requests('requestProcessor');
 exit();
 ?>
