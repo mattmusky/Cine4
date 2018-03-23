@@ -8,7 +8,7 @@ Web app enabling users to discover, save and share movie lists with friends.
 ### Web Server (10.0.0.10)
 1. Install dependencies
 ```
-apt-get install apache2 php7.0 git
+apt-get install apache2 libapache2-mod-php7.0 php7.0 git
 ```
 2. Clone project repository to home folder
 ```
