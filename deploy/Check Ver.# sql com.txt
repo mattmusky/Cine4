@@ -8,10 +8,7 @@ insert into version values (4, '2.0', '2015-01-13', 'N', 5);
 
 
 
-select V.VersionNum, P.PackageName, V.deprecate from version as V, Package as P
+select V.VersionNum, P.PackageName, V.deprecate
+from version as V, Package as P
 
-where P.PackageID = 5 AND P.PackageID = V.PackageID;
-
-select V.VersionNum, P.PackageName,
-V.deprecate from version as V, Package as P
 where P.PackageID = 5 and deprecate = 'N' AND P.PackageID = V.PackageID;
