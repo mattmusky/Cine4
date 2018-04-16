@@ -9,6 +9,7 @@
     <title>Cine4</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/cine4.css" rel="stylesheet">
@@ -16,6 +17,19 @@
     <link href="css/movie.css" rel="stylesheet">
     <!-- Font Awesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <!--  <style>
+    /*To see rows and columns, please do not remove*/
+
+    .row {
+        border: 3px solid green;
+    }
+
+    .row>div {
+        border: 2px solid pink;
+        text-align: center;
+    }
+    </style>
+ -->
 </head>
 
 <body>
@@ -30,15 +44,35 @@
                     </nav>
                     <li>
                         <a href="jimmy.html">Jimmy She</a>
+                        <div class="badges-container">
+                            <i class="ion-ribbon-b ribbonb "></i>
+                            <i class="ion-ribbon-a ribbon"></i>
+                            <i class="ion-trophy trophy"></i>
+                        </div>
                     </li>
                     <li>
                         <a href="#">Matt Muscarella</a>
+                        <div class="badges-container">
+                            <div class="badge badge-pill commentBadge">10</div>
+                            <div class="badge badge-pill commentBadge">20</div>
+                            <div class="badge badge-pill commentBadge">30</div>
+                        </div>
                     </li>
                     <li>
                         <a href="#">Muz Khan</a>
+                        <div class="badges-container">
+                            <i class="ion-person tenfriends"></i>
+                            <i class="ion-person-stalker twentyfriends"></i>
+                            <i class="ion-ios-people thirtyfriends"></i>
+                        </div>
                     </li>
                     <li>
                         <a href="#">Vishal Panchal</a>
+                        <div class="badges-container">
+                            <i class="ion-ribbon-b ribbonb "></i>
+                            <i class="ion-person tenfriends"></i>
+                            <div class="badge badge-pill commentBadge">30</div>
+                        </div>
                     </li>
                     <li>
                         <a href="#">Prof Kehoe</a>
@@ -101,35 +135,64 @@
                             <!-- Movie Information -->
                             <div class="col-sm-6">
                                 <div class="pb-sm-5">
-                                <h1>Minions</h1>
-                                <h6>Overview: <small>Minions Stuart, Kevin and Bob are recruited by Scarlet Overkill, a super-villain who, alongside her inventor husband Herb, hatches a plot to take over the world.</small></h6>
-                                <h6>Genre: <small>Family, Animation, Adventure, Comedy</small></h6>
-                                <h6>Release Date: <small>2015-06-17</small></h6>
-                            
+                                    <h1>Minions</h1>
+                                    <h6>Overview: <small>Minions Stuart, Kevin and Bob are recruited by Scarlet Overkill, a super-villain who, alongside her inventor husband Herb, hatches a plot to take over the world.</small></h6>
+                                    <h6>Genre: <small>Family, Animation, Adventure, Comedy</small></h6>
+                                    <h6>Release Date: <small>2015-06-17</small></h6>
                                 </div>
-                            <div class="p-3 pt-sm-5">
-                                <div class="form-group">
-                                    <label for="comment">Comment:</label>
-                                    <textarea class="form-control form-control-sm" rows="6" id="comment" placeholder="Place your thoughts here"></textarea>
-                                    <button type="submit" class="mt-2 btn btn-warning btn-sm float-right">Submit</button>
-                                </div>
-                                <!-- Comments Section -->
-                                <h5 class="mt-5">Comments</h5>
-                                <hr>
-                                <div class="row comment">
-                                    <div class="col-6  p-3">
-                                        <div class="head" style="margin-bottom: 10px;"><small><strong class="mr-2">Jimmy</strong> 30.10.2017 </small></div>
-                                        <p class="small">Great movie</p>
+                                <div class="p-3 pt-sm-5">
+                                    <div class="form-group">
+                                        <label for="comment">Comment:</label>
+                                        <textarea class="form-control form-control-sm" rows="6" id="comment" placeholder="Place your thoughts here"></textarea>
+                                        <button type="submit" class="mt-2 btn btn-warning btn-sm float-right">Submit</button>
                                     </div>
-                                </div>
-                                <div class="row comment">
-                                    <div class="col-6  p-3">
-                                        <div class="head" style="margin-bottom: 10px;"><small><strong class="mr-2">Jimmy</strong> 30.10.2017 </small></div>
-                                        <p class="small">Great movie</p>
+                                    <!-- Comments Section -->
+                                    <h5 class="mt-5">Comments</h5>
+                                    <hr>
+                                    <!-- Sort By Drop Down -->
+                                    <div class="form-inline form-control-sm position-relative" style="top:-10px; left: -10px;">
+                                        <select class="custom-select mr-4 ml-1 w-25">
+                                            <option selected="">Sort By</option>
+                                            <option value="1">Top</option>
+                                            <option value="2">New</option>
+                                        </select>
+                                    </div>
+                                    <!-- End Sort By Drop Down -->
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <div class="row flex-column">
+                                                <!-- Upvote/ Downvote-->
+                                                <div class="col-12 p-0 text-right"><span class="fas fa-chevron-circle-up" style="position: relative;bottom: -3px;"></span></div>
+                                                <div class="col-12 p-0 text-right"><span class="fas fa-chevron-circle-down" style="position: relative;top: -3px;"></span></div>
+                                                <!-- End Upvote/ Downvote-->
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row flex-column align-self-start">
+                                                <!-- Poster/User info(User/Date) -->
+                                                <div class="col-auto text-left">
+                                                    <div><small><strong>Jimmy</strong></small>
+                                                        <div class="badges-container">
+                                                            <i class="ion-ribbon-b ribbonb "></i>
+                                                            <i class="ion-person tenfriends"></i>
+                                                            <div class="badge badge-pill commentBadge">30</div>
+                                                        </div>
+                                                        <small style="font-size: x-small;" class="bg-light">30.10.2017 </small>
+                                                        <small style="font-size: x-small;" class="bg-light">1 points</small>
+                                                        <small style="font-size: x-small;" class="bg-danger text-white rounded-left p-1">delete</small>
+                                                    </div>
+                                                </div>
+                                                <!-- End Poster/User info -->
+                                                <!-- Actual Comment -->
+                                                <div class="col-auto text-left">
+                                                    <p><small>"Minions" is every bit as cute as it's supposed to be, a happily empty-headed animated frolic that rarely pauses to take a breath.</small> </p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            </div></div>
+                        </div>
                         <!-- End Your comment  -->
                         <!-- End  Comments Section -->
                     </div>
@@ -138,16 +201,13 @@
             <!-- /page content -->
         </div>
         <!-- /main wrapper -->
-   
     </div>
-    
     <footer class="py-3 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Cine4 - IT490 - 2018</p>
         </div>
         <!-- /.container -->
     </footer>
-
     <!-- Bootstrap core JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
