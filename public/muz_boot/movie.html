@@ -17,7 +17,7 @@
     <link href="css/movie.css" rel="stylesheet">
     <!-- Font Awesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    <!--  <style>
+    <!--    <style>
     /*To see rows and columns, please do not remove*/
 
     .row {
@@ -45,32 +45,30 @@
                     <li>
                         <a href="jimmy.html">Jimmy She</a>
                         <div class="badges-container">
-                            <i class="ion-ribbon-b ribbonb "></i>
-                            <i class="ion-ribbon-a ribbon"></i>
-                            <i class="ion-trophy trophy"></i>
+                            <i class="ion-ribbon-b bronze"></i>
+                            <i class="ion-ribbon-a silver"></i>
+                            <i class="ion-trophy gold"></i>
                         </div>
                     </li>
                     <li>
                         <a href="#">Matt Muscarella</a>
                         <div class="badges-container">
-                            <div class="badge badge-pill commentBadge">10</div>
-                            <div class="badge badge-pill commentBadge">20</div>
-                            <div class="badge badge-pill commentBadge">30</div>
+                            <div class="badge badge-pill commentBadge">5</div>
                         </div>
                     </li>
                     <li>
                         <a href="#">Muz Khan</a>
                         <div class="badges-container">
-                            <i class="ion-person tenfriends"></i>
-                            <i class="ion-person-stalker twentyfriends"></i>
-                            <i class="ion-ios-people thirtyfriends"></i>
+                            <i class="ion-person twofriends"></i>
+                            <i class="ion-person-stalker fourfriends"></i>
+                            <i class="ion-ios-people sixfriends"></i>
                         </div>
                     </li>
                     <li>
                         <a href="#">Vishal Panchal</a>
                         <div class="badges-container">
-                            <i class="ion-ribbon-b ribbonb "></i>
-                            <i class="ion-person tenfriends"></i>
+                            <i class="ion-ribbon-b bronze "></i>
+                            <i class="ion-person twofriends"></i>
                             <div class="badge badge-pill commentBadge">30</div>
                         </div>
                     </li>
@@ -94,6 +92,7 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
+                            <!-- margin on this ^^-->
                             <li class="nav-item active">
                                 <div class="sideToggle"><a href="#" class="navbar-brand" id="menu-toggle-in"><i class="fas fa-bars"></i>&nbsp;&nbsp;Friends</a></div>
                             </li>
@@ -117,6 +116,13 @@
                                 <li class="nav-item active">
                                     <a class="nav-link" href="#">Hi Jimmy!</a>
                                 </li>
+                                <!-- navbar-badges-container -->
+                                <div class="navbar-badges-container">
+                                    <i class="ion-ribbon-b bronze"></i>
+                                    <i class="ion-person twofriends"></i>
+                                    <div class="badge badge-pill commentBadge">30</div>
+                                </div>
+                                <!-- END navbar-badges-container -->
                                 <li class="nav-item">
                                     <a class="navbar-brand nav-link" href="#"><i class="fas fa-sign-out-alt"></i></a>
                                 </li>
@@ -173,8 +179,8 @@
                                                 <div class="col-auto text-left">
                                                     <div><small><strong>Jimmy</strong></small>
                                                         <div class="badges-container">
-                                                            <i class="ion-ribbon-b ribbonb "></i>
-                                                            <i class="ion-person tenfriends"></i>
+                                                            <i class="ion-ribbon-b bronze"></i>
+                                                            <i class="ion-person twofriends"></i>
                                                             <div class="badge badge-pill commentBadge">30</div>
                                                         </div>
                                                         <small style="font-size: x-small;" class="bg-light">30.10.2017 </small>
@@ -212,6 +218,21 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Tooltip  -->
+    <script>
+    // $(document).ready(function() {
+    //     $('[data-toggle="tooltip"]').tooltip();
+    // });
+    $('.bronze').tooltip({title: "bronze", delay: {show: 800, hide: 0}}); 
+    $('.silver').tooltip({title: "silver", delay: {show: 800, hide: 0}});
+    $('.gold').tooltip({title: "gold", delay: {show: 800, hide: 0}});
+    $('.commentBadge').tooltip({title: "comments badge", delay: {show: 800, hide: 0}});
+    $('.twofriends').tooltip({title: "friends badge", delay: {show: 800, hide: 0}});
+    $('.fourfriends').tooltip({title: "friends badge", delay: {show: 800, hide: 0}});
+    $('.sixfriends').tooltip({title: "friends badge", delay: {show: 800, hide: 0}});
+
+
+    </script>
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle-in").click(function(e) {
