@@ -15,26 +15,33 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `comments`
---
+-- -----------------------------------------------------
+-- Table `cine4`.`comments`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `cine4`.`comments` (
+  `ComID` INT(255) NOT NULL,
+  `MID` INT(10) NOT NULL,
+  `Content` VARCHAR(500) NULL DEFAULT NULL,
+  `UID` INT(10) NULL DEFAULT NULL,
+  `Createtime` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Amount` INT(10) NULL DEFAULT 0,
+  PRIMARY KEY (`ComID`, `MID`),
+  CONSTRAINT `Comments_Movies_MID`
+    FOREIGN KEY (`MID`)
+    REFERENCES `cine4`.`movies` (`MID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `Comments_Users_UID`
+    FOREIGN KEY (`UID`)
+    REFERENCES `cine4`.`users` (`UID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
-DROP TABLE IF EXISTS `comments`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `comments` (
-  `ComID` int(255) NOT NULL,
-  `MID` int(10) NOT NULL,
-  `Content` varchar(500) DEFAULT NULL,
-  `UID` int(10) DEFAULT NULL,
-  `Createtime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`ComID`,`MID`),
-  KEY `Movies_MID_idx` (`MID`),
-  KEY `Users_UID_idx` (`UID`),
-  CONSTRAINT `Comments_Movies_MID` FOREIGN KEY (`MID`) REFERENCES `movies` (`MID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Comments_Users_UID` FOREIGN KEY (`UID`) REFERENCES `users` (`UID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE INDEX `Movies_MID_idx` ON `cine4`.`comments` (`MID` ASC);
+
+CREATE INDEX `Users_UID_idx` ON `cine4`.`comments` (`UID` ASC);
 
 --
 -- Dumping data for table `comments`
@@ -42,7 +49,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (10579,335777,'We should all go see it',14894,'2018-03-05 20:28:57'),(18951,284054,'New favorite movie',61629,'2018-03-05 20:09:44'),(23175,284054,'Great movie!',89711,'2018-03-05 20:06:28'),(24189,335777,'This looks good!',49608,'2018-03-05 20:28:37'),(31682,354912,'Funny',14894,'2018-03-05 20:27:24'),(40804,343668,'Would see again!',89711,'2018-03-05 20:06:38'),(42633,374720,'Didn\'t like',89711,'2018-03-05 20:07:10'),(47230,335777,'I\'d go again though',89711,'2018-03-05 20:37:09'),(51656,291805,'Another good one',14894,'2018-03-05 20:29:28'),(58545,343668,'I agree',14894,'2018-03-05 20:10:03'),(64424,354912,'New favorite animated movie!',89711,'2018-03-05 20:06:58'),(71967,335777,'I agree',61629,'2018-03-05 20:28:47'),(79252,198663,'Can\'t wait to see this',89711,'2018-03-05 20:29:58'),(80843,284054,'I\'d see it in theatres again',49608,'2018-03-05 20:11:33'),(89076,446354,'Great movie!',89711,'2018-03-05 20:26:52'),(91189,335777,'I already saw it, really good!',89711,'2018-03-05 20:32:09');
+INSERT INTO `comments` VALUES (10579,335777,'We should all go see it',14894,'2018-03-05 20:28:57',default),(18951,284054,'New favorite movie',61629,'2018-03-05 20:09:44',default),(23175,284054,'Great movie!',89711,'2018-03-05 20:06:28',default),(24189,335777,'This looks good!',49608,'2018-03-05 20:28:37',default),(31682,354912,'Funny',14894,'2018-03-05 20:27:24',default),(40804,343668,'Would see again!',89711,'2018-03-05 20:06:38',default),(42633,374720,'Didn\'t like',89711,'2018-03-05 20:07:10',default),(47230,335777,'I\'d go again though',89711,'2018-03-05 20:37:09',default),(51656,291805,'Another good one',14894,'2018-03-05 20:29:28',default),(58545,343668,'I agree',14894,'2018-03-05 20:10:03',default),(64424,354912,'New favorite animated movie!',89711,'2018-03-05 20:06:58',default),(71967,335777,'I agree',61629,'2018-03-05 20:28:47',default),(79252,198663,'Can\'t wait to see this',89711,'2018-03-05 20:29:58',default),(80843,284054,'I\'d see it in theatres again',49608,'2018-03-05 20:11:33',default),(89076,446354,'Great movie!',89711,'2018-03-05 20:26:52',default),(91189,335777,'I already saw it, really good!',89711,'2018-03-05 20:32:09',default);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
