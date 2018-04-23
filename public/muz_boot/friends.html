@@ -10,11 +10,23 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Custom styles for this template -->
     <link href="css/cine4.css" rel="stylesheet">
     <link href="css/list.css" rel="stylesheet">
     <!-- Font Awesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <style>
+    /*To see rows and columns, please do not remove*/
+
+  /*  .row {
+        outline: 5px solid green;
+    }
+
+    .row>div {
+        outline: 2px solid pink;
+    }
+*/    </style>
 </head>
 
 <body>
@@ -34,7 +46,7 @@
                         <a href="#">Matt Muscarella</a>
                     </li>
                     <li>
-                        <a href="#">Muz Khan</a>
+                        <a href="#">Muz Khhan</a>
                     </li>
                     <li>
                         <a href="#">Vishal Panchal</a>
@@ -90,76 +102,232 @@
                     </div>
                 </nav>
                 <!-- Page Content -->
-                <div class="p-3">
-                    <h2>Manage Friends</h2>
-                    
-                        <ul class="list-group" style="max-width: 300px;">
-                            <li class="list-group-item" >
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span><a href="jimmy.html">Jimmy She</a></span>
-                                    <span class="fas fa-minus-circle text-danger ml-2" onclick=""></span>
-                                </div>
-                            </li>
-                           
-                        </ul>
-                    
+                <div class="pageContent p-3">
+                    <div class="container-fluid">
+                        <!-- Main Row -->
+                        <div class="row">
+                            <!-- Manage Friends Col -->
+                            <div class="col-sm-3 border-right border-right">
+                                <h2 class="text-center">Manage Friends</h2>
+                                <ul class="list-group" style="max-width: 300px;">
+                                    <li class="list-group-item">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span><a href="jimmy.html">Jimmy She</a></span>
+                                            <span class="fas fa-minus-circle text-danger ml-2" onclick=""></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- End Manage Friends Col -->
+                            <!-- Badges Col 1 -->
+                            <div class="col-sm-3 border-right">
+                                <div class="row flex-column">
+                                    <!-- Start Badge -->
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-5 p-0 text-center">
+                                                <i class="ion-ribbon-b bronze bigMovieBadge" "></i>
+                                            </div>
+                                            <div class="col p-0 ">
+                                                <h4 class=" ">Bronze</h4>
+                                                <p>Pick and add three movies you want to watch to your list </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Badge -->
+
+
+                                    <!-- Start Badge -->
+                                    <div class="col-12 ">
+                                        <div class="row ">
+                                            <div class="col-5 p-0 text-center ">
+                                                <i class="ion-ribbon-a silver bigMovieBadge "></i>
+                                            </div>
+                                            <div class="col p-0 ">
+                                                <h4 class=" ">Silver</h4>
+                                                <p>Pick and add six movies you want to watch to your list </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Badge -->
+
+                                                                        <!-- Start Badge -->
+                                    <div class="col-12 ">
+                                        <div class="row ">
+                                            <div class="col-5 p-0 text-center ">
+                                                <i class="ion-trophy gold bigMovieBadge " style="font-size: 105px; "></i>
+                                            </div>
+                                            <div class="col p-0 ">
+                                                <h4 class=" ">Gold</h4>
+                                                <p>Pick and add nine movies you want to watch to your list</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Badge -->
+
+
+
+                                </div> 
+                                <!-- End Row flex column -->
+                            </div>
+                            <!-- End Badges Col 1 -->
+
+
+                                                        <!-- Badges Col 2 -->
+                            <div class="col-sm-3 border-right ">
+                                <div class="row flex-column ">
+                                    
+                                    <!-- Start Badge -->
+                                    <div class="col-12 ">
+                                        <div class="row ">
+                                            <div class="col-5 p-0 text-center ">
+                                                <i class="ion-person twofriends bigMovieBadge" style="    position: relative;
+    bottom: 37px;"></i>
+                                            </div>
+                                            <div class="col p-0 ">
+                                                                                <h4 class=" ">Two Friends</h4>
+                                <p>Add two friends to your friends list </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Badge -->
+
+
+                                    <!-- Start Badge -->
+                                    <div class="col-12 ">
+                                        <div class="row ">
+                                            <div class="col-5 p-0 text-center ">
+                                                <i class="ion-person-stalker fourfriends bigMovieBadge " style="position: relative;
+    bottom: 32px;
+"></i>
+
+                                            </div>
+                                            <div class="col p-0 ">
+                                <h4 class=" ">Four Friends</h4>
+                                <p>Add four friends to your friends list </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Badge -->
+
+                                                                        <!-- Start Badge -->
+                                    <div class="col-12 ">
+                                        <div class="row ">
+                                            <div class="col-5 p-0 text-center ">
+                                <i class="ion-ios-people sixfriends bigMovieBadge " style=" position: relative;
+    top: -41px;
+"></i>
+
+                                            </div>
+                                            <div class="col p-0 ">
+                                <h4 class=" ">Six Friends</h4>
+                                <p>Add six friends to your friends list </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Badge -->
+
+
+
+                                </div> 
+                                <!-- End Row flex column -->
+                            </div>
+                            <!-- End Badges Col 2 -->
+
+
+
+
+                                                        <!-- Badges Col 2 -->
+                            <div class="col-sm-3 border-right ">
+                                <div class="row flex-column ">
+                                    
+                                    <!-- Start Badge -->
+                                    <div class="col-12 p-0">
+                                        <div class="row ">
+                                            <div class="col-5 p-0 text-center">
+                                                <div class="badge badge-pill " style="font-size: 34px; color:white; background-color: purple; ">1</div>
+
+
+                                            </div>
+                                            <div class="col p-0" style="    position: relative;
+    right: 15px;
+">
+                                <h4 class=" ">Comment</h4>
+                                <p>Submit a comment on a movie and earn a counter </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Badge -->
+
+
+                                    
+
+
+
+                                </div> 
+                                <!-- End Row flex column -->
+                            </div>
+                            <!-- End Badges Col 2 -->
+                        </div>
+                        <!-- End Main Row -->
+                    </div>
                 </div>
                 <!-- /page content -->
             </div>
             <!-- /main wrapper -->
         </div>
     </div>
-    <footer class="py-3 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Cine4 - IT490 - 2018</p>
+    <footer class="py-3 bg-dark ">
+        <div class="container ">
+            <p class="m-0 text-center text-white ">Cine4 - IT490 - 2018</p>
         </div>
         <!-- /.container -->
     </footer>
     <!-- Bootstrap core JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
     <!-- Menu Toggle Script -->
     <script>
-    $("#menu-toggle-in").click(function(e) {
+    $("#menu-toggle-in ").click(function(e) {
         e.preventDefault();
         var left = $('#LeftColumn');
         var right = $('#RightColumn');
 
-        right.removeClass("col-12");
-        right.addClass("col-xl-10 col-sm-9");
-        left.removeClass("hideLeft");
+        right.removeClass("col-12 ");
+        right.addClass("col-xl-10 col-sm-9 ");
+        left.removeClass("hideLeft ");
         left.addClass("col-xl-2 col-sm-3 ");
-        $(".sideToggle").hide();
+        $(".sideToggle ").hide();
     });
 
-    $("#menu-toggle-out").click(function(e) {
+    $("#menu-toggle-out ").click(function(e) {
         e.preventDefault();
         var left = $('#LeftColumn');
         var right = $('#RightColumn');
 
-        left.removeClass("col-xl-2 col-sm-3");
-        left.addClass("hideLeft");
-        right.removeClass("col-xl-10 col-sm-9");
-        right.addClass("col-12");
-        $(".sideToggle").show();
+        left.removeClass("col-xl-2 col-sm-3 ");
+        left.addClass("hideLeft ");
+        right.removeClass("col-xl-10 col-sm-9 ");
+        right.addClass("col-12 ");
+        $(".sideToggle ").show();
     });
 
     aGrid();
 
     function aList() {
-        var movieList = document.getElementById("movieList");
-        var movieGrid = document.getElementById("gridhere");
+        var movieList = document.getElementById("movieList ");
+        var movieGrid = document.getElementById("gridhere ");
 
-        movieGrid.style.display = "none";
-        movieList.style.display = "block";
+        movieGrid.style.display = "none ";
+        movieList.style.display = "block ";
     }
 
     function aGrid() {
-        var movieList = document.getElementById("movieList");
-        var movieGrid = document.getElementById("gridhere");
-        movieGrid.style.display = "flex";
-        movieList.style.display = "none";
+        var movieList = document.getElementById("movieList ");
+        var movieGrid = document.getElementById("gridhere ");
+        movieGrid.style.display = "flex ";
+        movieList.style.display = "none ";
 
     }
 
