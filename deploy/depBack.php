@@ -14,11 +14,11 @@ function push($v, $n, $target) {
     switch($key[1]) {
 
         }
-        echo('here!!');
+    echo('here!!');
     echo($v + $n + $target);
     }
 
-}
+
 
 function requestProcessor($request)
 {
