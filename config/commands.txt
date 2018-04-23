@@ -1,5 +1,5 @@
 mkdir -p .ssh
-mkdir temp
-cat "/home/cine/test/id_rsa.pub" >> .ssh/authorized_keys
+mkdir pack
+cat "/home/cine/cine4/config/id_rsa.pub" >> .ssh/authorized_keys
 
 
