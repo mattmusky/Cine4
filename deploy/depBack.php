@@ -15,7 +15,7 @@ function push($v, $n, $target) {
 
         }
         echo('here!!');
-    echo($v, $n, $target);
+    echo($v + $n + $target);
     }
 
 }
