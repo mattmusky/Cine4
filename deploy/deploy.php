@@ -51,10 +51,10 @@ $version ="two";
 $target="theee";
   $client             = new rabbitMQClient("rmq/deployMQ.ini", "testServer");
   $request            = array();
-  $req['type'] = "run_script";
-  $req['name'] = $name;
-  $req['ver'] = $version;
-  $req['target'] = $target;
+  $request['type'] = "run_script";
+  $request['name'] = $name;
+  $request['ver'] = $version;
+  $request['target'] = $target;
   $response           = $client->send_request($request);
   if($response) {
         echo "done";
