@@ -1,0 +1,2 @@
+[Service]
+ExecStart=/usr/bin/php /home/cine/cine4/src/dataServer.php
