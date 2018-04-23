@@ -12,7 +12,7 @@ $con   = createconnection();
 
 function create($target, $name)
 {
-
+echo('testHERE');
   $client = new rabbitMQClient("pushMQ.ini","testServer");
               $req=array();
               $req['type'] = "run_script";
