@@ -22,6 +22,7 @@ function push($v, $n, $target) {
 
 function requestProcessor($request)
 {
+  echo("bana");
   switch ($request['type']) {
     case "push":
       return push($request['ver'], $request['name'], $request['target']);

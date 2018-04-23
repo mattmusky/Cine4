@@ -14,12 +14,12 @@ function create($target, $name)
 {
 echo('testHERE');
   $client = new rabbitMQClient("pushMQ.ini","testServer");
-              $req=array();
-              $req['type'] = "run_script";
-              $req['name'] = $name;
-              //$req['ver'] = $version;
-              $req['target'] = $target;
-              $response = $client->send_request($req);
+              $request=array();
+              $request['type'] = "run_script";
+              $request['name'] = $name;
+              //$request['ver'] = $version;
+              $request['target'] = $target;
+              $response = $client->send_request($request);
 }
 
 function deploy($name, $version, $target)
