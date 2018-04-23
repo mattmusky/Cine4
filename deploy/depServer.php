@@ -15,7 +15,7 @@ function create($target, $name)
 echo('testHERE');
   $client = new rabbitMQClient("pushMQ.ini","testServer");
               $request=array();
-              $request['type'] = "run_script";
+              $request['type'] = "push";
               $request['name'] = $name;
               //$request['ver'] = $version;
               $request['target'] = $target;
