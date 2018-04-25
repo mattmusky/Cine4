@@ -6,13 +6,39 @@ require_once('rmq/get_host_info.inc');
 require_once('rmq/rabbitMQLib.inc');
 //include
 require_once('inc/conn.inc');
-$con   = createconnection();
 
 
 
-function create($target, $name)
+
+function create($package, $host)
 {
+
 echo('testHERE');
+
+//exec("sudo cp -r ".$cwd." /tmp/".$genname);
+
+
+
+$con   = createconnection();
+$query = "SELECT	max(V.VersionNum) FROM	Version as V WHERE	V.PackageName = \"$package\"";;
+$sql   = mysqli_query($con, $query);
+$data  = array();
+if ($row = mysqli_fetch_assoc($sql)) {
+  print_r($row);
+}
+else {
+  $version = 1
+  echo(HERE);
+}
+
+
+return "version2 made";
+}
+
+function deploy($name, $version, $target)
+{
+
+
   $client = new rabbitMQClient("pushMQ.ini","testServer");
               $request=array();
               $request['type'] = "push";
@@ -20,10 +46,6 @@ echo('testHERE');
               //$request['ver'] = $version;
               $request['target'] = $target;
               $response = $client->send_request($request);
-}
-
-function deploy($name, $version, $target)
-{
 
 }
 
@@ -48,7 +70,7 @@ function requestProcessor($request)
   switch ($request['type'])
   {
     case "create":
-        return create($request['target'], $request['name']);
+        return create($request['package'], $request['host']);
     case "deploy":
         return deploy($request['name'], $request['version'], $request['target']);
     case "deprecate":
