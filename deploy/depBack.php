@@ -3,7 +3,7 @@
 //rmq include
 require_once('rmq/path.inc');
 require_once('rmq/get_host_info.inc');
-require_once('rmq/rabbitMQLib.inc');
+require_once('rmq/rabbitMQPush.inc');
 
 function push($v, $n, $target) {
     if($target !== gethostname()) {
@@ -23,6 +23,7 @@ function push($v, $n, $target) {
 function requestProcessor($request)
 {
   echo("bana");
+  echo(gethostname());
   switch ($request['type']) {
     case "push":
       return push($request['ver'], $request['name'], $request['target']);
