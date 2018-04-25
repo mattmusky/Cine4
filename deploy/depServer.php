@@ -27,7 +27,7 @@ if ($row = mysqli_fetch_assoc($sql)) {
   print_r($row);
 }
 else {
-  $version = 1
+  $version = 1;
   echo(HERE);
 }
 
