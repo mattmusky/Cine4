@@ -35,11 +35,11 @@ try {
   $server->process_requests('requestProcessor');
 }
 
-catch(Exception $e) {
+catch(\Exception $e) {
   echo 'conn2';
   $server = new rabbitMQServer("apiMQ.ini", gethostname().'-2');
   $server->process_requests('requestProcessor');
 }
-
+echo'done';
 exit();
 ?>
