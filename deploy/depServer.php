@@ -7,152 +7,143 @@ require_once('rmq/rabbitMQLib.inc');
 //include
 require_once('inc/conn.inc');
 
-
-
-
 function create($package, $host)
 {
+  $con   = createconnection();
+  $query = "SELECT	max(V.VersionNum) FROM	Version as V WHERE	V.PackageName = \"$package\"";
+  $sql  = mysqli_query($con, $query);
+  $data = array();
+  if ($row = mysqli_fetch_assoc($sql)) {
+    $version = $row['max(V.VersionNum)'] + 1;
 
-//echo('testHERE');
-
-//exec("sudo cp -r ".$cwd." /tmp/".$genname);
-
-$con   = createconnection();
-$query = "SELECT	max(V.VersionNum) FROM	Version as V WHERE	V.PackageName = \"$package\"";;
-$sql   = mysqli_query($con, $query);
-$data  = array();
-if ($row = mysqli_fetch_assoc($sql)) {
-  $version = $row['max(V.VersionNum)']+1;
-  echo 'version:';
-  echo $version;
-}
-
-exec("scp -o StrictHostKeyChecking=no -r cine@".$host.":/home/cine/pack/box.tar /home/cine/packages/".$package."-".$version.".tar");
-
-
-$sql = "INSERT INTO	Version (VersionID, VersionNum, Deprecate, PackageName) VALUES	(null, '" . $version . "', default, '" . $package. "')";
-
-if ($con->query($sql) === TRUE) {
-  echo "DONENE";
-}
-
-
-
-return "version2 made";
+    print "\n"; echo 'version:';
+    print "\n"; echo $version;
+  }
+  print "\n"; echo ("scp -o StrictHostKeyChecking=no -r cine@" . $host . ":/home/cine/pack/box.tar /home/cine/packages/" . $package . "-" . $version . ".tar");
+  $sql = "INSERT INTO	Version (VersionID, VersionNum, Deprecate, PackageName) VALUES	(null, '" . $version . "', default, '" . $package . "')";
+  if ($con->query($sql) === TRUE) {
+    print "\n"; echo "DB Insert";
+  }
+  return $package . "version " . $version . " created";
 }
 
 function deploy($package, $version, $target)
 {
-
-
   $con   = createconnection();
   $query = "SELECT * FROM `Version` WHERE `PackageName` = \"$package\" and `VersionNum` = \"$version\"";
   $sql   = mysqli_query($con, $query);
   $data  = array();
   if ($row = mysqli_fetch_assoc($sql)) {
-
-
     $vid = $row['VersionID'];
     $dep = $row['Deprecate'];
-    echo 'vid:';
-    echo $vid;
-    echo 'dep:';
-    echo $dep;
-
-    switch($package) {
-        case("feweb"):
-        case("fephp"): {
-            $mach='fe';
-            break;
-        }
-        case("db"):
-        case("bephp"): {
-            $mach='be';
-            break;
-        }
-        case("apiphp"): {
-            $mach='dmz';
-            break;
-        }
-
-        default: {
-            return $package . " is not a valid package";
-
-        }
+    print "\n"; echo 'vid:';
+    print "\n"; echo $vid;
+    print "\n"; echo 'dep:';
+    print "\n"; echo $dep;
+    switch ($package) {
+      case ("feweb"):
+      case ("fephp"): {
+        $mach = 'fe';
+        break;
+      }
+      case ("db"):
+      case ("bephp"): {
+        $mach = 'be';
+        break;
+      }
+      case ("apiphp"): {
+        $mach = 'dmz';
+        break;
+      }
+      default: {
+        return $package . " is not a valid package";
+      }
     }
-
-    if ($dep=='Y'){
+    if ($dep == 'Y') {
       return "package is depreciated";
     }
+    if ($target == 'prod') {
+      print "\n"; echo ("scp -o StrictHostKeyChecking=no -r /home/cine/packages/" . $package . "-" . $version . ".tar cine@490-PROD-" . $mach . ":/home/cine/pack/box.tar");
+      print "\n"; echo ("scp -o StrictHostKeyChecking=no -r /home/cine/packages/" . $package . "-" . $version . ".tar cine@490-PROD-" . $mach . "-HSB:/home/cine/pack/box.tar");
+      $q1 = "SET @ip = (SELECT m.hostip FROM Machine as m WHERE m.hostname = '490-prod-" . $mach . "');";
+    }
+    if ($target == 'qa') {
+      print "\n"; echo ("scp -o StrictHostKeyChecking=no -r /home/cine/packages/" . $package . "-" . $version . ".tar cine@490-QA-" . $mach . ":/home/cine/pack/box.tar");
+      $q1 = "SET @ip = (SELECT m.hostip FROM Machine as m WHERE m.hostname = '490-qa-" . $mach . "');";
+    }
+    $con                = createconnection();
+    $q2                 = "Update Machinehaspackage as H Set VersionID = " . $vid . " Where H.HostIP = @ip and H.PackageName = '" . $package . "'";
+    $sql1               = mysqli_query($con, $q1);
+    $sql2               = mysqli_query($con, $q2);
 
-
-
-if ($target == 'prod') {
-
-
-echo("scp -o StrictHostKeyChecking=no -r /home/cine/packages/".$package."-".$version.".tar cine@490-PROD-".$mach.":/home/cine/pack/box.tar");
-
-
-}
-
-
-  $client = new rabbitMQClient("pushMQ.ini","testServer");
-              $request=array();
-              $request['type'] = "push";
-              $request['package'] = $package;
-              $request['target'] = $target;
-              $request['mach'] = $mach;
-              $response = $client->send_request($request);
-
-
-
-
-
-  }
-  else {
+    $client             = new rabbitMQClient("pushMQ.ini", "testServer");
+    $request            = array();
+    $request['type']    = "push";
+    $request['package'] = $package;
+    $request['target']  = $target;
+    $request['mach']    = $mach;
+    $response           = $client->send_request($request);
+    if ($response) {
+      print "\n"; echo ($response);
+      return $response;
+    }
+  } else {
     return "package does not exist";
   }
-return "complete!";
-
-
-
-
 }
 
-function deprecate($name, $version)
+function depreciate($package, $version)
 {
-
+  $con = createconnection();
+  print "\n"; echo ("cp /home/cine/packages/" . $package . "-" . $version . ".tar /home/cine/packages/dep/");
+  $sql = "UPDATE	Version as V SET	Deprecate = \"Y\" WHERE	V.PackageName = '" . $package . "' AND V.VersionNum = '" . $version . "'";
+  if ($con->query($sql) === TRUE) {
+    print "\n";
+    return $package." depreciated";
+  }
 }
 
-function rollback($name, $version, $target)
+function rollback($package, $target)
 {
-
+  $con   = createconnection();
+  $query = "SELECT	max(V.VersionNum) FROM	Version as V WHERE	V.PackageName = '" . $package . "' AND V.Deprecate = 'N'";
+  print "\n"; echo $query; print "\n";
+  $sql   = mysqli_query($con, $query);
+  $data  = array();
+  if ($row = mysqli_fetch_assoc($sql)) {
+    $version = $row['max(V.VersionNum)'] + 1;
+    print "\n"; echo 'version:';
+    print "\n"; echo $version;
+  }
+  if (deploy($package, $version, $target)) {
+    return $target . " rolledback to " . $package . " version " . $version;
+  } else {
+    return "rollback failed";
+  }
 }
-
 function requestProcessor($request)
 {
-  echo "received request".PHP_EOL;
+  print "\n"; echo "received request" . PHP_EOL;
   //var_dump($request);
-  if(!isset($request['type']))
-  {
+  if (!isset($request['type'])) {
     return "ERROR: unsupported message type";
   }
-  switch ($request['type'])
-  {
+  switch ($request['type']) {
     case "create":
-        return create($request['package'], $request['host']);
+      return create($request['package'], $request['host']);
     case "deploy":
-        return deploy($request['package'], $request['version'], $request['target']);
-    case "deprecate":
-        return deprecate($request['package'], $request['version']);
+      return deploy($request['package'], $request['version'], $request['target']);
+    case "depreciate":
+      return depreciate($request['package'], $request['version']);
     case "rollback":
-        return rollback($request['package'], $request['version'], $request['target']);
+      return rollback($request['package'], $request['target']);
   }
-  return array("returnCode" => '0', 'message'=>"Server received request and processed");
+  return array(
+    "returnCode" => '0',
+    'message' => "Server received request and processed"
+  );
 }
-
-$server = new rabbitMQServer("deployMQ.ini","testServer");
-
+$server = new rabbitMQServer("deployMQ.ini", "testServer");
 $server->process_requests('requestProcessor');
 exit();
 ?>
