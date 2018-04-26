@@ -10,11 +10,11 @@ require_once('rmq/rabbitMQLib.inc');
 *       create -
 *           package
 *       deploy
-*           name, version, target
+*           package, version, target
 *       deprecate
-*           name, version
+*           package, version
 *       rollback
-*           name, version, target
+*           package, version, target
 *
 */
 
@@ -46,7 +46,7 @@ switch($args[0]) {
 function create($args) {
   $package = $args[1];
   $host = gethostname();
-
+  $quit = false;
   switch($package) {
       case("feweb"): {
           exec("tar -cf /home/cine/pack/box.tar -P /home/cine/cine4/public --exclude='php'");
@@ -74,7 +74,7 @@ if (!$quit) {
   $request['host'] = gethostname();
   $response           = $client->send_request($request);
   if($response) {
-        echo "done";
+        echo $response;
     }
 }
 
@@ -84,6 +84,22 @@ if (!$quit) {
 }
 
 function deploy($args) {
+
+
+
+  $client             = new rabbitMQClient("rmq/deployMQ.ini", "testServer");
+  $request            = array();
+  $request['type'] = "deploy";
+  $request['package'] = $args[1];
+  $request['version'] = $args[2];
+  $request['target'] = $args[3];
+  $response           = $client->send_request($request);
+  if($response) {
+        echo $response;
+    }
+
+
+
 
 }
 
