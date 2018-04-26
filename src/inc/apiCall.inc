@@ -5,7 +5,7 @@ require_once('rmq/get_host_info.inc');
 require_once('rmq/rabbitMQLib.inc');
 function apiCall($id)
 {
-  $client          = new rabbitMQClient("rmq/apiMQ.ini", "testServer");
+  $client          = new rabbitMQClient("apiMQ.ini", "testServer");
   $request         = array();
   $request['type'] = "movieCall";
   $request['id']   = $id;

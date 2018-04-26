@@ -28,7 +28,7 @@ function requestProcessor($request)
   }
 }
 //function end
-$server = new rabbitMQServer("rmq/apiMQ.ini", "testServer");
+$server = new rabbitMQServer("apiMQ.ini", "testServer");
 $server->process_requests('requestProcessor');
 exit();
 ?>

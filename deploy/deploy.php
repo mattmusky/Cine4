@@ -67,7 +67,7 @@ function create($args) {
 
 if (!$quit) {
 
-  $client             = new rabbitMQClient("rmq/deployMQ.ini", "testServer");
+  $client             = new rabbitMQClient("deployMQ.ini", "testServer");
   $request            = array();
   $request['type'] = "create";
   $request['package'] = $package;
@@ -87,7 +87,7 @@ function deploy($args) {
 
 
 
-  $client             = new rabbitMQClient("rmq/deployMQ.ini", "testServer");
+  $client             = new rabbitMQClient("deployMQ.ini", "testServer");
   $request            = array();
   $request['type'] = "deploy";
   $request['package'] = $args[1];

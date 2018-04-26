@@ -3,3 +3,12 @@ mkdir pack
 cat "/home/cine/cine4/config/id_rsa.pub" >> .ssh/authorized_keys
 
 sudo ln -s /home/cine/cine4/config/services/cine4_push.service /etc/systemd/system
+
+
+
+tar -cf /home/cine/pack/box.tar -P /home/cine/cine4/public --exclude='php'
+
+
+
+scp -o StrictHostKeyChecking=no -r /home/cine/packages/feweb-4.tar cine@490-PROD-FE:/home/cine/pack
+

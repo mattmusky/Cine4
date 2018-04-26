@@ -2,7 +2,7 @@
 require_once('rmq/path.inc');
 require_once('rmq/get_host_info.inc');
 require_once('rmq/rabbitMQLib.inc');
-$client = new rabbitMQClient("rmq/apiMQ.ini", "testServer");
+$client = new rabbitMQClient("apiMQ.ini", "testServer");
 // intrepret POST MESSAGE
 if (!isset($_POST)) {
   $msg = "NO POST MESSAGE SET";

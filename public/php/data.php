@@ -3,7 +3,7 @@ require_once('rmq/path.inc');
 require_once('rmq/get_host_info.inc');
 require_once('rmq/rabbitMQLib.inc');
 session_start();
-$client = new rabbitMQClient("rmq/dataMQ.ini", "testServer");
+$client = new rabbitMQClient("dataMQ.ini", "testServer");
 // intrepret POST MESSAGE
 if (!isset($_POST)) {
   $msg = "NO POST MESSAGE SET";

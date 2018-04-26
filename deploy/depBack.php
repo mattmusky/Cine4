@@ -30,7 +30,7 @@ function requestProcessor($request)
 }
 
 //function end
-$server = new rabbitMQServer("rmq/pushMQ.ini", "testServer");
+$server = new rabbitMQServer("pushMQ.ini", "testServer");
 $server->process_requests('requestProcessor');
 exit();
 
