@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Custom styles for this template -->
     <link href="css/cine4.css" rel="stylesheet">
     <link href="css/list.css" rel="stylesheet">
@@ -86,15 +87,142 @@
             </div>
           </nav>
           <!-- Page Content -->
-          <div class="p-3">
-            <h2>Manage Friends</h2>
-            <ul id='friendlist' class="list-group" style="max-width: 300px;">
-            </ul>
-            <br>
-            <h2>Add Friends</h2>
-            <ul id='userlist' class="list-group" style="max-width: 300px;">
-            </ul>
+          <div class="pageContent p-3">
+             <div class="container-fluid">
+                <!-- Main Row -->
+                <div class="row">
+                   <!-- Manage Friends Col -->
+
+
+
+                     <div class="col-sm-3 border-right border-right">
+                     <h2>Manage Friends</h2>
+                     <ul id='friendlist' class="list-group" style="max-width: 300px;">
+                     </ul>
+                     <br>
+                     <h2>Add Friends</h2>
+                     <ul id='userlist' class="list-group" style="max-width: 300px;">
+                     </ul>
+                   </div>
+
+                   <!-- End Manage Friends Col -->
+                   <!-- Badges Col 1 -->
+                   <div class="col-sm-3 border-right">
+                      <div class="row flex-column">
+                         <!-- Start Badge -->
+                         <div class="col-12">
+                            <div class="row">
+                               <div class="col-5 p-0 text-center">
+                                  <i class="ion-ribbon-b bronze bigMovieBadge"></i>
+                               </div>
+                               <div class="col p-0 ">
+                                  <h4 class=" ">Bronze</h4>
+                                  <p>Pick and add three movies you want to watch to your list </p>
+                               </div>
+                            </div>
+                         </div>
+                         <!-- End Badge -->
+                         <!-- Start Badge -->
+                         <div class="col-12 ">
+                            <div class="row ">
+                               <div class="col-5 p-0 text-center ">
+                                  <i class="ion-ribbon-a silver bigMovieBadge "></i>
+                               </div>
+                               <div class="col p-0 ">
+                                  <h4 class=" ">Silver</h4>
+                                  <p>Pick and add six movies you want to watch to your list </p>
+                               </div>
+                            </div>
+                         </div>
+                         <!-- End Badge -->
+                         <!-- Start Badge -->
+                         <div class="col-12 ">
+                            <div class="row ">
+                               <div class="col-5 p-0 text-center ">
+                                  <i class="ion-trophy gold bigMovieBadge " style="font-size: 105px; "></i>
+                               </div>
+                               <div class="col p-0 ">
+                                  <h4 class=" ">Gold</h4>
+                                  <p>Pick and add nine movies you want to watch to your list</p>
+                               </div>
+                            </div>
+                         </div>
+                         <!-- End Badge -->
+                      </div>
+                      <!-- End Row flex column -->
+                   </div>
+                   <!-- End Badges Col 1 -->
+                   <!-- Badges Col 2 -->
+                   <div class="col-sm-3 border-right ">
+                      <div class="row flex-column ">
+                         <!-- Start Badge -->
+                         <div class="col-12 ">
+                            <div class="row ">
+                               <div class="col-5 p-0 text-center ">
+                                  <i class="ion-person twofriends bigMovieBadge " style=" position: relative; bottom: 37px; "></i>
+                               </div>
+                               <div class="col p-0 ">
+                                  <h4 class=" ">Two Friends</h4>
+                                  <p>Add two friends to your friends list </p>
+                               </div>
+                            </div>
+                         </div>
+                         <!-- End Badge -->
+                         <!-- Start Badge -->
+                         <div class="col-12 ">
+                            <div class="row ">
+                               <div class="col-5 p-0 text-center ">
+                                  <i class="ion-person-stalker fourfriends bigMovieBadge " style="position: relative; bottom: 32px; "></i>
+                               </div>
+                               <div class="col p-0 ">
+                                  <h4 class=" ">Four Friends</h4>
+                                  <p>Add four friends to your friends list </p>
+                               </div>
+                            </div>
+                         </div>
+                         <!-- End Badge -->
+                         <!-- Start Badge -->
+                         <div class="col-12 ">
+                            <div class="row ">
+                               <div class="col-5 p-0 text-center ">
+                                  <i class="ion-ios-people sixfriends bigMovieBadge " style=" position: relative; top: -41px; "></i>
+                               </div>
+                               <div class="col p-0 ">
+                                  <h4 class=" ">Six Friends</h4>
+                                  <p>Add six friends to your friends list </p>
+                               </div>
+                            </div>
+                         </div>
+                         <!-- End Badge -->
+                      </div>
+                      <!-- End Row flex column -->
+                   </div>
+                   <!-- End Badges Col 2 -->
+                   <!-- Badges Col 2 -->
+                   <div class="col-sm-3 border-right ">
+                      <div class="row flex-column ">
+                         <!-- Start Badge -->
+                         <div class="col-12 p-0 ">
+                            <div class="row ">
+                               <div class="col-5 p-0 text-center ">
+                                  <div class="badge badge-pill " style="font-size: 34px; color:white; background-color: purple; ">1</div>
+                               </div>
+                               <div class="col p-0 " style=" position: relative; right: 15px; ">
+                                  <h4 class=" ">Comment</h4>
+                                  <p>Submit a comment on a movie and earn a counter </p>
+                               </div>
+                            </div>
+                         </div>
+                         <!-- End Badge -->
+                      </div>
+                      <!-- End Row flex column -->
+                   </div>
+                   <!-- End Badges Col 2 -->
+                </div>
+                <!-- End Main Row -->
+             </div>
           </div>
+
           <!-- /page content -->
         </div>
         <!-- /main wrapper -->

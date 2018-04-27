@@ -33,10 +33,18 @@ switch ($postrequest["type"]) {
     $request['comment'] = $postrequest["comment"];
     $response           = $client->send_request($request);
     break;
+  case "voteSub": #Submit new vote
+    $request            = array();
+    $request['type'] = $postrequest["type"];
+    $request['cid']    = $postrequest["cid"];
+    $request['dir']      = $postrequest["dir"];
+    $response           = $client->send_request($request);
+    break;
   case "commentFind": #Get all comments for movie
     $request         = array();
     $request['type'] = $postrequest["type"];
     $request['id']   = $postrequest["id"];
+    $request['sort'] = $postrequest["sort"];
     $response        = $client->send_request($request);
     break;
   case "addList": #Add movie to user list
@@ -93,6 +101,18 @@ switch ($postrequest["type"]) {
     $request         = array();
     $request['type'] = $postrequest["type"];
     $request['id']   = $_SESSION["id"];
+    $response        = $client->send_request($request);
+    break;
+  case "smart": #get smart movies
+    $request         = array();
+    $request['type'] = $postrequest["type"];
+    $request['id']   = $_SESSION["id"];
+    $response        = $client->send_request($request);
+    break;
+  case "getBadges": #get badges
+    $request         = array();
+    $request['type'] = $postrequest["type"];
+    $request['uid']   = $_SESSION["uid"];
     $response        = $client->send_request($request);
     break;
 }

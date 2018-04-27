@@ -9,6 +9,7 @@ require_once('inc/logSend.inc');
 require_once('api/discover.inc');
 require_once('api/movie.inc');
 require_once('api/search.inc');
+require_once('api/smart.inc');
 
 function requestProcessor($request)
 {
@@ -24,6 +25,10 @@ function requestProcessor($request)
     case "searchAPI": #movie search request
       //echo "-searchAPI-" . PHP_EOL;
       return searchAPI($request['movie']);
+      break;
+    case "smartCall": #smart search request
+      //echo "-smartCall-" . PHP_EOL;
+      return smartCall($request['g1'],$request['g2']);
       break;
   }
 }

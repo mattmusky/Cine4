@@ -56,6 +56,15 @@ function movieBuilder(json) {
 
       <h5 class="mt-5">Comments</h5>
       <hr>
+      <!-- Sort By Drop Down -->
+                                    <div class="form-inline form-control-sm position-relative" style="top:-10px; left: -10px;">
+                                        <select id="sortSelect" onchange="commentFind()" class="custom-select mr-4 ml-1 w-25">
+                                            <option value="1" selected="">Sort By</option>
+                                            <option value="1">Top</option>
+                                            <option value="2">New</option>
+                                        </select>
+                                    </div>
+                                    <!-- End Sort By Drop Down -->
       <div id="commentshere"></div>
       `;
     divhere.innerHTML += newhtml;
@@ -78,9 +87,19 @@ function submitComment() {
     return 0;
 }
 
+//vote on a comment
+function submitVote(cid,dir) {
+
+    var message = "type=voteSub&cid=" + cid + "&dir=" + dir;
+    sendMovData(message, commentFind);
+    return 0;
+}
+
 //request for comments on movie
 function commentFind() {
-    var message = "type=commentFind&id=" + movieid;
+  var e = document.getElementById("sortSelect");
+  var sort = e.options[e.selectedIndex].value;
+    var message = "type=commentFind&id=" + movieid + "&sort=" + sort;
     sendMovData(message, commentDisplay);
     return 0;
 }
@@ -92,12 +111,32 @@ function commentDisplay(comments) {
     divhere.innerHTML = '';
     for (i = 0; i < comments.length; i++) {
         var newhtml = `
-        <div class="row comment">
-            <div class="col-6  p-3">
-                <div class="head" style="margin-bottom: 10px;"><small><strong class="mr-2"><a href="profile.php?id=${comments[i].UID}">${comments[i].First} ${comments[i].Last}</a></strong> ${comments[i].CreateTime} </small></div>
-                <p class="small">${comments[i].Content}</p>
+        <div class="row">
+    <div class="col-auto">
+        <div class="row flex-column">
+            <!-- Upvote/ Downvote-->
+            <div class="col-12 p-0 text-right"><a class="commentbtn" onclick="submitVote(${comments[i].ComID},'up');"><span class="fas fa-chevron-circle-up" style="position: relative;bottom: -3px;"></span></a></div>
+            <div class="col-12 p-0 text-right"><a class="commentbtn" onclick="submitVote(${comments[i].ComID},'down');"><span class="fas fa-chevron-circle-down" style="position: relative;top: -3px;"></span></a></div>
+            <!-- End Upvote/ Downvote-->
+        </div>
+    </div>
+    <div class="col">
+        <div class="row flex-column align-self-start">
+            <!-- Poster/User info(User/Date) -->
+            <div class="col-auto text-left">
+                <div><small><strong><a href="profile.php?id=${comments[i].UID}">${comments[i].First} ${comments[i].Last}</a></strong></small>
+                    <small style="font-size: x-small;" class="bg-light"> ${comments[i].CreateTime} </small>
+                    <small style="font-size: x-small;" class="bg-light"> ${comments[i].Amount} points</small>
+                </div>
+            </div>
+            <!-- End Poster/User info -->
+            <!-- Actual Comment -->
+            <div class="col-auto text-left">
+                <p><small>${comments[i].Content}</small> </p>
             </div>
         </div>
+    </div>
+</div>
         `;
         divhere.innerHTML += newhtml;
     }

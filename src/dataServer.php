@@ -23,11 +23,15 @@ function requestProcessor($request)
       break;
     case "commentFind": #Get all comments for movie
       //echo "-commmentfind-" . PHP_EOL;
-      return commentFind($request['id']);
+      return commentFind($request['id'], $request['sort']);
       break;
     case "commentSub": #Submit new comment
       //echo "-commentsub-" . PHP_EOL;
       return commentSub($request['id'], $request['user'], $request['comment']);
+      break;
+    case "voteSub": #Submit new vote
+      //echo "-votesub-" . PHP_EOL;
+      return voteSub($request['cid'], $request['dir']);
       break;
     case "addList": #Add movie to user list
       //echo "-addList-" . PHP_EOL;
@@ -60,6 +64,14 @@ function requestProcessor($request)
     case "getRec": #get recommended movies
       //echo "-getRec-" . PHP_EOL;
       return getRec($request['id']);
+      break;
+    case "smart": #get smart movies
+      //echo "-getSm-" . PHP_EOL;
+      return smart($request['id']);
+      break;
+    case "getBadges": #get smart movies
+      //echo "-getSm-" . PHP_EOL;
+      return getBadges($request['uid']);
       break;
   }
 }

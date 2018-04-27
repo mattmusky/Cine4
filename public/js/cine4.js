@@ -35,12 +35,13 @@ function friendBuilder(json) {
     var divhere = document.getElementById('friendhere');
     divhere.innerHTML = '';
     for (i = 0; i < json.length; i++) {
+      var badges = getBadges(json[i].uid);
         var newhtml = `
         <li>
             <a href="profile.php?id=${json[i].uid}">${json[i].FIRST} ${json[i].LAST}</a>
         </li>
         `;
-        divhere.innerHTML += newhtml;
+        divhere.innerHTML += badges;
     }
 }
 
@@ -50,6 +51,7 @@ function submitFriendList() {
     sendData(message, friendBuilder);
     return 0;
 }
+
 
 //send message to php
 function sendData(message, retmethod) {
@@ -66,4 +68,30 @@ function sendData(message, retmethod) {
         }
     }
     request.send(message);
+}
+var done;
+function getBadges(uid) {
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "php/data.php", true);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.onreadystatechange = function() {
+        if ((this.readyState == 4) && (this.status == 200)) {
+
+            done = calcBadges(this.responseText);
+return(done);
+        }
+    }
+    request.send("type=getBadges&uid=" + uid);
+    alert(done);
+
+}
+
+function calcBadges(data) {
+var json = JSON.parse(data);
+var newhtml = `
+HERE${json[0]}
+`;
+return (newhtml);
+
 }

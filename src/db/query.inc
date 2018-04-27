@@ -101,7 +101,7 @@ function commentSub($id, $user, $comment)
   $con       = createconnection();
   $comment   = mysqli_real_escape_string($con, $comment);
   $comid     = rand(10000, 99999);
-  $insertsql = "INSERT INTO comments (`ComID`, `MID`, `Content`, `UID`, `Createtime`) VALUES ( '" . $comid . "','" . $id . "','" . $comment . "','" . $user . "', CURRENT_TIMESTAMP )";
+  $insertsql = "INSERT INTO comments (`ComID`, `MID`, `Content`, `UID`, `Createtime`, `Amount`) VALUES ( '" . $comid . "','" . $id . "','" . $comment . "','" . $user . "', CURRENT_TIMESTAMP , 1 )";
   if ($con->query($insertsql) === TRUE) {
     //echo "commentinsert";
   } else {
@@ -109,11 +109,35 @@ function commentSub($id, $user, $comment)
   }
 }
 
+//insert a movie comment vote
+function voteSub($cid, $dir)
+{
+  $con       = createconnection();
+  if ($dir=='up') {
+    $sql = "UPDATE	comments SET	Amount = Amount+1 WHERE	comments.ComID = " . $cid;
+  }
+  else {
+    $sql = "UPDATE	comments SET	Amount = Amount-1 WHERE	comments.ComID = " . $cid;
+  }
+
+  if ($con->query($sql) === TRUE) {
+    //echo "voted";
+  } else {
+    if (mysqli_error($con)) { errorSend("Vote Sub", 3, "SQL Error: " . mysqli_error($con) . " | " . $sql); }
+  }
+}
+
 //get all a movies comments
-function commentFind($id)
+function commentFind($id, $sort)
 {
   $con   = createconnection();
-  $query = "SELECT C.Content, C.CreateTime, U.First, U.Last, U.UID FROM comments as C INNER JOIN users as U ON C.UID = U.UID WHERE C.MID = " . $id . " ORDER BY C.CreateTime DESC";
+  if ($sort==1) {
+    $sort = 'C.Amount';
+  }
+  else {
+    $sort = 'C.CreateTime';
+  }
+  $query = "SELECT C.Content, C.CreateTime, C.ComID, C.Amount, U.First, U.Last, U.UID FROM comments as C INNER JOIN users as U ON C.UID = U.UID WHERE C.MID = " . $id . " ORDER BY ".$sort." DESC";
   $sql   = mysqli_query($con, $query);
   if (mysqli_error($con)) { errorSend("Comment Find", 3, "SQL Error: " . mysqli_error($con) . " | " . $query); }
   $data  = array();
@@ -267,4 +291,30 @@ function getRec($id)
   //print_r($data);
   return json_encode($data);
 }
+
+function smart($uid)
+{
+  $con   = createconnection();
+  $query = "SELECT	count(MG.GID) as Genre_count, MG.GID FROM	`usersfavormovies` as M, movieshasgenre as MG, movies as Ms WHERE M.UID = " . $uid . " And	M.MID = Ms.MID And Ms.MID = MG.MID GROUP BY MG.GID HAVING Genre_count > 1 ORDER BY Genre_count DESC Limit 2";
+  $sql   = mysqli_query($con, $query);
+  if (mysqli_error($con)) { errorSend("Smart Suggestions", 3, "SQL Error: " . mysqli_error($con) . " | " . $query); }
+  $data  = array();
+  while ($row = mysqli_fetch_assoc($sql)) {
+    $data[] = $row;
+  }
+  $g1 = $data[0]['GID'];
+  $g2 = $data[1]['GID'];
+  return smartCall($g1,$g2);
+}
+
+function getBadges($uid)
+{
+  echo 'here';
+  $data  = array();
+  $data[0]=2;
+  $data[1]=4;
+  $data[2]=6;
+  return json_encode($data);
+}
+
 ?>
