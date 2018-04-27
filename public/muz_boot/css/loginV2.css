@@ -15,7 +15,7 @@ body {
   -webkit-box-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  justify-content: end;
+  justify-content: center;
   padding-top: 40px;
   padding-bottom: 40px;
 }
