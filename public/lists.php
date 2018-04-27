@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="img/favicon.png">
     <title>Cine4</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
@@ -60,13 +61,16 @@
                   <a class="nav-link" href="discover.php">Discover</a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="lists.php">My Lists</a>
+                  <a class="nav-link" href="lists.php">My Movies</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="recommender.php">Recommender</a>
+                  <a class="nav-link" href="smart.php">Smart Suggestions</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="friends.php">Manage Friends</a>
+                  <a class="nav-link" href="recommender.php">Our List</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="friends.php">Friends & Badges</a>
                 </li>
               </ul>
               <div class="my-2 my-lg-0">

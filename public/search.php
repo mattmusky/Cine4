@@ -59,13 +59,16 @@
                   <a class="nav-link" href="discover.php">Discover</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="lists.php">My Lists</a>
+                  <a class="nav-link" href="lists.php">My Movies</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="recommender.php">Recommender</a>
+                  <a class="nav-link" href="smart.php">Smart Suggestions</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="friends.php">Manage Friends</a>
+                  <a class="nav-link" href="recommender.php">Our List</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="friends.php">Friends & Badges</a>
                 </li>
               </ul>
               <div class="my-2 my-lg-0">
