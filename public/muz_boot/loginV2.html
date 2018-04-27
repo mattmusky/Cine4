@@ -16,7 +16,7 @@
    </head>
    <body>
 
-         <div class="card text-center bg-secondary">
+        <div class="card text-center bg-secondary">
             <div class="card-body" style="">
                <div class="form-signin text-center">
                   <h1 style="margin-top:-10px;">
@@ -55,19 +55,19 @@
                            placeholder="Last">
                          <input type="email" class="finput form-control" id="email1"
                            placeholder="Email">
-                         <input type="text" class="finput form-control" id="user2"
+                         <input type="text" class="finput form-control" id="username"
                            placeholder="Username" required onkeyup="userLength()">
                             <div id="usernameError" class="errorMessages" ></div>
 
 
 
-                         <input type="password" class="finput form-control" id="pass2"
+                         <input type="password" class="finput form-control" id="password"
                            placeholder="Password">
-                         <input type="password" class="finput form-control" id="pass3"
+                         <input type="password" class="finput form-control" id="confirmPassword"
                            placeholder="Confirm Password" onkeyup="passwordCheck()" required>
                                        <div id="passwordError" class="errorMessages"></div>
                      </div>
-                     <button type="button" class="btn btn-outline-warning" onclick="submitReg()">SUBMIT</button>
+                     <button type="button" class="btn btn-outline-warning" onclick="submitRegCheck()">SUBMIT</button>
                   </form>
 
                   <br>
@@ -105,8 +105,8 @@
 
 function passwordCheck() {
       console.log("called passwordcheck");
-      var password = document.getElementById("pass2").value;
-      var confirmPassword = document.getElementById("pass3").value;
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirmPassword").value;
       var passwordError = document.getElementById('passwordError');
       if (password != confirmPassword) {
         passwordError.innerHTML = "Passwords Do Not Match!";
@@ -119,7 +119,7 @@ function passwordCheck() {
 
 
 function userLength() {
-      var username = document.getElementById("user2").value;
+      var username = document.getElementById("username").value;
       var minlength = 5;
       var maxlength = 12;
       if (username.length < minlength || username.length > maxlength) {
@@ -132,7 +132,25 @@ function userLength() {
       }
     }
 
+ function validateForm() {
+      if (userLength() && passwordCheck()) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    
 
+function submitRegCheck() {
+      var isValid = validateForm();
+      if (isValid) {
+        submitReg();
+        //return true;
+      } else {
+        //dont do AJAX
+        //return false;
+      }
+    }
 
 
 
@@ -141,9 +159,9 @@ function userLength() {
              var first = document.getElementById("first1").value;
              var last = document.getElementById("last1").value;
              var email = document.getElementById("email1").value;
-             var user = document.getElementById("user2").value;
-             var pass = document.getElementById("pass2").value;
-             var passc = document.getElementById("pass3").value;
+             var user = document.getElementById("username").value;
+             var pass = document.getElementById("password").value;
+             var passc = document.getElementById("confirmPassword").value;
 
 
              var message = "type=reg&first=" + first + "&last=" + last + "&email=" + email + "&user=" + user + "&pass=" + pass;
