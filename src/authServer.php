@@ -23,7 +23,7 @@ function requestProcessor($request)
   }
 }
 //function end
-$server = new rabbitMQServer("authMQ.ini", "testServer");
+$server = new rabbitMQServer("authMQ.ini", gethostname());
 $server->process_requests('requestProcessor');
 exit();
 ?>

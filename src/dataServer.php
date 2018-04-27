@@ -64,7 +64,7 @@ function requestProcessor($request)
   }
 }
 //function end
-$server = new rabbitMQServer("dataMQ.ini", "testServer");
+$server = new rabbitMQServer("dataMQ.ini", gethostname());
 $server->process_requests('requestProcessor');
 exit();
 ?>

@@ -7,6 +7,7 @@ class rabbitMQServer
 	private $machine = "";
 	public  $BROKER_HOST;
 	private $BROKER_PORT;
+	private $BROKER_FAIL;
 	private $USER;
 	private $PASSWORD;
 	private $VHOST;
@@ -20,6 +21,7 @@ class rabbitMQServer
 	{
 		$this->machine = getHostInfo(array($machine));
 		$this->BROKER_HOST   = $this->machine[$server]["BROKER_HOST"];
+		$this->BROKER_FAIL   = $this->machine[$server]["BROKER_FAIL"];
 		$this->BROKER_PORT   = $this->machine[$server]["BROKER_PORT"];
 		$this->USER     = $this->machine[$server]["USER"];
 		$this->PASSWORD = $this->machine[$server]["PASSWORD"];
@@ -65,7 +67,15 @@ class rabbitMQServer
       $params['password'] = $this->PASSWORD;
       $params['vhost'] = $this->VHOST;
 			$conn = new AMQPConnection($params);
-			$conn->connect();
+			try {
+				$conn->connect();
+			}
+			catch (Exception $e)
+			{
+				$params['host'] = $this->BROKER_FAIL;
+				$conn = new AMQPConnection($params);
+				$conn->connect();
+			}
 			$channel = new AMQPChannel($conn);
 			$exchange = new AMQPExchange($channel);
       $exchange->setName($this->exchange);
@@ -107,7 +117,16 @@ class rabbitMQServer
       $params['password'] = $this->PASSWORD;
       $params['vhost'] = $this->VHOST;
 			$conn = new AMQPConnection($params);
-			$conn->connect();
+
+			try {
+				$conn->connect();
+			}
+			catch (Exception $e)
+			{
+				$params['host'] = $this->BROKER_FAIL;
+				$conn = new AMQPConnection($params);
+				$conn->connect();
+			}
 
 			$channel = new AMQPChannel($conn);
 
@@ -129,7 +148,7 @@ class rabbitMQServer
 		}
 		catch (Exception $e)
 		{
-			trigger_error("Failed to start request processor: ".$e,E_USER_ERROR); 
+			trigger_error("Failed to start request processor: ".$e,E_USER_ERROR);
 		}
 	}
 }
@@ -139,6 +158,7 @@ class rabbitMQClient
 	private $machine = "";
 	public  $BROKER_HOST;
 	private $BROKER_PORT;
+	private $BROKER_FAIL;
 	private $USER;
 	private $PASSWORD;
 	private $VHOST;
@@ -202,7 +222,15 @@ class rabbitMQClient
       $params['vhost'] = $this->VHOST;
 
 			$conn = new AMQPConnection($params);
-			$conn->connect();
+			try {
+				$conn->connect();
+			}
+			catch (Exception $e)
+			{
+				$params['host'] = $this->BROKER_FAIL;
+				$conn = new AMQPConnection($params);
+				$conn->connect();
+			}
 
 			$channel = new AMQPChannel($conn);
 
@@ -252,7 +280,16 @@ class rabbitMQClient
       $params['password'] = $this->PASSWORD;
       $params['vhost'] = $this->VHOST;
 			$conn = new AMQPConnection($params);
-			$conn->connect();
+
+			try {
+				$conn->connect();
+			}
+			catch (Exception $e)
+			{
+				$params['host'] = $this->BROKER_FAIL;
+				$conn = new AMQPConnection($params);
+				$conn->connect();
+			}
 			$channel = new AMQPChannel($conn);
 			$exchange = new AMQPExchange($channel);
       $exchange->setName($this->exchange);
@@ -269,4 +306,3 @@ class rabbitMQClient
 	}
 }
 ?>
-

@@ -29,17 +29,8 @@ function requestProcessor($request)
 }
 //function end
 
-try {
-  echo"conn1";
-  $server = new rabbitMQServer("apiMQ.ini", gethostname());
-  $server->process_requests('requestProcessor');
-}
+$server = new rabbitMQServer("apiMQ.ini", gethostname());
+$server->process_requests('requestProcessor');
 
-catch(\Exception $e) {
-  echo 'conn2';
-  $server = new rabbitMQServer("apiMQ.ini", gethostname().'-2');
-  $server->process_requests('requestProcessor');
-}
-echo'done';
 exit();
 ?>

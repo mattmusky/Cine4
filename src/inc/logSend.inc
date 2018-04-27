@@ -4,7 +4,7 @@ require_once('rmq/get_host_info.inc');
 require_once('rmq/rabbitMQLib.inc');
 function errorSend($task, $level, $message)
 {
-  $client             = new rabbitMQClient("logMQ.ini", "testServer");
+  $client             = new rabbitMQClient("logMQ.ini", gethostname());
   $bt                 = debug_backtrace();
   $caller             = array_shift($bt);
   $request            = array();
