@@ -37,7 +37,7 @@ function showFriend(json) {
         var newhtml = `
 <li class="list-group-item" >
     <div class="d-flex justify-content-between align-items-center">
-        <span><a href="profile.php?id=${json[i].uid}">${json[i].FIRST} ${json[i].LAST}</a></span>
+        <span><a href="profile.php?id=${json[i].uid}">${json[i].FIRST} ${json[i].LAST}&nbsp;<div id="mf${json[i].uid}" class="badges-container"></div></a></span>
         <a href="#"><span class="fas fa-lg fa-minus-circle text-danger ml-2" onclick="removeFriend('${json[i].uid}')"></span></a>
     </div>
 </li>
@@ -45,6 +45,7 @@ function showFriend(json) {
 
 `;
         divhere.innerHTML += newhtml;
+        getBadges(json[i].uid,'mf');
     }
 }
 

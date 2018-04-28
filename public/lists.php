@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Custom styles for this template -->
     <link href="css/cine4.css" rel="stylesheet">
     <link href="css/list.css" rel="stylesheet">
@@ -87,7 +88,20 @@
           </nav>
           <!-- Page Content -->
           <div class="p-3">
-            <h2>My Lists</h2>
+
+
+            <div class="row">
+                        <div id="profilename" class="col-auto pr-0">
+                          <h2>My Lists & Badges&nbsp;</h2>
+                            </div>
+                        <div id="profilebadge" class="col-auto" style="padding-left: 7px";>
+            <div id="pf<?php print $_SESSION["id"];?>" class="profile-badges-container"></div>
+
+                            </div>
+                          </div>
+
+
+
             <!-- Movies I've seen /Favorite Buttons -->
             <div id="buttonshere" class="btn-group">
             </div>
@@ -125,5 +139,10 @@
     <script src="js/cine4.js"></script>
     <script src="js/lists.js"></script>
     <script src="js/myLists.js"></script>
+    <script>
+      var myid = <?php echo $_SESSION["id"]; ?>;
+      getBadges(myid,'pf');
+
+    </script>
   </body>
 </html>

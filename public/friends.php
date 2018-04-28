@@ -36,6 +36,9 @@
               <a class="navbar-brand" href="#" id="menu-toggle-out"><i class="fas fa-bars"></i>&nbsp;&nbsp;Friends</a>
             </nav>
             <div id="friendhere"></div>
+
+
+
           </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -77,7 +80,8 @@
               <div class="my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Hi <?php print $_SESSION["first"];?>!</a>
+                    <a class="nav-link" href="#">Hi <?php print $_SESSION["first"];?>!&nbsp;<div id="nb<?php print $_SESSION["id"];?>" class="badges-container"></div></a>
+
                   </li>
                   <li class="nav-item">
                     <a class="navbar-brand nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i></a>
@@ -245,5 +249,10 @@
     <!-- Menu Toggle Script -->
     <script src="js/cine4.js"></script>
     <script src="js/friends.js"></script>
+    <script>
+      var myid = <?php echo $_SESSION["id"]; ?>;
+      getBadges(myid,'nb');
+
+    </script>
   </body>
 </html>

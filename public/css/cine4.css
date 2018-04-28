@@ -4,6 +4,8 @@ html, body {
  .sideheight {
      min-height: 80%;
 }
+
+
  .main-title {
      font-family: 'Courgette', cursive;
      font-size: 50px;
@@ -65,7 +67,7 @@ html, body {
 
 .profile-badges-container{
     font-size: 30px;
-     /*outline: 1px solid black; */
+    
 }
 
 
@@ -110,6 +112,15 @@ html, body {
 
 .commentBadge{
     font-size: 8px;
+    color:white;
+    background-color: purple;
+    position: relative;
+    bottom: 3px;
+
+}
+
+.profileBadge{
+    font-size: 20px;
     color:white;
     background-color: purple;
     position: relative;

@@ -112,7 +112,7 @@ switch ($postrequest["type"]) {
   case "getBadges": #get badges
     $request         = array();
     $request['type'] = $postrequest["type"];
-    $request['uid']   = $_SESSION["uid"];
+    $request['uid']  = $postrequest["uid"];
     $response        = $client->send_request($request);
     break;
 }

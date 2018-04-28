@@ -309,11 +309,15 @@ function smart($uid)
 
 function getBadges($uid)
 {
-  echo 'here';
+  $con   = createconnection();
+  $query = "SELECT IFNULL(count(V.UID),0) FROM usersfavormovies as V WHERE V.UID = " . $uid . " UNION ALL SELECT IFNULL(count(F.FriendUID),0) FROM usersfriendusers as F WHERE F.UserUID = " . $uid . " UNION ALL SELECT IFNULL(count(C.ComID),0) FROM comments as C WHERE C.UID = " . $uid . "";
+  $sql   = mysqli_query($con, $query);
+  echo $query;
+  if (mysqli_error($con)) { errorSend("Badges", 3, "SQL Error: " . mysqli_error($con) . " | " . $query); }
   $data  = array();
-  $data[0]=2;
-  $data[1]=4;
-  $data[2]=6;
+  while ($row = mysqli_fetch_assoc($sql)) {
+    $data[] = $row;
+  }
   return json_encode($data);
 }
 

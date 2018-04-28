@@ -110,6 +110,7 @@ function commentDisplay(comments) {
     var divhere = document.getElementById('commentshere');
     divhere.innerHTML = '';
     for (i = 0; i < comments.length; i++) {
+      var rand = Math.floor(Math.random() * 100) + 1;
         var newhtml = `
         <div class="row">
     <div class="col-auto">
@@ -124,7 +125,7 @@ function commentDisplay(comments) {
         <div class="row flex-column align-self-start">
             <!-- Poster/User info(User/Date) -->
             <div class="col-auto text-left">
-                <div><small><strong><a href="profile.php?id=${comments[i].UID}">${comments[i].First} ${comments[i].Last}</a></strong></small>
+                <div><small><strong><a href="profile.php?id=${comments[i].UID}">${comments[i].First} ${comments[i].Last}</a>&nbsp;<div id="${rand}${comments[i].UID}" class="badges-container"></div>&nbsp;</strong></small>
                     <small style="font-size: x-small;" class="bg-light"> ${comments[i].CreateTime} </small>
                     <small style="font-size: x-small;" class="bg-light"> ${comments[i].Amount} points</small>
                 </div>
@@ -139,6 +140,7 @@ function commentDisplay(comments) {
 </div>
         `;
         divhere.innerHTML += newhtml;
+        getBadges(comments[i].UID,rand);
     }
     return 0;
 }

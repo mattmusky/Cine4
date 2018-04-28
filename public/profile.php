@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Custom styles for this template -->
     <link href="css/cine4.css" rel="stylesheet">
   </head>
@@ -86,9 +87,17 @@
           <!-- Page Content -->
           <div class="p-3">
             <!-- [Friend's name] movie List header -->
-            <h2>
-              <div id="profilename"></div>
-            </h2>
+            <div class="row">
+                        <div id="profilename" class="col-auto pr-0">
+                            </div>
+                        <div id="profilebadge" class="col-auto" style="padding-left: 7px";>
+
+
+                            </div>
+                          </div>
+                    
+
+
             <!-- Movies I've seen /Favorite Buttons -->
             <div id="buttonshere" class="btn-group">
             </div>

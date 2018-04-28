@@ -61,8 +61,15 @@ function profileName() {
         if ((this.readyState == 4) && (this.status == 200)) {
             var json = JSON.parse(this.responseText);
             var divhere = document.getElementById('profilename');
-            divhere.innerHTML = `${json[0].FIRST}&nbsp;${json[0].LAST}`;
-            divhere.innerHTML += '\'s Lists';
+            
+            divhere.innerHTML = `<h2>${json[0].FIRST}&nbsp;${json[0].LAST}`+'\'s Lists</h2>';
+            //divhere.innerHTML += '\'s Lists</h2>';
+
+            var divhere2 = document.getElementById('profilebadge');
+
+            divhere2.innerHTML += `<div id="pf${userid}" class="profile-badges-container"></div>`;
+
+            getBadges(userid,'pf');
         }
     }
     request.send("type=profileName&id=" + userid);

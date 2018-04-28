@@ -35,13 +35,15 @@ function friendBuilder(json) {
     var divhere = document.getElementById('friendhere');
     divhere.innerHTML = '';
     for (i = 0; i < json.length; i++) {
-      var badges = getBadges(json[i].uid);
+
+
         var newhtml = `
         <li>
-            <a href="profile.php?id=${json[i].uid}">${json[i].FIRST} ${json[i].LAST}</a>
+            <a href="profile.php?id=${json[i].uid}">${json[i].FIRST} ${json[i].LAST}&nbsp;<div id="fl${json[i].uid}" class="badges-container"></div></a>
         </li>
         `;
-        divhere.innerHTML += badges;
+        divhere.innerHTML += newhtml;
+        getBadges(json[i].uid,'fl');
     }
 }
 
@@ -69,29 +71,63 @@ function sendData(message, retmethod) {
     }
     request.send(message);
 }
-var done;
-function getBadges(uid) {
 
+
+function getBadges(uid,loc) {
     var request = new XMLHttpRequest();
     request.open("POST", "php/data.php", true);
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.onreadystatechange = function() {
         if ((this.readyState == 4) && (this.status == 200)) {
 
-            done = calcBadges(this.responseText);
-return(done);
+            calcBadges(this.responseText,uid,loc);
         }
     }
+
     request.send("type=getBadges&uid=" + uid);
-    alert(done);
+
 
 }
 
-function calcBadges(data) {
+function calcBadges(data,uid,loc) {
 var json = JSON.parse(data);
-var newhtml = `
-HERE${json[0]}
-`;
-return (newhtml);
+var mov = json[0]['IFNULL(count(V.UID),0)'];
+var fri = json[1]['IFNULL(count(V.UID),0)'];
+var com = json[2]['IFNULL(count(V.UID),0)'];
+var movhtm ='';
+var frihtm ='';
+
+if (mov>2) {
+  movhtm = `<i class="ion-ribbon-b bronze"></i>&nbsp;`;
+}
+else if (mov>5) {
+  movhtm = `<i class="ion-ribbon-a silver"></i>&nbsp;`;
+}
+else if (mov>8) {
+  movhtm = `<i class="ion-trophy gold"></i>&nbsp;`;
+}
+
+if (fri>1) {
+  frihtm = `<i class="ion-person twofriends"></i>&nbsp;`;
+}
+else if (fri>3) {
+  frihtm = `<i class="ion-person-stalker fourfriends"></i>&nbsp;`;
+}
+else if (fri>5) {
+  frihtm = `<i class="ion-ios-people sixfriends"></i>&nbsp;`;
+}
+
+if (loc=='pf'){
+  var comhtm = `<div class="badge badge-pill profileBadge">${com}</div>`;
+}
+else {
+  var comhtm = `<div class="badge badge-pill commentBadge">${com}</div>`;
+}
+
+
+var divhere = document.getElementById(loc+uid);
+divhere.innerHTML = movhtm + frihtm + comhtm;
+
+
 
 }
