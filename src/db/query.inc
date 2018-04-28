@@ -312,7 +312,7 @@ function getBadges($uid)
   $con   = createconnection();
   $query = "SELECT IFNULL(count(V.UID),0) FROM usersfavormovies as V WHERE V.UID = " . $uid . " UNION ALL SELECT IFNULL(count(F.FriendUID),0) FROM usersfriendusers as F WHERE F.UserUID = " . $uid . " UNION ALL SELECT IFNULL(count(C.ComID),0) FROM comments as C WHERE C.UID = " . $uid . "";
   $sql   = mysqli_query($con, $query);
-  echo $query;
+  //echo $query;
   if (mysqli_error($con)) { errorSend("Badges", 3, "SQL Error: " . mysqli_error($con) . " | " . $query); }
   $data  = array();
   while ($row = mysqli_fetch_assoc($sql)) {

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Custom styles for this template -->
     <link href="css/cine4.css" rel="stylesheet">
   </head>
@@ -74,7 +75,7 @@
               <div class="my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Hi <?php print $_SESSION["first"];?>!</a>
+                    <a class="nav-link" href="#">Hi <?php print $_SESSION["first"];?>!&nbsp;<div id="nb<?php print $_SESSION["id"];?>" class="badges-container"></div></a>
                   </li>
                   <li class="nav-item">
                     <a class="navbar-brand nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i></a>
