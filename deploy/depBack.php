@@ -21,7 +21,7 @@ function push($package, $target, $machine)
       break;
     }
     case ("db"): {
-      if (!isset($host[3])){
+      if (!$host[3]=='HSB'){
       print "\n"; echo ("tar -xf /home/cine/pack/box.tar -C /");
       print "\n"; echo ("mysql -u root -pinfinity cine4 < /home/cine/cine4/config/cine4.sql");
     }
