@@ -144,11 +144,11 @@
     <!-- Menu Toggle Script -->
     <script>
       var userid = <?php echo $_SESSION["id"]; ?>;
-      getBadges(myid,'nb');
     </script>
     <script src="js/cine4.js"></script>
     <script src="js/discover.js"></script>
     <script src="js/add.js"></script>
     <script src="js/ohsnap.min.js"></script>
+    <script>getBadges(userid,'nb');</script>
   </body>
 </html>

@@ -65,7 +65,7 @@ function showUser(json) {
 
 `;
         divhere.innerHTML += newhtml;
-        getBadges(json[i].uid,'mf');
+        getBadges(json[i].UID,'mf');
     }
 }
 
