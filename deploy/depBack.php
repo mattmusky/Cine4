@@ -10,7 +10,7 @@ function push($package, $target, $machine)
   $host = (strtolower($host[1] . $host[2]));
   if ($host == $target . $machine) {
     print "\n"; echo ("Deploying...");
-  }
+
   switch ($package) {
     case ("feweb"): {
       print "\n"; echo ("tar -xf /home/cine/pack/box.tar -C /");
@@ -21,7 +21,7 @@ function push($package, $target, $machine)
       break;
     }
     case ("db"): {
-      if (!$host[3]) {
+      if (empty($host[3])) {
       print "\n"; echo ("tar -xf /home/cine/pack/box.tar -C /");
       print "\n"; echo ("mysql -u root -pinfinity cine4 < /home/cine/cine4/config/cine4.sql");
     }
@@ -47,6 +47,8 @@ function push($package, $target, $machine)
     }
   }
   return "Deployed " . $package;
+  }
+
 }
 function requestProcessor($request)
 {

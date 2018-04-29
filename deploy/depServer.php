@@ -24,7 +24,7 @@ function create($package, $host)
   if ($con->query($sql) === TRUE) {
     print "\n"; echo "DB Insert";
   }
-  return $package . "version " . $version . " created";
+  return $package . " version " . $version . " created";
 }
 
 function deploy($package, $version, $target)

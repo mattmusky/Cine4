@@ -26,7 +26,7 @@ switch ($args[0]) {
     break;
   }
   case ("help"): {
-    print ('\ncreate: package \ndeploy: package, version, target \ndepreciate: package, version \nrollback: package, target');
+    print ("\ncreate: package \ndeploy: package, version, target \ndepreciate: package, version \nrollback: package, target");
     break;
   }
   default: {
@@ -75,7 +75,7 @@ function create($args)
     $request['host']    = gethostname();
     $response           = $client->send_request($request);
     if ($response) {
-      print "\n"; echo $response;
+      print ("\n".$response."\n");
     }
   }
 }
@@ -89,7 +89,7 @@ function deploy($args)
   $request['target']  = $args[3];
   $response           = $client->send_request($request);
   if ($response) {
-    print "\n"; echo $response;
+    print ("\n".$response."\n");
   }
 }
 function depreciate($args)
@@ -101,7 +101,7 @@ function depreciate($args)
   $request['version'] = $args[2];
   $response           = $client->send_request($request);
   if ($response) {
-    print "\n"; echo $response;
+    print ("\n".$response."\n");
   }
 }
 function rollback($args)
@@ -113,7 +113,7 @@ function rollback($args)
   $request['target']  = $args[2];
   $response           = $client->send_request($request);
   if ($response) {
-    print "\n"; echo $response;
+    print ("\n".$response."\n");
   }
 }
 function parseArgs($argv)
