@@ -117,6 +117,8 @@
             </div>
          </div>
          <h3>Package Versions</h3>
+         <div class="row">
+       <div class="col-lg-6">
          <div class="card border-primary mb-3">
             <h5 class="card-header">Frontend HTML (feweb)</h5>
             <div class="card-body">
@@ -133,7 +135,7 @@
                   </tbody>
                </table>
             </div>
-         </div>
+         </div></div><div class="col-lg-6">
          <div class="card border-primary mb-3">
             <h5 class="card-header">Frontend PHP (fephp)</h5>
             <div class="card-body">
@@ -150,7 +152,7 @@
                   </tbody>
                </table>
             </div>
-         </div>
+         </div></div><div class="col-lg-6">
          <div class="card border-primary mb-3">
             <h5 class="card-header">Database (db)</h5>
             <div class="card-body">
@@ -167,7 +169,7 @@
                   </tbody>
                </table>
             </div>
-         </div>
+         </div></div><div class="col-lg-6">
          <div class="card border-primary mb-3">
             <h5 class="card-header">Backend PHP (bephp)</h5>
             <div class="card-body">
@@ -184,7 +186,7 @@
                   </tbody>
                </table>
             </div>
-         </div>
+         </div></div><div class="col-lg-6">
          <div class="card border-primary mb-3">
             <h5 class="card-header">API PHP (apiphp)</h5>
             <div class="card-body">
@@ -201,7 +203,7 @@
                   </tbody>
                </table>
             </div>
-         </div>
+         </div></div></div>
       </div>
    </body>
 </html>
