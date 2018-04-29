@@ -114,5 +114,9 @@
     <!-- Menu Toggle Script -->
     <script src="js/cine4.js"></script>
     <script src="js/recommender.js"></script>
+    <script>
+      var userid = <?php echo $_SESSION["id"]; ?>;
+      getBadges(myid,'nb');
+    </script>
   </body>
 </html>

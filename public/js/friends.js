@@ -58,13 +58,14 @@ function showUser(json) {
         var newhtml = `
 <li class="list-group-item" >
     <div class="d-flex justify-content-between align-items-center">
-        <span><a href="profile.php?id=${json[i].UID}">${json[i].First} ${json[i].Last}</a></span>
+        <span><a href="profile.php?id=${json[i].UID}">${json[i].First} ${json[i].Last}&nbsp;<div id="mf${json[i].UID}" class="badges-container"></div></a></span>
         <a href="#"><span class="fas fa-lg fa-plus-circle text-success ml-2" onclick="addFriend('${json[i].UID}')"></span></a>
     </div>
 </li>
 
 `;
         divhere.innerHTML += newhtml;
+        getBadges(json[i].uid,'mf');
     }
 }
 

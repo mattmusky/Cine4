@@ -122,6 +122,7 @@
       var movieid = <?php echo $_GET["id"]; ?>;
       submitMovie(movieid);
       var userid = <?php echo $_SESSION["id"]; ?>;
+      getBadges(userid,'nb');
     </script>
   </body>
 </html>

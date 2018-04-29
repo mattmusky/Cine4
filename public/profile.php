@@ -131,6 +131,7 @@
     <script>
       var myid = <?php echo $_SESSION["id"]; ?>;
       var userid = <?php echo $_GET["id"]; ?>;
+      getBadges(myid,'nb');
     </script>
     <script src="js/cine4.js"></script>
     <script src="js/lists.js"></script>

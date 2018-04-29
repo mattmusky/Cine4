@@ -142,6 +142,7 @@
     <script>
       var myid = <?php echo $_SESSION["id"]; ?>;
       getBadges(myid,'pf');
+      getBadges(myid,'nb');
 
     </script>
   </body>

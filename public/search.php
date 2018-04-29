@@ -124,6 +124,8 @@
 
 
         searchAPI(movieN);
+        var userid = <?php echo $_SESSION["id"]; ?>;
+        getBadges(myid,'nb');
 
     </script>
   </body>

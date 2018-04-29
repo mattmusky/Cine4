@@ -114,6 +114,7 @@
     <!-- Menu Toggle Script -->
     <script>
       var userid = <?php echo $_SESSION["id"]; ?>;
+      getBadges(userid,'nb');
     </script>
     <script src="js/cine4.js"></script>
     <script src="js/smart.js"></script>
