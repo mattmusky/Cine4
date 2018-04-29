@@ -116,7 +116,7 @@
     <script src="js/recommender.js"></script>
     <script>
       var userid = <?php echo $_SESSION["id"]; ?>;
-      getBadges(myid,'nb');
+      getBadges(userid,'nb');
     </script>
   </body>
 </html>
