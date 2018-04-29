@@ -16,13 +16,13 @@ function create($package, $host)
   if ($row = mysqli_fetch_assoc($sql)) {
     $version = $row['max(V.VersionNum)'] + 1;
 
-    print "\n"; echo 'version:';
-    print "\n"; echo $version;
+    echo 'version:';
+    echo $version;
   }
-  print "\n"; echo ("scp -o StrictHostKeyChecking=no -r cine@" . $host . ":/home/cine/pack/box.tar /home/cine/packages/" . $package . "-" . $version . ".tar");
+  exec("scp -o StrictHostKeyChecking=no -r cine@" . $host . ":/home/cine/pack/box.tar /home/cine/packages/" . $package . "-" . $version . ".tar");
   $sql = "INSERT INTO	Version (VersionID, VersionNum, Deprecate, PackageName) VALUES	(null, '" . $version . "', default, '" . $package . "')";
   if ($con->query($sql) === TRUE) {
-    print "\n"; echo "DB Insert";
+    echo "DB Insert";
   }
   return $package . " version " . $version . " created";
 }
@@ -36,10 +36,6 @@ function deploy($package, $version, $target)
   if ($row = mysqli_fetch_assoc($sql)) {
     $vid = $row['VersionID'];
     $dep = $row['Deprecate'];
-    print "\n"; echo 'vid:';
-    print "\n"; echo $vid;
-    print "\n"; echo 'dep:';
-    print "\n"; echo $dep;
     switch ($package) {
       case ("feweb"):
       case ("fephp"): {
@@ -63,12 +59,12 @@ function deploy($package, $version, $target)
       return "package is depreciated";
     }
     if ($target == 'prod') {
-      print "\n"; echo ("scp -o StrictHostKeyChecking=no -r /home/cine/packages/" . $package . "-" . $version . ".tar cine@490-PROD-" . $mach . ":/home/cine/pack/box.tar");
-      print "\n"; echo ("scp -o StrictHostKeyChecking=no -r /home/cine/packages/" . $package . "-" . $version . ".tar cine@490-PROD-" . $mach . "-HSB:/home/cine/pack/box.tar");
+      exec("scp -o StrictHostKeyChecking=no -r /home/cine/packages/" . $package . "-" . $version . ".tar cine@490-PROD-" . $mach . ":/home/cine/pack/box.tar");
+      exec("scp -o StrictHostKeyChecking=no -r /home/cine/packages/" . $package . "-" . $version . ".tar cine@490-PROD-" . $mach . "-HSB:/home/cine/pack/box.tar");
       $q1 = "SET @ip = (SELECT m.hostip FROM Machine as m WHERE m.hostname = '490-prod-" . $mach . "');";
     }
     if ($target == 'qa') {
-      print "\n"; echo ("scp -o StrictHostKeyChecking=no -r /home/cine/packages/" . $package . "-" . $version . ".tar cine@490-QA-" . $mach . ":/home/cine/pack/box.tar");
+      exec("scp -o StrictHostKeyChecking=no -r /home/cine/packages/" . $package . "-" . $version . ".tar cine@490-QA-" . $mach . ":/home/cine/pack/box.tar");
       $q1 = "SET @ip = (SELECT m.hostip FROM Machine as m WHERE m.hostname = '490-qa-" . $mach . "');";
     }
     $con                = createconnection();
@@ -83,7 +79,7 @@ function deploy($package, $version, $target)
     $request['mach']    = $mach;
     $response           = $client->send_request($request);
     if ($response) {
-      print "\n"; echo ($response);
+      echo($response);
       return 'Deployed';
     }
   } else {
@@ -94,10 +90,9 @@ function deploy($package, $version, $target)
 function depreciate($package, $version)
 {
   $con = createconnection();
-  print "\n"; echo ("cp /home/cine/packages/" . $package . "-" . $version . ".tar /home/cine/packages/dep/");
+  exec("cp /home/cine/packages/" . $package . "-" . $version . ".tar /home/cine/packages/dep/");
   $sql = "UPDATE	Version as V SET	Deprecate = \"Y\" WHERE	V.PackageName = '" . $package . "' AND V.VersionNum = '" . $version . "'";
   if ($con->query($sql) === TRUE) {
-    print "\n";
     return $package." depreciated";
   }
 }
@@ -106,13 +101,12 @@ function rollback($package, $target)
 {
   $con   = createconnection();
   $query = "SELECT	max(V.VersionNum) FROM	Version as V WHERE	V.PackageName = '" . $package . "' AND V.Deprecate = 'N'";
-  print "\n"; echo $query; print "\n";
+
   $sql   = mysqli_query($con, $query);
   $data  = array();
   if ($row = mysqli_fetch_assoc($sql)) {
     $version = $row['max(V.VersionNum)'];
-    print "\n"; echo 'version:';
-    print "\n"; echo $version;
+
   }
   if (deploy($package, $version, $target)) {
     return $target . " rolledback to " . $package . " version " . $version;
@@ -122,8 +116,7 @@ function rollback($package, $target)
 }
 function requestProcessor($request)
 {
-  print "\n"; echo "received request" . PHP_EOL;
-  //var_dump($request);
+  echo "received request" . PHP_EOL;
   if (!isset($request['type'])) {
     return "ERROR: unsupported message type";
   }

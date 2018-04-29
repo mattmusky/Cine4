@@ -26,11 +26,11 @@ switch ($args[0]) {
     break;
   }
   case ("help"): {
-    print ("\ncreate: package \ndeploy: package, version, target \ndepreciate: package, version \nrollback: package, target");
+    print ("create: package \ndeploy: package, version, target \ndepreciate: package, version \nrollback: package, target\n\n");
     break;
   }
   default: {
-    print "\n"; echo $args[0] . " is not a valid command";
+    echo $args[0] . " is not a valid command";
     break;
   }
 }
@@ -41,28 +41,28 @@ function create($args)
   $quit    = false;
   switch ($package) {
     case ("feweb"): {
-      print "\n"; echo ("tar -cf /home/cine/pack/box.tar -P /home/cine/cine4/public --exclude='php'");
+      exec("tar -cf /home/cine/pack/box.tar -P /home/cine/cine4/public --exclude='php'");
       break;
     }
     case ("fephp"): {
-      print "\n"; echo ("tar -cf /home/cine/pack/box.tar -P /home/cine/cine4/public/php");
+      exec("tar -cf /home/cine/pack/box.tar -P /home/cine/cine4/public/php");
       break;
     }
     case ("db"): {
-      print "\n"; echo ("mysqldump -u root -pinfinity cine4 > /home/cine/cine4/config/cine4.sql");
-      print "\n"; echo ("tar -cf /home/cine/pack/box.tar -P /home/cine/cine4/config/cine4.sql");
+      exec("mysqldump -u root -pinfinity cine4 > /home/cine/cine4/config/cine4.sql");
+      exec("tar -cf /home/cine/pack/box.tar -P /home/cine/cine4/config/cine4.sql");
       break;
     }
     case ("bephp"): {
-      print "\n"; echo ("tar -cf /home/cine/pack/box.tar -P /home/cine/cine4/src --exclude='api'");
+      exec("tar -cf /home/cine/pack/box.tar -P /home/cine/cine4/src --exclude='api'");
       break;
     }
     case ("apiphp"): {
-      print "\n"; echo ("tar -cf /home/cine/pack/box.tar -P /home/cine/cine4/src/api");
+      exec("tar -cf /home/cine/pack/box.tar -P /home/cine/cine4/src/api");
       break;
     }
     default: {
-      print "\n"; echo $package . " is not a valid package";
+      echo $package . " is not a valid package";
       $quit = true;
       break;
     }
@@ -75,7 +75,7 @@ function create($args)
     $request['host']    = gethostname();
     $response           = $client->send_request($request);
     if ($response) {
-      print ("\n".$response."\n");
+      print ($response."\n\n");
     }
   }
 }
@@ -89,7 +89,7 @@ function deploy($args)
   $request['target']  = $args[3];
   $response           = $client->send_request($request);
   if ($response) {
-    print ("\n".$response."\n");
+    print ($response."\n\n");
   }
 }
 function depreciate($args)
@@ -101,7 +101,7 @@ function depreciate($args)
   $request['version'] = $args[2];
   $response           = $client->send_request($request);
   if ($response) {
-    print ("\n".$response."\n");
+    print ($response."\n\n");
   }
 }
 function rollback($args)
@@ -113,7 +113,7 @@ function rollback($args)
   $request['target']  = $args[2];
   $response           = $client->send_request($request);
   if ($response) {
-    print ("\n".$response."\n\n");
+    print ($response."\n\n");
   }
 }
 function parseArgs($argv)

@@ -9,40 +9,40 @@ function push($package, $target, $machine)
   $host = preg_split('[-]', gethostname());
   $thishost = (strtolower($host[1] . $host[2]));
   if ($thishost == $target . $machine) {
-    print "\n"; echo ("Deploying...");
+    echo ("Deploying...");
 
   switch ($package) {
     case ("feweb"): {
-      print "\n"; echo ("tar -xf /home/cine/pack/box.tar -C /");
+      exec("tar -xf /home/cine/pack/box.tar -C /");
       break;
     }
     case ("fephp"): {
-      print "\n"; echo ("tar -xf /home/cine/pack/box.tar -C /");
+      exec("tar -xf /home/cine/pack/box.tar -C /");
       break;
     }
     case ("db"): {
       if (!isset($host[3])){
-      print "\n"; echo ("tar -xf /home/cine/pack/box.tar -C /");
-      print "\n"; echo ("mysql -u root -pinfinity cine4 < /home/cine/cine4/config/cine4.sql");
+      exec("tar -xf /home/cine/pack/box.tar -C /");
+      exec("mysql -u root -pinfinity cine4 < /home/cine/cine4/config/cine4.sql");
     }
       break;
     }
     case ("bephp"): {
-      print "\n"; echo ("tar -xf /home/cine/pack/box.tar -C /");
+      exec("tar -xf /home/cine/pack/box.tar -C /");
       if (!isset($host[3])) {
-      print "\n"; echo ("systemctl restart cine4_auth cine4_data cine4_log");
+      exec("systemctl restart cine4_auth cine4_data cine4_log");
     }
       break;
     }
     case ("apiphp"): {
-      print "\n"; echo ("tar -xf /home/cine/pack/box.tar -C /");
+      exec("tar -xf /home/cine/pack/box.tar -C /");
       if (!isset($host[3])) {
-      print "\n"; echo ("systemctl restart cine4_api");
+      exec("systemctl restart cine4_api");
     }
       break;
     }
     default: {
-      print "\n"; echo $package . " is not a valid package";
+      echo $package . " is not a valid package";
       break;
     }
   }
