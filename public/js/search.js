@@ -14,11 +14,11 @@ function gridBuilder(json) {
 
               <div class="pt-1 d-flex justify-content-around">
 
-                  <button class="btn btn-outline-warning btn-sm" onclick="addSeen(userid,${tmdb.results[i].id}, '${tmdb.results[i].original_title} to seen')">
+                  <button class="btn btn-outline-warning btn-sm" onclick="addList('usersviewmovies',userid,${tmdb.results[i].id}, '${tmdb.results[i].original_title} to seen')">
                       <span class="fas fa-eye"></span>
                   </button>
 
-                  <button class="btn btn-outline-warning btn-sm" onclick="addFav(userid,${tmdb.results[i].id}, '${tmdb.results[i].original_title} to favorites')">
+                  <button class="btn btn-outline-warning btn-sm" onclick="addList('usersfavormovies',userid,${tmdb.results[i].id}, '${tmdb.results[i].original_title} to favorites')">
                       <span class="far fa-eye-slash"></span>
                   </button>
 
