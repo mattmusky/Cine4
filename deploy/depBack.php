@@ -21,9 +21,10 @@ function push($package, $target, $machine)
       break;
     }
     case ("db"): {
+      if (!$host[3]) {
       print "\n"; echo ("tar -xf /home/cine/pack/box.tar -C /");
-      print "\n"; echo ("mysqldump -u root -pinfinity --add-drop-table cine4");
       print "\n"; echo ("mysql -u root -pinfinity cine4 < /home/cine/cine4/config/cine4.sql");
+    }
       break;
     }
     case ("bephp"): {
