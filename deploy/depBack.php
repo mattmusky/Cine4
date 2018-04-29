@@ -21,7 +21,7 @@ function push($package, $target, $machine)
       break;
     }
     case ("db"): {
-      if (empty($host[3])) {
+      if (!array_key_exists(3,$host)){
       print "\n"; echo ("tar -xf /home/cine/pack/box.tar -C /");
       print "\n"; echo ("mysql -u root -pinfinity cine4 < /home/cine/cine4/config/cine4.sql");
     }
