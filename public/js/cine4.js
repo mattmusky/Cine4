@@ -97,24 +97,24 @@ var com = json[2]['IFNULL(count(V.UID),0)'];
 var movhtm ='';
 var frihtm ='';
 
-if (mov>2) {
-  movhtm = `<i class="ion-ribbon-b bronze"></i>&nbsp;`;
+if (mov>8) {
+  movhtm = `<i class="ion-trophy gold"></i>&nbsp;`;
 }
 else if (mov>5) {
   movhtm = `<i class="ion-ribbon-a silver"></i>&nbsp;`;
 }
-else if (mov>8) {
-  movhtm = `<i class="ion-trophy gold"></i>&nbsp;`;
+else if (mov>2) {
+  movhtm = `<i class="ion-ribbon-b bronze"></i>&nbsp;`;
 }
 
-if (fri>1) {
-  frihtm = `<i class="ion-person twofriends"></i>&nbsp;`;
+if (fri>5) {
+  frihtm = `<i class="ion-ios-people sixfriends"></i>&nbsp;`;
 }
 else if (fri>3) {
   frihtm = `<i class="ion-person-stalker fourfriends"></i>&nbsp;`;
 }
-else if (fri>5) {
-  frihtm = `<i class="ion-ios-people sixfriends"></i>&nbsp;`;
+else if (fri>1) {
+  frihtm = `<i class="ion-person twofriends"></i>&nbsp;`;
 }
 
 if (loc=='pf'){
