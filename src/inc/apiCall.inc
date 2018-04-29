@@ -1,8 +1,5 @@
 
 <?php
-require_once('rmq/path.inc');
-require_once('rmq/get_host_info.inc');
-require_once('rmq/rabbitMQLib.inc');
 function apiCall($id)
 {
   $client          = new rabbitMQClient("apiMQ.ini", gethostname());
