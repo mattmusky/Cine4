@@ -113,7 +113,7 @@ function rollback($args)
   $request['target']  = $args[2];
   $response           = $client->send_request($request);
   if ($response) {
-    print ("\n".$response."\n");
+    print ("\n".$response."\n\n");
   }
 }
 function parseArgs($argv)

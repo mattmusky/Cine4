@@ -75,7 +75,6 @@ function deploy($package, $version, $target)
     $q2                 = "Update Machinehaspackage as H Set VersionID = " . $vid . " Where H.HostIP = @ip and H.PackageName = '" . $package . "'";
     $sql1               = mysqli_query($con, $q1);
     $sql2               = mysqli_query($con, $q2);
-
     $client             = new rabbitMQClient("pushMQ.ini", "testServer");
     $request            = array();
     $request['type']    = "push";
@@ -85,7 +84,7 @@ function deploy($package, $version, $target)
     $response           = $client->send_request($request);
     if ($response) {
       print "\n"; echo ($response);
-      return $response;
+      return 'Deployed';
     }
   } else {
     return "package does not exist";
@@ -111,7 +110,7 @@ function rollback($package, $target)
   $sql   = mysqli_query($con, $query);
   $data  = array();
   if ($row = mysqli_fetch_assoc($sql)) {
-    $version = $row['max(V.VersionNum)'] + 1;
+    $version = $row['max(V.VersionNum)'];
     print "\n"; echo 'version:';
     print "\n"; echo $version;
   }
