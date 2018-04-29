@@ -1,10 +1,11 @@
 [Unit]
-Description=Cine 4 Log
+Description=Cine4 API Server
 
 [Service]
 Type=simple
 Restart=always
-StartLimitIntervalSec=5
+RestartSec=1
+User=cine
 ExecStart=/usr/bin/php /home/cine/cine4/src/apiServer.php
 
 [Install]

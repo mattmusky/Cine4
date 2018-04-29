@@ -29,12 +29,16 @@ function push($package, $target, $machine)
     }
     case ("bephp"): {
       print "\n"; echo ("tar -xf /home/cine/pack/box.tar -C /");
+      if (!$host[3]) {
       print "\n"; echo ("systemctl restart cine4_auth cine4_data cine4_log");
+    }
       break;
     }
     case ("apiphp"): {
       print "\n"; echo ("tar -xf /home/cine/pack/box.tar -C /");
+      if (!$host[3]) {
       print "\n"; echo ("systemctl restart cine4_api");
+    }
       break;
     }
     default: {

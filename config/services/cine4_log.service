@@ -1,9 +1,11 @@
 [Unit]
-Description=Cine 4 Log
+Description=Cine4 Log
 
 [Service]
 Type=simple
 Restart=always
+RestartSec=1
+User=cine
 ExecStart=/usr/bin/php /home/cine/cine4/src/logServer.php
 
 [Install]

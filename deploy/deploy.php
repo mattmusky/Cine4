@@ -4,18 +4,9 @@
 require_once('rmq/path.inc');
 require_once('rmq/get_host_info.inc');
 require_once('rmq/rabbitMQLib.inc');
-/** PHP arguments -
- *   Command type,
- *       create -
- *           package
- *       deploy
- *           package, version, target
- *       depreciate
- *           package, version
- *       rollback
- *           package,  target
- *
- */
+
+
+//extract deply args
 $args = parseArgs($argv);
 switch ($args[0]) {
   case ("create"): {
@@ -32,6 +23,10 @@ switch ($args[0]) {
   }
   case ("rollback"): {
     rollback($args);
+    break;
+  }
+  case ("help"): {
+    print ('\ncreate: package \ndeploy: package, version, target \ndepreciate: package, version \nrollback: package, target');
     break;
   }
   default: {
