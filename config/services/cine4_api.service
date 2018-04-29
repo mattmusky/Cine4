@@ -4,6 +4,7 @@ Description=Cine 4 Log
 [Service]
 Type=simple
 Restart=always
+StartLimitIntervalSec=5
 ExecStart=/usr/bin/php /home/cine/cine4/src/apiServer.php
 
 [Install]
