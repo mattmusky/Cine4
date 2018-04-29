@@ -1,2 +1,10 @@
+[Unit]
+Description=Cine 4 Log
+
 [Service]
+Type=simple
+Restart=always
 ExecStart=/usr/bin/php /home/cine/cine4/src/apiServer.php
+
+[Install]
+WantedBy=multi-user.target
