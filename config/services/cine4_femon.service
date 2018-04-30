@@ -1,0 +1,9 @@
+[Unit]
+Description=Cine4 DMZ Monitor
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/php /home/cine/cine4/deploy/monitor/fe_ping.php
+
+[Install]
+WantedBy=multi-user.target
