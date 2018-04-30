@@ -7,6 +7,7 @@ function ping($host)
   return $rval === 0;
 }
 while (1) {
+  sleep(10);
   $up = ping($host);
   if ($up) {
     //echo 'UP';
