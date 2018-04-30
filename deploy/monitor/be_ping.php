@@ -13,7 +13,7 @@ while (1) {
     //echo 'UP';
   } else {
     echo 'Down';
-    exec("systemctl start cine4_auth cine4_data cine4_log");
+    exec("sudo systemctl start cine4_auth cine4_data cine4_log");
     exit();
   }
 }
