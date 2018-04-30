@@ -67,7 +67,7 @@ html, body {
 
 .profile-badges-container{
     font-size: 30px;
-    
+
 }
 
 
@@ -102,12 +102,10 @@ html, body {
 }
 
 .sixfriends{
-    font-size: 21px;
+
     color:lightgreen;
              -webkit-text-stroke: 1px black;
 
-    position: relative;
-    top: 2px;
 }
 
 .commentBadge{

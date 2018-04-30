@@ -1,94 +1,80 @@
--- MySQL Workbench Forward Engineering
+-- phpMyAdmin SQL Dump
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Apr 29, 2018 at 08:06 PM
+-- Server version: 5.7.21-0ubuntu0.16.04.1
+-- PHP Version: 7.0.28-0ubuntu0.16.04.1
 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
-
--- -----------------------------------------------------
--- Schema CineDeploy
--- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `CineDeploy` ;
-
--- -----------------------------------------------------
--- Schema CineDeploy
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `CineDeploy` DEFAULT CHARACTER SET utf8 ;
-USE `CineDeploy` ;
-
--- -----------------------------------------------------
--- Table `CineDeploy`.`Machine`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `CineDeploy`.`Machine` (
-  `HostIP` VARCHAR(100) NOT NULL,
-  `Hostname` VARCHAR(45) NULL,
-  PRIMARY KEY (`HostIP`))
-ENGINE = InnoDB;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
--- -----------------------------------------------------
--- Table `CineDeploy`.`Package`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `CineDeploy`.`Package` (
-  `PackageName` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`PackageName`))
-ENGINE = InnoDB;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Database: `CineDeploy`
+--
 
--- -----------------------------------------------------
--- Table `CineDeploy`.`Version`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `CineDeploy`.`Version` (
-  `VersionID` INT(10) NOT NULL AUTO_INCREMENT,
-  `VersionNum` VARCHAR(45) NULL,
-  `Createtime` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `Deprecate` ENUM('Y', 'N') NULL DEFAULT 'N',
-  `PackageName` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`VersionID`, `PackageName`),
-  CONSTRAINT `Version_Package_PackageName`
-    FOREIGN KEY (`PackageName`)
-    REFERENCES `CineDeploy`.`Package` (`PackageName`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+-- --------------------------------------------------------
 
-CREATE INDEX `Version_Package_PackageName_idx` ON `CineDeploy`.`Version` (`PackageName` ASC);
+--
+-- Table structure for table `Version`
+--
 
+CREATE TABLE `Version` (
+  `VersionID` int(10) NOT NULL,
+  `VersionNum` varchar(45) DEFAULT NULL,
+  `Createtime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `Deprecate` enum('Y','N') DEFAULT 'N',
+  `PackageName` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- -----------------------------------------------------
--- Table `CineDeploy`.`Machinehaspackage`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `CineDeploy`.`Machinehaspackage` (
-  `HostIP` VARCHAR(100) NOT NULL,
-  `VersionID` INT(10) NOT NULL,
-  `UpdateTime` DATETIME NULL,
-  `PackageName` VARCHAR(45) NULL,
-  PRIMARY KEY (`HostIP`, `VersionID`),
-  CONSTRAINT `Machinehaspackage_Machine_Hostname`
-    FOREIGN KEY (`HostIP`)
-    REFERENCES `CineDeploy`.`Machine` (`HostIP`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Machinehaspackage_Version_VersionID`
-    FOREIGN KEY (`VersionID`)
-    REFERENCES `CineDeploy`.`Version` (`VersionID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+--
+-- Dumping data for table `Version`
+--
 
-CREATE INDEX `Machinehaspackage_Version_VersionID_idx` ON `CineDeploy`.`Machinehaspackage` (`VersionID` ASC);
+INSERT INTO `Version` (`VersionID`, `VersionNum`, `Createtime`, `Deprecate`, `PackageName`) VALUES
+(13, '1', '2018-04-29 17:18:53', 'N', 'feweb'),
+(14, '1', '2018-04-29 17:18:58', 'N', 'fephp'),
+(15, '1', '2018-04-29 17:19:01', 'N', 'db'),
+(16, '1', '2018-04-29 17:19:05', 'N', 'bephp'),
+(17, '1', '2018-04-30 00:05:09', 'N', 'apiphp');
 
-USE `CineDeploy`;
+--
+-- Indexes for dumped tables
+--
 
-DELIMITER $$
-USE `CineDeploy`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `CineDeploy`.`Machinehaspackage_BEFORE_UPDATE` BEFORE UPDATE ON `Machinehaspackage` FOR EACH ROW
-BEGIN
-	SET NEW.UpdateTime = CURTIME();
-END$$
+--
+-- Indexes for table `Version`
+--
+ALTER TABLE `Version`
+  ADD PRIMARY KEY (`VersionID`,`PackageName`),
+  ADD KEY `Version_Package_PackageName_idx` (`PackageName`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
 
-DELIMITER ;
+--
+-- AUTO_INCREMENT for table `Version`
+--
+ALTER TABLE `Version`
+  MODIFY `VersionID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- Constraints for dumped tables
+--
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+--
+-- Constraints for table `Version`
+--
+ALTER TABLE `Version`
+  ADD CONSTRAINT `Version_Package_PackageName` FOREIGN KEY (`PackageName`) REFERENCES `Package` (`PackageName`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
