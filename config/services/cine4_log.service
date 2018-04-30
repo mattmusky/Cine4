@@ -5,7 +5,6 @@ Description=Cine4 Log
 Type=simple
 Restart=always
 RestartSec=1
-User=cine
 ExecStart=/usr/bin/php /home/cine/cine4/src/logServer.php
 
 [Install]
