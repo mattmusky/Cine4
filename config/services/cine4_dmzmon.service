@@ -3,7 +3,6 @@ Description=Cine4 DMZ Monitor
 
 [Service]
 Type=simple
-User=cine
 ExecStart=/usr/bin/php /home/cine/cine4/deploy/monitor/dmz_ping.php
 
 [Install]

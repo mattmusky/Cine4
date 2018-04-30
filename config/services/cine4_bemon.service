@@ -3,7 +3,6 @@ Description=Cine4 BE Monitor
 
 [Service]
 Type=simple
-User=cine
 ExecStart=/usr/bin/php /home/cine/cine4/deploy/monitor/be_ping.php
 
 [Install]
