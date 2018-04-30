@@ -13,8 +13,9 @@ while (1) {
     //echo 'UP';
   } else {
     echo 'Down';
-    exec("mv /home/cine/cine4/public/php/rmq/apiMQ.ini /home/cine/cine4/public/php/rmq/apiMQ.bak");
-    exec("mv /home/cine/cine4/public/php/rmq/apiMQ.fail /home/cine/cine4/public/php/rmq/apiMQ.ini");
+    exec("mv /home/cine/cine4/public/php/rmq/apiMQ.ini /home/cine/cine4/public/php/rmq/apiMQ.bak && mv /home/cine/cine4/public/php/rmq/apiMQ.fail /home/cine/cine4/public/php/rmq/apiMQ.ini");
+    exec("mv /home/cine/cine4/public/php/rmq/dataMQ.ini /home/cine/cine4/public/php/rmq/dataMQ.bak && mv /home/cine/cine4/public/php/rmq/dataMQ.fail /home/cine/cine4/public/php/rmq/dataMQ.ini");
+    exec("mv /home/cine/cine4/public/php/rmq/authMQ.ini /home/cine/cine4/public/php/rmq/authMQ.bak && mv /home/cine/cine4/public/php/rmq/authMQ.fail /home/cine/cine4/public/php/rmq/authMQ.ini");
     exit();
   }
 }
