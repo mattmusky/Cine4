@@ -13,8 +13,8 @@ while (1) {
     //echo 'UP';
   } else {
     echo 'Down';
-    exec("mv /home/cine/cine4/src/php/rmq/apiMQ.ini /home/cine/cine4/src/php/rmq/apiMQ.bak && mv /home/cine/cine4/src/php/rmq/apiMQ.fail /home/cine/cine4/src/php/rmq/apiMQ.ini");
-    exec("mv /home/cine/cine4/src/php/rmq/logMQ.ini /home/cine/cine4/src/php/rmq/logMQ.bak && mv /home/cine/cine4/src/php/rmq/logMQ.fail /home/cine/cine4/src/php/rmq/logMQ.ini");
+    exec("mv /home/cine/cine4/src/rmq/apiMQ.ini /home/cine/cine4/src/rmq/apiMQ.bak && mv /home/cine/cine4/src/rmq/apiMQ.fail /home/cine/cine4/src/rmq/apiMQ.ini");
+    exec("mv /home/cine/cine4/src/rmq/logMQ.ini /home/cine/cine4/src/rmq/logMQ.bak && mv /home/cine/cine4/src/rmq/logMQ.fail /home/cine/cine4/src/rmq/logMQ.ini");
     exit();
   }
 }
