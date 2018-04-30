@@ -13,7 +13,7 @@ while (1) {
     //echo 'UP';
   } else {
     echo 'Down';
-    print "\n"; echo ("systemctl start cine4_api");
+    exec("systemctl start cine4_api");
     exit();
   }
 }
