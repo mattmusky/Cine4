@@ -13,6 +13,8 @@ while (1) {
     //echo 'UP';
   } else {
     echo 'Down';
+    exec("mv /home/cine/cine4/public/php/rmq/apiMQ.ini /home/cine/cine4/public/php/rmq/apiMQ.bak && mv /home/cine/cine4/public/php/rmq/apiMQ.fail /home/cine/cine4/public/php/rmq/apiMQ.ini");
+    exec("mv /home/cine/cine4/public/php/rmq/logMQ.ini /home/cine/cine4/public/php/rmq/logMQ.bak && mv /home/cine/cine4/public/php/rmq/logMQ.fail /home/cine/cine4/public/php/rmq/logMQ.ini");
     exec("systemctl start cine4_api");
     exit();
   }
