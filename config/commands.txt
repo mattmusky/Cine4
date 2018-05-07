@@ -38,7 +38,7 @@ Deploy Backend Client - all except DEPLOY
 sudo ln -s /home/cine/cine4/config/services/cine4_depback.service /etc/systemd/system
 
 Deploy Server - 490-DEPLOY
-sudo ln -s /home/cine/cine4/config/services/cine4_dep.service /etc/systemd/system
+sudo ln -s /home/cine/cine4/config/services/cine4_dmzhsbrmqmon.service /etc/systemd/system
 
 Auth, API & Data Server - all BE servers
 sudo ln -s /home/cine/cine4/config/services/cine4_log.service /etc/systemd/system
