@@ -72,7 +72,7 @@ class rabbitMQServer
 			}
 			catch (Exception $e)
 			{
-				$params['host'] = $this->BROKER_FAIL;
+				//$params['host'] = $this->BROKER_FAIL;
 				$conn = new AMQPConnection($params);
 				$conn->connect();
 			}
@@ -123,7 +123,7 @@ class rabbitMQServer
 			}
 			catch (Exception $e)
 			{
-				$params['host'] = $this->BROKER_FAIL;
+				//$params['host'] = $this->BROKER_FAIL;
 				$conn = new AMQPConnection($params);
 				$conn->connect();
 			}
@@ -228,7 +228,7 @@ class rabbitMQClient
 			}
 			catch (Exception $e)
 			{
-				$params['host'] = $this->BROKER_FAIL;
+				//$params['host'] = $this->BROKER_FAIL;
 				$conn = new AMQPConnection($params);
 				$conn->connect();
 			}
@@ -287,7 +287,7 @@ class rabbitMQClient
 			}
 			catch (Exception $e)
 			{
-				$params['host'] = $this->BROKER_FAIL;
+				//$params['host'] = $this->BROKER_FAIL;
 				$conn = new AMQPConnection($params);
 				$conn->connect();
 			}

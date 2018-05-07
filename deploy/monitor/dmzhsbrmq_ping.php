@@ -16,7 +16,9 @@ while (1) {
       exec("mv /home/cine/cine4/src/rmq/apiMQ.ini /home/cine/cine4/src/rmq/apiMQ.fail && mv /home/cine/cine4/src/rmq/apiMQ.bak /home/cine/cine4/src/rmq/apiMQ.ini");
       exec("mv /home/cine/cine4/src/rmq/logMQ.ini /home/cine/cine4/src/rmq/logMQ.fail && mv /home/cine/cine4/src/rmq/logMQ.bak /home/cine/cine4/src/rmq/logMQ.ini");
 
-exec("systemctl restart cine4_api");
+if (!ping('10.2.2.13')) {
+  exec("systemctl restart cine4_api");
+}
 
 
       $state = true;
@@ -28,7 +30,11 @@ exec("systemctl restart cine4_api");
     echo 'Down';
     exec("mv /home/cine/cine4/src/rmq/apiMQ.ini /home/cine/cine4/src/rmq/apiMQ.bak && mv /home/cine/cine4/src/rmq/apiMQ.fail /home/cine/cine4/src/rmq/apiMQ.ini");
     exec("mv /home/cine/cine4/src/rmq/logMQ.ini /home/cine/cine4/src/rmq/logMQ.bak && mv /home/cine/cine4/src/rmq/logMQ.fail /home/cine/cine4/src/rmq/logMQ.ini");
-exec("systemctl restart cine4_api");
+
+    if (!ping('10.2.2.13')) {
+      exec("systemctl restart cine4_api");
+    }
+
 $state = false;
 }
   }

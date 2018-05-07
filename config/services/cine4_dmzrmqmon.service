@@ -1,5 +1,5 @@
 [Unit]
-Description=Cine4 DMZ Monitor
+Description=Cine4 DMZ RMQ Monitor
 
 [Service]
 Type=simple

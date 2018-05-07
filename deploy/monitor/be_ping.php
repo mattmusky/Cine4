@@ -1,6 +1,8 @@
+
 <?php
 $host = '10.2.2.12';
 //PHP script to ping remote server and edit configs to enable HSB
+$state = true;
 function ping($host)
 {
   exec(sprintf('ping -c 1 -W 10 %s', escapeshellarg($host)), $res, $rval);
@@ -10,10 +12,19 @@ while (1) {
   sleep(10);
   $up = ping($host);
   if ($up) {
-    //echo 'UP';
+    if (!$state) {
+      echo 'Up';
+    exec("systemctl stop cine4_auth cine4_data cine4_log");
+      $state = true;
+    }
   } else {
+    if ($state) {
+
+  exec("systemctl start cine4_auth cine4_data cine4_log");
     echo 'Down';
-    exec("systemctl start cine4_auth cine4_data cine4_log");
-    exit();
+
+$state = false;
+}
   }
 }
+?>
