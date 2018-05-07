@@ -1,10 +1,10 @@
 #!/usr/bin/php
 <?php
-//rmq inlude
+//rmq include
 require_once('rmq/path.inc');
 require_once('rmq/get_host_info.inc');
 require_once('rmq/rabbitMQLib.inc');
-//inlude
+//include
 require_once('inc/logRec.inc');
 
 function requestProcessor($request)

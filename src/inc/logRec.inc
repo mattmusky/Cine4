@@ -3,13 +3,13 @@ function logIt($request)
 {
   switch ($request['level']) {
     case 1:
-      $log_file = '../resources/logs/log_lvl1.txt';
+      $log_file = '/home/cine/cine4/resources/logs/log_lvl1.txt';
       break;
     case 2:
-      $log_file = '../resources/logs/log_lvl2.txt';
+      $log_file = '/home/cine/cine4/resources/logs/log_lvl2.txt';
       break;
     case 3:
-      $log_file = '../resources/logs/log_lvl3.txt';
+      $log_file = '/home/cine/cine4/resources/logs/log_lvl3.txt';
       break;
   }
   if (!is_file($log_file)) {
