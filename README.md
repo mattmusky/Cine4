@@ -1,4 +1,4 @@
-# 🎥 Cine4 - Final
+# 🎥 Cine4 - Development Branch
 Web app enabling users to discover, save and share movie lists with friends.
 
 ## Installation Steps
