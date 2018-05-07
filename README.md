@@ -3,7 +3,7 @@ Web app enabling users to discover, save and share movie lists with friends.
 
 ## Installation Steps
 
-Create the following virtual machines with the corresponding static IP
+Create the following virtual machines with the corresponding static IP:
 
 Host|IP|Services
 -----|-----|-----
