@@ -1,11 +1,30 @@
-# 🎥 Cine4
+# 🎥 Cine4 - Final
 Web app enabling users to discover, save and share movie lists with friends.
 
 ## Installation Steps
 
-25 simple steps for installing on a four server architecture:
+Create the following virtual machines with the corresponding static IP
 
-### Web Server (10.0.0.10)
+Host|IP|Services
+-----|-----|-----
+490-DEPLOY|10.2.2.5|`cine4_dep.service`
+490-PROD-LB|10.2.2.10|`Apache Load Balancer`
+490-PROD-FE|10.2.2.11|`cine4_depback.service* cine4_femon.service*`
+490-PROD-BE|10.2.2.12|`cine4_auth.service* cine4_data.service* cine4_depback.service* cine4_log.service*`
+490-PROD-DMZ|10.2.2.13|`cine4_api.service* cine4_depback.service* cine4_dmzrmqmon.service*`
+490-PROD-FE-HSB|10.2.2.21|`cine4_depback.service* cine4_femon.service*`
+490-PROD-BE-HSB|10.2.2.22|`cine4_auth.service cine4_bemon.service* cine4_data.service cine4_depback.service* cine4_log.service`
+490-PROD-DMZ-HSB|10.2.2.23|`cine4_api.service cine4_depback.service* cine4_dmzhsbrmqmon.service* cine4_dmzmon.service*`
+490-QA-FE|10.2.2.31|`cine4_depback.service*`
+490-QA-BE|10.2.2.32|`cine4_auth.service* cine4_data.service* cine4_depback.service* cine4_log.service*`
+490-QA-DMZ|10.2.2.33|`cine4_api.service* cine4_depback.service*`
+490-DEV-FE|10.2.2.41|`cine4_depback.service*`
+490-DEV-BE|10.2.2.42|`cine4_auth.service* cine4_data.service* cine4_depback.service* cine4_log.service*`
+490-DEV-DMZ|10.2.2.43|`cine4_api.service* cine4_depback.service*`
+
+To setup each machine, follow the steps below for the corresponding group;
+
+### FE Machines
 1. Install dependencies
 ```
 apt-get install apache2 libapache2-mod-php7.0 php-amqp php7.0 git
@@ -32,12 +51,13 @@ sudo ln -s /etc/php/mods-available/amqp.ini /etc/php/7.0/apache2/conf.d/
 ```
 sudo service apache2 restart
 ```
+7. Configure Apache LB machine with +H for both FE machines
 
 
-### RabbitMQ Server (10.0.0.11)
+### BE Machines
 1. Install dependencies
 ```
-sudo apt-get install php7.0 php-amqp rabbitmq-server git
+sudo apt-get install php7.0 php-amqp rabbitmq-server php7.0-mysql mysql-server git
 ```
 2. Clone project repository to home folder
 ```
@@ -50,40 +70,17 @@ sudo ln -s /etc/php/mods-available/amqp.ini /etc/php/7.0/cli/conf.d
 ##### Configure RMQ
 4. Import config
 ```
-rabbitmqadmin -q import ~/cine4/config/rabbitMQ_config.json
-```
-##### Run Server PHP
-```
-php ~/cine4/src/logServer.php &
+rabbitmqadmin -q import ~/cine4/config/cine4_rabbitMQ.json
 ```
 
-### Database Server (10.0.0.12)
-1. Install dependencies
-```
-apt-get install php7.0 php-amqp php7.0-mysql mysql-server git
-```
-2. Clone project repository to home folder
-```
-git clone https://github.com/mattmusky/cine4 ~/
-```
-3. Create symlink to PHP amqp.ini for CLI
-```
-sudo ln -s /etc/php/mods-available/amqp.ini /etc/php/7.0/cli/conf.d
-```
 ##### Configure MySQL
   + Create User: cine4, Password: infinity
   + Create Database: cine4
   + Run ~/cine4/config/cine4.sql
 
-  ##### Run Server PHP
-```
-php ~/cine4/src/dataServer.php &
-```
-```
-php ~/cine4/src/authServer.php &
-```
+5. Setup live binary log replication on HSB machine
 
-### DMZ/API Server (10.0.0.13)
+### DMZ Machines
 1. Install dependencies
 ```
 apt-get install php7.0 php-amqp curl php-curl git
@@ -96,13 +93,31 @@ git clone https://github.com/mattmusky/cine4 ~/
 ```
 sudo ln -s /etc/php/mods-available/amqp.ini /etc/php/7.0/cli/conf.d
 ```
-##### Run Server PHP
+
+### Deploy Server
+1. Follow all FE and BE steps
+2. Create the CineDeploy database:
 ```
-php ~/cine4/src/apiServer.php &
+Run ~/cine4/config/deploy.sql
+```
+3. Import the RMQ Configuration file:
+```
+rabbitmqadmin -q import ~/cine4/config/deploy_rabbitMQ.json
+```
+4. Run deploy script on any server to activate
+```
+php deploy.php help
 ```
 
-### Final Step!
-Once all four PHP server files are running, navigate to http://10.0.0.10 and login!
+### Run Services
+1. Add the required services from the table above to each machine
+```
+sudo ln -s /home/cine/cine4/config/services/SERVICE_NAME.service /etc/systemd/system
+```
+1. Set all * services to run on boot
+```
+systemctl enable SERVICE_NAME
+```
 
 
 ## Built With

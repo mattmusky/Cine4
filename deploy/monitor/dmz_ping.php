@@ -9,7 +9,7 @@ function ping($host)
   return $rval === 0;
 }
 while (1) {
-  sleep(5);
+  sleep(2);
   $up = ping($host);
   if ($up) {
     if (!$state) {
